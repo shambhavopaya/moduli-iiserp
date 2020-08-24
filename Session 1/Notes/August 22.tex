@@ -1,0 +1,189 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.2in,marginparsep=0.1in,marginparwidth=1in]{geometry}
+\usepackage{amssymb,amsmath,amsthm,amstext,amscd,latexsym,graphics,graphicx,bbm,caption}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[plainpages=false,colorlinks=true, linkcolor=blue, citecolor=red, pagebackref]{hyperref}
+\usepackage{enumitem}
+
+
+\makeatletter
+\def\@settitle{\begin{center}%
+		\baselineskip14\p@\relax
+		\bfseries
+		\uppercasenonmath\@title
+		\@title
+		\ifx\@subtitle\@empty\else
+		\\[1ex]\uppercasenonmath\@subtitle
+		\footnotesize\mdseries\@subtitle
+		\fi
+	\end{center}%
+}
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\@subtitle{}
+\makeatother
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+\begin{document}
+% Document information
+\title{Seminar on Moduli Theory}
+\subtitle{\today}
+\author{Neeraj Deshmukh}
+%\date{\today}
+%\address[IISERM]{Indian Institute of Science Education and Research, Mohali}
+
+\maketitle
+
+\section{Summary}
+
+One way to go to through these sessions is go recall theory of schemes (at level of things in Hartshorne chapter two), by doing a beeline through all the definitions, properties, etc. However, I feel since the point of doing this exercise is to become more comfortable in working with scheme, we will just do lots of examples instead. By this, I mean we will just to prove some things in very concrete situations. This will help you build a concrete picture of the generalities.
+
+List of some things to discuss (just do lots of examples):
+
+\begin{enumerate}
+	\item Definition of a scheme.
+	\item Say affine communication lemma \textit{stress this!}
+	\item examples
+	\begin{enumerate}
+		\item $\P^n$ and it sheaf theory! This already clarifies the $\sO(n)$'s
+	\end{enumerate}
+\end{enumerate}
+
+%\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+

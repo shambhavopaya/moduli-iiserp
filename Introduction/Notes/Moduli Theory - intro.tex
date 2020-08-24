@@ -1,0 +1,273 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.2in,marginparsep=0.1in,marginparwidth=1in]{geometry}
+\usepackage{amssymb,amsmath,amsthm,amstext,amscd,latexsym,graphics,graphicx,bbm,caption}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[plainpages=false,colorlinks=true, linkcolor=blue, citecolor=red, pagebackref]{hyperref}
+\usepackage{enumitem}
+
+
+\makeatletter
+\def\@settitle{\begin{center}%
+		\baselineskip14\p@\relax
+		\bfseries
+		\uppercasenonmath\@title
+		\@title
+		\ifx\@subtitle\@empty\else
+		\\[1ex]\uppercasenonmath\@subtitle
+		\footnotesize\mdseries\@subtitle
+		\fi
+	\end{center}%
+}
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\@subtitle{}
+\makeatother
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+\begin{document}
+% Document information
+\title{Seminar on Moduli Theory}
+\subtitle{What to expect}
+\author{Neeraj Deshmukh}
+\date{\today}
+%\address[IISERM]{Indian Institute of Science Education and Research, Mohali}
+
+\maketitle
+
+\section{What is it?}
+The aim of this seminar is to explore essential topics in moduli theory. A Moduli problem deals with the question of constructing parameter spaces for various geometric problems. The term ``moduli" comes from the word ``modulus" which serves as parameter classifying numbers upto absolute value (modulus is absolute value).
+
+Moduli theory tries to construct nice parameter spaces for geometric objects or \textit{families}. For example, a classical question of this kind is: 
+\begin{enumerate}[leftmargin=2\parindent]\label{projective line}
+\item \textit{what is the parameter space of all lines  passing through the origin in the complex plane $\A_{\C}^2$?}
+\end{enumerate}
+
+The answer, of course, is well know and is described by the projective line $\P_{\C}^1$.
+
+The way this problem is understood is as follows: any line in $\A_{\C}^2$ passing through the origin is determined by an orbit of the action of the group of non-zero complex numbers, $\C^{\times}$. More precisely, it is the quotient space $\A_{\C}\setminus \lbrace 0 \rbrace/\C^{\times}$. This is the projective line. A more interesting version of Problem \ref{projective line} is the following:
+
+\begin{enumerate}[resume, leftmargin=2\parindent]
+	\item \textit{what is the parameter space of all lines in $\A_{\C}^2$?}
+\end{enumerate}
+
+Thus, what we are trying to do is to take a collection of geometric objects (like lines in the plane, flags of a vector space, $n$ points in space, curves of a given genus, etc) and see if it is possible to parametrise the families.
+
+\section{Issues, GIT and a Caveat}
+
+For a very long time, using group actions was the standard trope of moduli theory. Given a moduli problem, try to express it as a problem about group actions, then the quotient space is describes the required parameter space. For example, the moduli of curves is constructed this way (however, this construction does not give a ``faithful" moduli, more on this later).
+
+An important caveat when using this approach is that quotients of varieties do not always exist as varieties (this is not surpirising because it is already true of smooth manifolds!). However, as is seen from Problem \ref{projective line}, removing a certain bad loci does indeed give rise to ``nice" quotients. This observation of Mumford is the beginning of the subject of Geometric Invariant theory\footnote{The problem with this approach is that it involves making certain choices which are not canonical.} (in Problem \ref{projective line}, the origin is the bad locus).
+
+Given a general moduli problem it may not always be clear how to realise it as the quotient of a group action. This makes it even harder to figure out what moduli space should be. At this point, I should add \textit{a} moduli space always exists as a set. But what we want is that the said moduli space have some ``continuity" properties - ``nearby" points in the moduli should correspond to ``nearby" objects in the family. From this point of view, it is not all clear what topology to impose on a given moduli problem. Furthermore, since we are doing algebraic geometry we would like this space to also have an algebraic structure.
+
+\section{Why Bother with Moduli?}
+
+The holy grail of any mathematical discipline is the classification problem: whatever mathematical objects we work with, we would like to classify them. Although this question is almost impossible to answer in full generality\footnote{The reasons lead us astray into logic and words like decidability, computability start gaining prominence.}, we then turn our attention to \textit{families} of objects. In naive terms, this means geometric objects that satisfy similar looking of equations. attempting to parametrise these families naturally leads one to think about moduli.
+
+For example, consider curves in $\A^2$ that are given by $xy - a$. If we vary the parameter $a$, we get a hypersurface $xy-z$ in $\A^3$ and map $\A^3\rightarrow\A^1$ which send $z$ to the parameter $a$. This gives us a family of curves determined by $a$. Note that this is a family of hyperbolas which degenerates to a pair of lines at $a=0$.
+
+Further, moduli theoretic thinking has applications to other algebro-geometric problems. A very nice example is the proof the Lie-Kolchin theorem which states that over an algebraically closed field every smooth connected solvable algebraic group $G$ is upper triangulisable. The proof involves showing that the action of $G$ on a flag variety has a fixed point.
+
+There are other situations - especially while using projective methods - where we want to ensure that the choices we make ``generic", i.e, there are enough objects satisfying the required conditions. This is essentially the statement that this choice in question corresponds to a dense open set in a moduli space.
+
+
+\section{Enter Grothendieck..}
+
+This is the point category theory met algebraic geometry. From this point on, things may become really abstract really fast. Let $Sch$ denote the category of schemes, Our story begins with the following lemma:
+\begin{lemma}[Yoneda]
+	For any scheme $X$ denote by $h_X$ the functor
+	\begin{align*}
+	h_X : Sch^{op} &\rightarrow Sets\\
+	Y&\rightarrow Hom(Y,X)
+	\end{align*}
+	then there exists a canonical bijection
+	\[Hom(h_X,h_Y)\simeq Hom(X,Y).\]
+\end{lemma}
+
+In the language of categories, this says that there is a fully faithful embedding $Sch^{op}\hookrightarrow Fun(Sch^{op},Sets)$ of the category of schemes into the category of contravariant $Set$-valued functors on the category of schemes. The functor $h_X$ is called the functor of points of the scheme $X$.
+
+Grothendieck realised that in order to determine a scheme, it is sufficient to determine what its functor of points is. That is, determining this functor automatically determines what the topology and algebraic structure on a scheme should be. Turning this on its head, if we think of moduli problems as functors, then determining the topology and the algebraic structure on the moduli space become a question about when the moduli functor is lies in the subcategory $Sch^{op}$. When this happens, we say that the functor is \textit{representable}.
+
+\begin{definition}
+	A moduli problem is a functor $F: Sch^{op} \rightarrow Sets$ on the category of schemes to sets.
+\end{definition}
+
+An important requirement that we often expect from the moduli space is that it come equipped with a ``universal" family. This means that families over any scheme $X$ should be uniquely determined by maps from $X$ to the moduli space. This requirement comes for free in the functorial approach\footnote{Well, almost. Sometimes objects have automorphisms and then you have to formulate the functoriality correctly!}.
+
+
+\section{What we hope to achieve}
+
+The aim of this seminar is to develop sufficient algebraic geometry in order to prove the following theorem:
+
+\begin{theorem}\label{Hilb}
+	Let $X$ be projective over a noetherian base $S$. Consider the functor which for any scheme $T$ is given by
+	\[Hilb_{X/S}(T)=\bigl\{\text{closed subschemes}\,Y\subset T\times_S X\, |\, Y \,\text{is flat and proper over}\, T \bigr\}.\]
+	Then, $Hilb_{X/S}$ is representable by a scheme projective over $S$.
+\end{theorem}
+
+This is known as the Hilbert scheme of $X$ over $S$. This is an important object in modern moduli theory, since representability of many moduli functors can reduced to showing that they define certain locally closed subsets of the Hilbert scheme\footnote{the automorphism scheme $Aut(X)$ is one such example.}. I will try to use \cite{FGAExplained} and the first chapeter of \cite{Kollar} as references. 
+
+However, there are many things to look at here. For example, the Hilbert scheme admits a stratification by Hilbert polynomials. And the components corresponding to constant polynomials give rise to Hilbert schemes of points (the associated functor is closed subschemes $Y$ which are finite and flat over $T$). These are interesting in themselves. In view of this I has the following plan:
+\vspace{.3cm}
+
+\textbf{What We Will Definitely Do}
+\begin{enumerate}
+	\item Theory of Hilbert(-Samuel) polynomials (I'm specifically including this because I don't understand this very well).
+	\item Basics of Grothendick topologies and descent. (Some of you may already be familiar with this, but a recap might be a good idea).
+	\item Show that the Hilbert scheme of points is representable. There is a nice section in the Stacks project \cite[Tag 0B94]{stacks} on this.
+	\item Prove Theorem \ref{Hilb}. There are two ways to do this. One is to prove the representability of Hilbert scheme directly (This is done in \cite{Kollar}). The other is to infer it from a more general result about the representability of Quot functors (as in \cite{FGAExplained}). In \cite{Kollar}, Koll\'{a}r suggests that this may be more desirable.
+\end{enumerate}
+
+This is a rough list and things may get added/modified as we get into the details.
+
+
+\vspace{.3cm}
+\textbf{What We May Eventually Do}
+
+These things are contingent on factors of time and interest.
+\begin{enumerate}
+	\item Worry about removing the projectivity and Noetherian hypothesis in Theorem \ref{Hilb}. This will require us to develop some deformation theory, and pick up some formalism of algebraic spaces. 
+\end{enumerate}
+
+Already if we relax the hypothesis on $X$ from projective to proper, the Hilbert functor is no longer representable by a scheme (but only as an algebraic spaces). The most general statement about the Hilbert functor is stated for finitely presented morphisms of algebraic spaces \cite[Tag 0CZX]{stacks}. The proof is spread out in a bunch of sections. 
+
+However, the proof in the Stacks project uses the language of algebraic stacks to deduce representability (as an algebraic space) of the Quot functor. I would like to avoid using stacks as much as possible. While it is not that we gain too much by adding this restriction, but it will be interesting to see if the proof turns out to be different than the one presented there. And more importantly, it should be possible to resolve this simpler situation without appealing to more sophisticated machinery. 
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
