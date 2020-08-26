@@ -148,7 +148,7 @@
 \newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
 
 \theoremstyle{definition}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{question}[theorem]{Question}
@@ -165,7 +165,7 @@
 
 \maketitle
 
-\section{Summary}
+\section{Plan}
 
 One way to go to through these sessions is go recall theory of schemes (at level of things in Hartshorne chapter two), by doing a beeline through all the definitions, properties, etc. However, I feel since the point of doing this exercise is to become more comfortable in working with scheme, we will just do lots of examples instead. By this, I mean we will just to prove some things in very concrete situations. This will help you build a concrete picture of the generalities.
 
@@ -181,21 +181,13 @@ List of some things to discuss (just do lots of examples):
 \end{enumerate}
 
 
-\begin{definition}
-	A {\it scheme} is a locally ringed space with the property that
-	every point has an open neighbourhood which is an affine scheme.
-	A {\it morphism of schemes} is a morphism of locally
-	ringed spaces. The category of schemes will be denoted
-	$Sch$.
-\end{definition}
-
 Things to say: finite-generation, valuative criteria for $\P^1$ (using DVR's - how giving a point and it's specialisation is the same as giving a map $\Spec R\rightarrow \P^1$).\\
 List of examples:
 \begin{enumerate}
 	\item $\A^1$ with a double point (what are quasi-coherent sheaves on this?)
 	\item $\A^2\setminus \lbrace 0,0\rbrace$ (what is the structure sheaf?).
 	\item $\P^1$ (its structure sheaf!).
-	\item $V_{+}(x^2+y^2+z^2)$
+	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. The point is that there is a change of coordintes which 
 	\item Blow-up of $\A^2$ at a point. (because everyone should know about blow-ups!)
 	\item $\Spec R[x_1,x_2,\ldots]$ as an example of something non-noetherian.
 	\item An example of a scheme without a closed point.
@@ -204,11 +196,87 @@ List of examples:
 List of morphisms:
 \begin{enumerate}
 	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
-	\item a non-quasicompact open-immersion. Polynomial ring in infinitely many variables and knock off the origin. Also, the origin of is an example of something 
+	\item a non-quasi-compact open-immersion. Polynomial ring in infinitely many variables and knock off the origin. Also, the origin of is an example of something 
 \end{enumerate}
+
+\section{Right at the beginning..}
+For the sake of completeness we begin by reviewing the definition of a locally ringed space.
+
+\begin{definition}
+	\label{definition-locally-ringed-space}
+	Locally ringed spaces.
+	\begin{enumerate}
+		\item A {\it locally ringed space $(X, \mathcal{O}_X)$}
+		is a pair consisting of a
+		topological space $X$ and a sheaf of rings $\mathcal{O}_X$ all of whose stalks
+		are local rings.
+		\item Given a locally ringed space $(X, \mathcal{O}_X)$ we say that
+		$\mathcal{O}_{X, x}$ is the {\it local ring of $X$ at $x$}.
+		We denote $\mathfrak{m}_{X, x}$ or simply $\mathfrak{m}_x$
+		the maximal ideal of $\mathcal{O}_{X, x}$. Moreover, the
+		{\it residue field of $X$ at $x$} is the residue field
+		$\kappa(x) = \mathcal{O}_{X, x}/\mathfrak{m}_x$.
+		\item A {\it morphism of locally ringed spaces}
+		$(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+		is a morphism of ringed spaces such that for all $x \in X$
+		the induced ring map $\mathcal{O}_{Y, f(x)} \to \mathcal{O}_{X, x}$ is a
+		local ring map.
+	\end{enumerate}
+\end{definition}
+
+
+We know that affine schemes are locally ringed spaces: we take $\Spec R$ with the zariski topology and for any principal open set $D(f)$ we assign the ring $R_f$. So, any ring $R$ produces the sheaf $\tilde{R}$ on $\Spec R$. This is called the tilde construction. (sanity check: if you can do this, then you should be able to construct a sheaf on $\Spec R$ for any $R$-module $M$).
+
+
+\begin{definition}
+	A {\it scheme} is a locally ringed space with the property that
+	every point has an open neighbourhood which is an affine scheme.
+	A {\it morphism of schemes} is a morphism of locally
+	ringed spaces. The category of schemes will be denoted
+	$Sch$.
+\end{definition}
+
+\begin{definition}
+	Let $(X,\mathcal{O}_X)$ be a scheme. A sheaf of modules on $X$ is a sheaf $\mathcal{F}$ on $X$ such that for every open set $U$, $\mathcal{F}(U)$ is an $\mathcal{O}_X(U)$-module. We say that a sheaf of modules $\mathcal{F}$ is \textit{quasi-coherent} if for every affine open $U\simeq \Spec(R)$, the sheaf $\mathcal{F}|_U$ on $U$ is of the form $\tilde{M}$ for some $R$-module $M$.
+\end{definition}
+
+
+Make special note of the next lemma. This basically lets us reduce problems about schemes to statement about affine schemes (ergo, ring theory), whenever the problem at hand is of a \textit{local} nature. Ravi Vakil calls this \textit{affine communication lemma}.
+
+
+\begin{lemma}
+	\label{lemma-locally-P}
+	Let $X$ be a scheme. Let $P$ be a local property of rings.
+	The following are equivalent:
+	\begin{enumerate}
+		\item The scheme $X$ is locally $P$.
+		\item For every affine open $U \subset X$ the property
+		$P(\mathcal{O}_X(U))$ holds.
+		\item There exists an affine open covering $X = \bigcup U_i$ such that
+		each $\mathcal{O}_X(U_i)$ satisfies $P$.
+		\item There exists an open covering $X = \bigcup X_j$
+		such that each open subscheme $X_j$ is locally $P$.
+	\end{enumerate}
+	Moreover, if $X$ is locally $P$ then every open subscheme
+	is locally $P$.
+\end{lemma}
+
+This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings. Some examples, normality, reduced, etc.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
+
+Examples
+\begin{enumerate}
+	\item Two ways of gluing $\A^1\setminus\lbrace 0\rbrace$: $x\mapsto x$ or $x\mapsto 1/x$.
+	\begin{enumerate}
+		\item Double origin: What are global sections? what are quasi-coherent sheaves?
+		\item $\P^1$: What are global sections?
+	\end{enumerate}
+	\item A normal scheme, a reduced scheme, Noetherian scheme.
+\end{enumerate}
+
 
 %\bibliography{Mybib.bib}
 \bibliographystyle{alpha}
+
 
 \end{document}
 
