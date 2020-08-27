@@ -1,8 +1,8 @@
-\documentclass[ignorenonframetext]{beamer}
+\documentclass[ignorenonframetext,t]{beamer}
 \usepackage{amscd}
 \usepackage{verbatim}
 
-\usetheme{Berlin}
+\usetheme{Frankfurt}
 
 \setbeamerfont{block body}{size=\small}
 
@@ -154,7 +154,7 @@
 
 % Document information
 \title{Seminar on Moduli Theory}
-\subtitle{What to expect (and not to)}
+\subtitle{Lecture 1}
 \author{Neeraj Deshmukh}
 \date{\today}
 %\address[IISERM]{Indian Institute of Science Education and Research, Mohali}
@@ -166,142 +166,174 @@
 \titlepage
 \end{frame}
 
-\section{What is it?}
+\begin{frame}
+For the sake of completeness we begin by reviewing the definition of a locally ringed space.
 
-\begin{frame}{What is it?}
-%A Moduli problem deals with the question of constructing parameter spaces for various geometric problems. 
-%The term ``moduli" comes from the word ``modulus" which serves as parameter classifying numbers upto absolute value (modulus is absolute value).
-
-Moduli theory tries to construct nice parameter spaces for geometric objects or \textit{families}. 
-
-For example, a classical question of this kind is: 
-\begin{question}\label{projective line}
-	\textit{What is the parameter space of all lines  passing through the origin in the complex plane $\A_{\C}^2$?}
-\end{question}
-
-We can ask this question for any collection of geometric objects - like flags of a vector space, $n$ points in space, curves of a given genus, vector bundles on said curves, etc. 
-
-\end{frame}
-
-
-%\begin{frame}
-The answer, of course, is well know and is described by the projective line $\P_{\C}^1$.
-
-The way this problem is understood is as follows: any line in $\A_{\C}^2$ passing through the origin is determined by an orbit of the action of the group of non-zero complex numbers, $\C^{\times}$. 
-
-More precisely, it is the quotient space $\A^2_{\C}\setminus \lbrace 0 \rbrace/\C^{\times}$. This is the projective line. 
-%\end{frame}
-
-\begin{frame}{Food for Thought}
-A more interesting version of the above problem is the following:
-
-\begin{question}
-	\textit{What is the parameter space of all lines in $\A_{\C}^2$?}
-\end{question}
-\end{frame}
-
-%\section{Issues, GIT and a Caveat}
-
-For a very long time, using group actions was the standard trope of moduli theory. Given a moduli problem, try to express it as a problem about group actions, then the quotient space is describes the required parameter space. For example, the moduli of curves is constructed this way (however, this construction does not give a ``faithful" moduli, more on this later).
-
-An important caveat when using this approach is that quotients of varieties do not always exist as varieties (this is not surpirising because it is already true of smooth manifolds!). However, as is seen from Problem \ref{projective line}, removing a certain bad loci does indeed give rise to ``nice" quotients. This observation of Mumford is the beginning of the subject of Geometric Invariant theory\footnote{The problem with this approach is that it involves making certain choices which are not canonical.} (in Problem \ref{projective line}, the origin is the bad locus).
-
-Given a general moduli problem it may not always be clear how to realise it as the quotient of a group action. This makes it even harder to figure out what moduli space should be. At this point, I should add \textit{a} moduli space always exists as a set. But what we want is that the said moduli space have some ``continuity" properties - ``nearby" points in the moduli should correspond to ``nearby" objects in the family. From this point of view, it is not all clear what topology to impose on a given moduli problem. Furthermore, since we are doing algebraic geometry we would like this space to also have an algebraic structure.
-
-%\section{Why Bother with Moduli?}
-%\begin{frame}
-The holy grail of any mathematical discipline is the classification problem. whatever mathematical objects we work with, we would like to classify them. 
-
-This question is almost impossible to answer in full generality, we then turn our attention to \textit{families} of objects. 
-
-In naive terms, this means geometric objects that satisfy similar looking of equations. attempting to parametrise these families naturally leads one to think about moduli.
-
-%\end{frame}
-
-%\begin{frame}{Example of a Family}
-For example, consider curves in $\A^2$ that are given by $xy - a$. If we vary the parameter $a$, we get a hypersurface $xy-z$ in $\A^3$ and map $\A^3\rightarrow\A^1$ which send $z$ to the parameter $a$. This gives us a family of curves determined by $a$. Note that this is a family of hyperbolas which degenerates to a pair of lines at $a=0$.
-
-%\end{frame}
-Further, moduli theoretic thinking has applications to other algebro-geometric problems. A very nice example is the proof the Lie-Kolchin theorem which states that over an algebraically closed field every smooth connected solvable algebraic group $G$ is upper triangulisable. The proof involves showing that the action of $G$ on a flag variety has a fixed point.
-
-There are other situations - especially while using projective methods - where we want to ensure that the choices we make ``generic", i.e, there are enough objects satisfying the required conditions. This is essentially the statement that this choice in question corresponds to a dense open set in a moduli space.
-
-
-\section{Enter Grothendieck..}
-
-This is the point category theory met algebraic geometry. From this point on, things may become really abstract really fast. Let $Sch$ denote the category of schemes, Our story begins with the following lemma:
-\begin{lemma}[Yoneda]
-	For any scheme $X$ denote by $h_X$ the functor
-	\begin{align*}
-	h_X : Sch^{op} &\rightarrow Sets\\
-	Y&\rightarrow Hom(Y,X)
-	\end{align*}
-	then there exists a canonical bijection
-	\[Hom(h_X,h_Y)\simeq Hom(X,Y).\]
-\end{lemma}
-
-In the language of categories, this says that there is a fully faithful embedding $Sch^{op}\hookrightarrow Fun(Sch^{op},Sets)$ of the category of schemes into the category of contravariant $Set$-valued functors on the category of schemes. The functor $h_X$ is called the functor of points of the scheme $X$.
-
-Grothendieck realised that in order to determine a scheme, it is sufficient to determine what its functor of points is. That is, determining this functor automatically determines what the topology and algebraic structure on a scheme should be. Turning this on its head, if we think of moduli problems as functors, then determining the topology and the algebraic structure on the moduli space become a question about when the moduli functor is lies in the subcategory $Sch^{op}$. When this happens, we say that the functor is \textit{representable}.
-
-\begin{frame}{Enter Grothendieck..}
-	This is the point category theory meets algebraic geometry.
-	
-	Grothendieck realised that the correct setting to think about moduli problems is the language of functors.
 \begin{definition}
-	A moduli problem is a functor $F: Sch^{op} \rightarrow Sets$ on the category of schemes to sets.
+	\label{definition-locally-ringed-space}
+	Locally ringed spaces.
+	\begin{enumerate}
+		\item A {\it locally ringed space $(X, \mathcal{O}_X)$}
+		is a pair consisting of a
+		topological space $X$ and a sheaf of rings $\mathcal{O}_X$ all of whose stalks
+		are local rings.
+		\item Given a locally ringed space $(X, \mathcal{O}_X)$ we say that
+		$\mathcal{O}_{X, x}$ is the {\it local ring of $X$ at $x$}.
+		We denote $\mathfrak{m}_{X, x}$ or simply $\mathfrak{m}_x$
+		the maximal ideal of $\mathcal{O}_{X, x}$. Moreover, the
+		{\it residue field of $X$ at $x$} is the residue field
+		$\kappa(x) = \mathcal{O}_{X, x}/\mathfrak{m}_x$.
+		\item A {\it morphism of locally ringed spaces}
+		$(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+		is a morphism of ringed spaces such that for all $x \in X$
+		the induced ring map $\mathcal{O}_{Y, f(x)} \to \mathcal{O}_{X, x}$ is a
+		local ring map.
+	\end{enumerate}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Tilde construction}
+
+We know that affine schemes are locally ringed spaces.
+\end{frame}
+we take $\Spec R$ with the zariski topology and for any principal open set $D(f)$ we assign the ring $R_f$. So, any ring $R$ produces the sheaf $\tilde{R}$ on $\Spec R$. This is called the tilde construction. (sanity check: if you can do this, then you should be able to construct a sheaf on $\Spec R$ for any $R$-module $M$).
+
+\begin{frame}
+\begin{definition}
+	A {\it scheme} is a locally ringed space with the property that
+	every point has an open neighbourhood which is an affine scheme.
+	A {\it morphism of schemes} is a morphism of locally
+	ringed spaces. The category of schemes will be denoted
+	$Sch$.
 \end{definition}
 
-If there exists a scheme $X$ and a natural isomorphism $F\simeq Hom(\_,X)$ then we say that the moduli problem is representable.
-
-\end{frame}
-An important requirement that we often expect from the moduli space is that it come equipped with a ``universal" family. This means that families over any scheme $X$ should be uniquely determined by maps from $X$ to the moduli space. This requirement comes for free in the functorial approach\footnote{Well, almost. Sometimes objects have automorphisms and then you have to formulate the functoriality correctly!}.
-
-
-\section{What we hope to achieve}
-
-\begin{frame}{What we hope to achieve}
-The aim of this seminar is to develop sufficient algebraic geometry in order to prove the following theorem:
-
-\begin{theorem}\label{Hilb}
-	Let $X$ be projective over a noetherian base $S$. Consider the functor which for any scheme $T$ is given by
-	\[Hilb_{X/S}(T)=\bigl\{\text{closed}\,Y\subset T\times_S X\, |\, Y \,\text{is flat and proper over}\, T \bigr\}.\]
-	Then, $Hilb_{X/S}$ is representable by a scheme which is projective over $S$.
-\end{theorem}
-
-This is known as the Hilbert scheme of $X$ over $S$. This is an important object in modern moduli theory, since representability of many moduli functors can reduced to showing that they define certain locally closed subsets of the Hilbert scheme. 
 \end{frame}
 
-I will try to use \cite{FGAExplained} and the first chapeter of \cite{Kollar} as references. 
-However, there are many things to look at here. For example, the Hilbert scheme admits a stratification by Hilbert polynomials. And the components corresponding to constant polynomials give rise to Hilbert schemes of points (the associated functor is closed subschemes $Y$ which are finite and flat over $T$). These are interesting in themselves. In view of this I has the following plan:
-\vspace{.3cm}
 \begin{frame}
-\frametitle{What We Will Definitely Do}
+\begin{definition}
+	Let $(X,\mathcal{O}_X)$ be a scheme. A sheaf of modules on $X$ is a sheaf $\mathcal{F}$ on $X$ such that for every open set $U$, $\mathcal{F}(U)$ is an $\mathcal{O}_X(U)$-module. We say that a sheaf of modules $\mathcal{F}$ is \textit{quasi-coherent} if for every affine open $U\simeq \Spec(R)$, the sheaf $\mathcal{F}|_U$ on $U$ is of the form $\tilde{M}$ for some $R$-module $M$.
+\end{definition}
+
+\end{frame}
+
+
+Make special note of the next lemma. This basically lets us reduce problems about schemes to statement about affine schemes (ergo, ring theory), whenever the problem at hand is of a \textit{local} nature. Ravi Vakil calls this \textit{affine communication lemma}.
+
+\begin{frame}{Affine Communication Lemma}
+
+\begin{lemma}
+	\label{lemma-locally-P}
+	Let $X$ be a scheme. Let $P$ be a local property of rings.
+	The following are equivalent:
+	\begin{enumerate}
+		\item The scheme $X$ is locally $P$.
+		\item For every affine open $U \subset X$ the property
+		$P(\mathcal{O}_X(U))$ holds.
+		\item There exists an affine open covering $X = \bigcup U_i$ such that
+		each $\mathcal{O}_X(U_i)$ satisfies $P$.
+		\item There exists an open covering $X = \bigcup X_j$
+		such that each open subscheme $X_j$ is locally $P$.
+	\end{enumerate}
+	Moreover, if $X$ is locally $P$ then every open subscheme
+	is locally $P$.
+\end{lemma}
+\end{frame}
+
+This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings. Some examples, normality, reduced, etc.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
+
+
+
+Examples:
+
+\begin{frame}{Examples}
+
+Two ways of gluing $\A^1\setminus\lbrace 0\rbrace$: $x\mapsto x$ or $x\mapsto 1/x$.
+	\begin{enumerate}
+		\item Double origin: What are global sections? what are quasi-coherent sheaves?
+		\item $\P^1$: What are global sections?
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{More examples}
+A normal scheme, a reduced scheme and a Noetherian scheme.
+\end{frame}
+
+\begin{frame}{More Examples}
+ Something non-noetherian: $\Spec R[x_1,x_2,\ldots]$.
+\end{frame}
+
+
+\begin{frame}{A slightly more involved scheme: $\P^n$.}
+Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. We have a maps $\phi_{ij}:D(x_i)_{x_j}\rightarrow D(x_j)_{x_i}$,\, given by $x_{k/i}\mapsto x_{k/j}$.
+\end{frame}
+\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
+
+If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
+
+\end{frame}
+
+\begin{frame}{Line Bundles on $\P^1$}
+Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course).
+
+\end{frame}
+
+ There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.
+\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
+
+More examples:
+\begin{frame}{More examples}
 \begin{enumerate}
-	\item Theory of Hilbert(-Samuel) polynomials (I'm specifically including this because I don't understand this very well).
-	\item Basics of Grothendick topologies and descent. (Some of you may already be familiar with this, but a recap might be a good idea).
-	\item Show that the Hilbert scheme of points is representable. There is a nice section in the Stacks project on this.
-	\item Prove the above theorem.
+	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. 
+	\item Blow-up of $\A^2$ at the origin.
+	\item An example of a scheme without a closed point.
+\end{enumerate}
+\end{frame}
+ Over $\C$, one have the following linear change of coordinates, $(x,y,z)\mapsto (x+iy,x-iy,iz)$. Then, $(x+iy) (x-iy) -z^2= x^2+y^2+(iz)^2$. So, this is the same as $V_+(uv-z^2)$, which is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$. Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$.
+ 
+
+%\section{Morphism}
+As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
+
+\begin{frame}
+\begin{definition}
+	Let $\mathcal{P}$ be a property of morphisms of schemes. Let $f:X\rightarrow Y$ be a morphism which satisfies $\mathcal{P}$. Then,
+	\begin{enumerate}
+		\item We say that $\mathcal{P}$ is \textit{affine-local on the target} if given any affine open cover $\lbrace V_i\rbrace$ of $Y$, $f:X\rightarrow Y$ has $\mathcal{P}$ if and only if the restriction $f: f^{-1}(V_i)\rightarrow V_i$ has $\mathcal{P}$ for each $i$.
+		\item We say that $\mathcal{P}$ is \textit{affine-local on the source} if given any affine open cover $\lbrace U_i\rbrace$ of $X$, $X\rightarrow Y$ has $\mathcal{P}$ if and only if the composite $U_i\rightarrow Y$ has $\mathcal{P}$ for each $i$.
+	\end{enumerate}
+\end{definition}
+
+Using \textit{affine communication lemma} one can then show that it suffices to check the above statements on single affine open cover.
+
+\end{frame}
+
+An important maxim of Grothendieck was that instead of considering schemes in isolation, we should look at things relative to each other, i.e, everything should be seen as a propery of morphisms. This is mostly true: every property of schemes can be turned into a property of morphisms of schemes.
+
+Examples:
+
+\begin{frame}
+	Something flat, something finitely presented/finite type, something finite.
+\end{frame}
+
+\begin{frame}
+	Not all properties are like this. For example, separatedness, properness, quasi-compactness, etc.
+\end{frame}
+
+\begin{frame}
+	Something ramified, something smooth, something singular.
+\end{frame}
+
+\begin{enumerate}
+	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
+	\item A non-quasi-compact, open-immersion. Polynomial ring in infinitely many variables and knock off the origin.
+	\item A finte morphism. 
+	\item A smooth morphism. A non-smooth morphism (nodal curve over $\A^1$).
 \end{enumerate}
 
-This is a rough list and things may get added/modified as we get into the details.
-\end{frame}
+Open embeddings are locally finite presentation.\footnote{This is not true in perfectoid geometry, which is quite sad.}
 
-\vspace{.3cm}
+Open embedding is \'{e}tale is fppf is fpqc
 
-\begin{frame}
-\frametitle{What We May Eventually Do}
-
-These things are contingent on factors of time and interest.
-\begin{itemize}
-	\item Worry about removing the projectivity and Noetherian hypothesis in above theorem.
-\end{itemize}
-
-%Already if we relax the hypothesis on $X$ from projective to proper, the Hilbert functor is no longer representable as a scheme (but only as an algebraic spaces). 
-The most general statement about the Hilbert functor can be stated for finitely presented morphisms of algebraic spaces.
-\end{frame}
-
-However, the proof in the Stacks project uses the language of algebraic stacks to deduce representability (as an algebraic space) of the Quot functor. I would like to avoid using stacks as much as possible. While it is not that we gain too much by adding this restriction, but it will be interesting to see if the proof turns out to be different than the one presented there. And more importantly, it should be possible to resolve this simpler situation without appealing to more sophisticated machinery. 
 
 \bibliography{Mybib.bib}
 \bibliographystyle{alpha}
