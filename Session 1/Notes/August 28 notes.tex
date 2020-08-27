@@ -181,7 +181,7 @@ List of some things to discuss (just do lots of examples):
 \end{enumerate}
 
 
-Things to say: finite-generation, valuative criteria for $\P^1$ (using DVR's - how giving a point and it's specialisation is the same as giving a map $\Spec R\rightarrow \P^1$).\\
+Things to say: finite-generation, valuative criteria for $\P^1$ (using DVR's - how giving a point and its specialisation is the same as giving a map $\Spec R\rightarrow \P^1$).\\
 List of examples:
 \begin{enumerate}
 	\item $\A^1$ with a double point (what are quasi-coherent sheaves on this?)
@@ -273,6 +273,10 @@ Examples
 	\item A normal scheme, a reduced scheme, Noetherian scheme.
 \end{enumerate}
 
+A slightly more involved scheme: $\P^n$
+Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\overbrace{x_{i/i}},\ldots,x_{n/i}]$. And, we have a map $D(x_i)_{x_j}\rightarrow D(x_j)_{x_i}$ given by $x_{k/i}\mapsto x_{k/j}$(??)\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
+
+Line Bundles on $\P^1$: Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
 
 %\bibliography{Mybib.bib}
 \bibliographystyle{alpha}
