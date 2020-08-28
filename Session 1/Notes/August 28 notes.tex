@@ -4,6 +4,8 @@
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[plainpages=false,colorlinks=true, linkcolor=blue, citecolor=red, pagebackref]{hyperref}
 \usepackage{enumitem}
+\usepackage{tikz-cd}
+\usepackage{verbatim}
 
 
 \makeatletter
@@ -152,6 +154,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{question}[theorem]{Question}
+\newtheorem{example}[theorem]{Example}
 
 
 
@@ -165,6 +168,9 @@
 
 \maketitle
 
+
+These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub.
+\begin{comment}
 \section{Plan}
 
 One way to go to through these sessions is go recall theory of schemes (at level of things in Hartshorne chapter two), by doing a beeline through all the definitions, properties, etc. However, I feel since the point of doing this exercise is to become more comfortable in working with scheme, we will just do lots of examples instead. By this, I mean we will just to prove some things in very concrete situations. This will help you build a concrete picture of the generalities.
@@ -198,8 +204,9 @@ List of morphisms:
 	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
 	\item a non-quasi-compact open-immersion. Polynomial ring in infinitely many variables and knock off the origin. Also, the origin of is an example of something 
 \end{enumerate}
+\end{comment}
 
-\section{Properties}
+\section{Schemes}
 For the sake of completeness we begin by reviewing the definition of a locally ringed space.
 
 \begin{definition}
@@ -263,34 +270,70 @@ Make special note of the next lemma. This basically lets us reduce problems abou
 
 This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings. Some examples, normality, reduced, etc.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
 
-Examples:
-\begin{enumerate}
-	\item Two ways of gluing $\A^1\setminus\lbrace 0\rbrace$: $x\mapsto x$ or $x\mapsto 1/x$.
-	\begin{enumerate}
-		\item Double origin: What are global sections? what are quasi-coherent sheaves?
-		\item $\P^1$: What are global sections?
-	\end{enumerate}
-	\item A normal scheme, a reduced scheme, Noetherian scheme.
-	\item $\Spec R[x_1,x_2,\ldots]$ as an example of something non-noetherian.
-\end{enumerate}
+\subsection{Two ways of Gluing $\A^1\setminus \lbrace 0\rbrace$}
 
-A slightly more involved scheme: $\P^n$.\\
-Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. And, we have a map $D(x_i)_{x_j}\rightarrow D(x_j)_{x_i}$ given by $x_{k/i}\mapsto x_{k/j}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
+Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
+
+\begin{center}
+\begin{tikzcd}
+	\A^1 &	\A^1\\
+	U\arrow[u, hook]\arrow{r}{\sim} & U\arrow[u, hook]\\
+\end{tikzcd}
+\end{center}
+
+Giving this information is that same giving a scheme which is looks like $\A^1$ around every point (why?). We consider two possible choices for the identification on $U$:
+\begin{align*}
+x &\mapsto x\\
+x &\mapsto 1/x
+\end{align*}
+\begin{example}
+ The first choice gives us a scheme which is like $\A^1$ everywhere except at the origin where it is now two points instead of one. Notice that the ring of global section of this scheme is $k[x]$ (a global section is same as giving polynomials $f, g\in k[x]$, one for each copy of $\A^1$ which are equal on $U$; conclude form this).
+\end{example}
+
+\begin{example}
+The second choice gives us the pojective line $\P^1$. This is looks like $\A^1$ with ``a point added at infinity". We will now compute its global sections.
+
+Let $f,g\in\A^1$ be two polynomials such that $f(x)=g(1/x)$ in $k[x,1/x]$. Then straightforward algebra shows that this can happen only when $f, g$ are constant, i.e, $\Gamma(\P^1,\sO_{\P^1})=k$.
+\end{example}
+
+\subsection{A DVR with double origin.} Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
+
+Furthermore, any coherent sheaf (a quasi-coherent sheaf which is a finitely generated module on each copy of $R$) is determined by a pair $(n,T)$ where $n$ is a positive integer and $T\in Gl_n(K)$. Since $R$ is a principal ideal domain, any finitely generated $R$-module $M$ is a direct sum of its free and torsion parts. Thus, if $M, N$ are two finitely generated $R$-modules,there exists an isomorphism (given by a $K$-linear map) $M\otimes K \simeq N\otimes K$ if and only if the rank of their free parts is the same.
+
+
+\begin{comment}
+\begin{tikzcd}[remember picture]
+	A \arrow[r] & B\\
+	C \arrow[r] & D\\
+\end{tikzcd}
+\begin{tikzpicture}[overlay,remember picture]
+\path (\tikzcdmatrixname-2-1) to node[midway,sloped]{$\subseteq$}
+(\tikzcdmatrixname-1-1);
+\path (\tikzcdmatrixname-2-2) to node[midway,sloped]{$\subseteq$}
+(\tikzcdmatrixname-1-2);
+\end{tikzpicture}
+\end{comment}
+
+All the above are examples of normal, reduced and Noetherian scheme. An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$.
+
+\subsection{A slightly more involved scheme: $\P^n$.}
+Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. And, we have a map $D(x_i)_{x_{j/i}}\rightarrow D(x_j)_{x_{i/j}}$ given by $x_{k/i}\mapsto x_{k/j}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
 
 If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
 
-Line Bundles on $\P^1$:\\
+\subsection{Line Bundles on $\P^1$:}
  Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
+[Discussed till here as of \today]
 
-More examples:
+\subsection{Some more examples.}
 
 \begin{enumerate}
-	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. Over $\C$, one have the following linear change of coordinates, $(x,y,z)\mapsto (x+iy,x-iy,iz)$. Then, $(x+iy) (x-iy) -z^2= x^2+y^2+(iz)^2$. So, this is the same as $V_+(uv-z^2)$, which is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$. Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$. 
+	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. Over $\C$, one have the following linear change of coordinates, $(x,y,z)\mapsto (x+iy,x-iy,iz)$. Then, $(x+iy) (x-iy) -z^2= x^2+y^2+(iz)^2$. So, this is the same as $V_+(uv-z^2)$, which is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$. Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$.
 \item Blow-up of $\A^2$ at the origin. (because everyone should know about blow-ups!)
 \item An example of a scheme without a closed point.
 \end{enumerate}
 
-\section{Morphism}
+\section{Morphisms}
 As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
 
 \begin{definition}
@@ -309,7 +352,7 @@ Examples:
 \begin{enumerate}
 	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
 	\item A non-quasi-compact, open-immersion. Polynomial ring in infinitely many variables and knock off the origin.
-	\item A finte morphism. 
+	\item A finite morphism. 
 	\item A smooth morphism. A non-smooth morphism (nodal curve over $\A^1$).
 \end{enumerate}
 
