@@ -169,7 +169,7 @@
 \maketitle
 
 
-These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub.
+These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}
 \begin{comment}
 \section{Plan}
 
@@ -268,11 +268,11 @@ Make special note of the next lemma. This basically lets us reduce problems abou
 	is locally $P$.
 \end{lemma}
 
-This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings. Some examples, normality, reduced, etc.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
+This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
 
 \subsection{Two ways of Gluing $\A^1\setminus \lbrace 0\rbrace$}
 
-Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
+Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed.}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
 
 \begin{center}
 \begin{tikzcd}
@@ -314,20 +314,26 @@ Furthermore, any coherent sheaf (a quasi-coherent sheaf which is a finitely gene
 \end{tikzpicture}
 \end{comment}
 
-All the above are examples of normal, reduced and Noetherian scheme. An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$.
+\subsection{$P$ versus locally $P$}\label{PvlP}
+All the above are examples of locally normal (in fact, regular), locally reduced and locally Noetherian scheme\footnote{This is probably not standard notation, but instructive for the current discussion.}. For any property that is locally $P$ (as defined in \ref{lemma-locally-P}), the usual rule of thumb for nomenclature is $P=$ locally $P\,\,+$ quasi-compact: for example, a scheme is Noetherian if it is locally Noetherian and quasi-compact. Not all properties are of this type: for example quasi-compactness, sepratedness, properness, etc. We will come back to this when we discuss morphisms.
+
+
+
+\subsection{Line Bundles on $\P^1$:}
+ Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
+[Discussed till here as of August 28, 2020]
+
 
 \subsection{A slightly more involved scheme: $\P^n$.}
 Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. And, we have a map $D(x_i)_{x_{j/i}}\rightarrow D(x_j)_{x_{i/j}}$ given by $x_{k/i}\mapsto x_{k/j}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
 
 If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
 
-\subsection{Line Bundles on $\P^1$:}
- Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
-[Discussed till here as of \today]
 
 \subsection{Some more examples.}
 
 \begin{enumerate}
+	\item An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$. 
 	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. Over $\C$, one have the following linear change of coordinates, $(x,y,z)\mapsto (x+iy,x-iy,iz)$. Then, $(x+iy) (x-iy) -z^2= x^2+y^2+(iz)^2$. So, this is the same as $V_+(uv-z^2)$, which is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$. Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$.
 \item Blow-up of $\A^2$ at the origin. (because everyone should know about blow-ups!)
 \item An example of a scheme without a closed point.
@@ -336,7 +342,7 @@ If we are over an algebraically closed field, then closed points of $\P^n$ can b
 \section{Morphisms}
 As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
 
-\begin{definition}
+\begin{definition}\label{locally-P-morphisms}
 	Let $\mathcal{P}$ be a property of morphisms of schemes. Let $f:X\rightarrow Y$ be a morphism which satisfies $\mathcal{P}$. Then,
 	\begin{enumerate}
 		\item We say that $\mathcal{P}$ is \textit{affine-local on the target} if given any affine open cover $\lbrace V_i\rbrace$ of $Y$, $f:X\rightarrow Y$ has $\mathcal{P}$ if and only if the restriction $f: f^{-1}(V_i)\rightarrow V_i$ has $\mathcal{P}$ for each $i$.
@@ -346,19 +352,24 @@ As mentioned before, many of the properties of morphisms that we are interested 
 
 Using \textit{affine communication lemma} one can then show that it suffices to check the above statements on single affine open cover.
 
-An important maxim of Grothendieck was that instead of considering schemes in isolation, we should look at things relative to each other, i.e, everything should be seen as a propery of morphisms. This is mostly true: every property of schemes can be turned into a property of morphisms of schemes.
+An important maxim of Grothendieck was that instead of considering schemes in isolation, we should look at things relative to each other, i.e, everything should be seen as a propery of morphisms. Then properties of schemes should really be thought of as properties of morphisms $X\rightarrow\Spec \Z$ (or whatever base you are working over. For a lot of people it is the spectrum of a field). This is mostly true: many property of schemes can be turned into properties of morphisms of schemes\footnote{For example, affine opens form a basis for the topology on a scheme. Can this statment be ``relativised" to affine morphisms $X\rightarrow Y$? I don't know the answer.}.
+
+\subsection{To be (or not to be) Noetherian} The discussion in \ref{PvlP} also applies to properties of morphisms, i.e., a morphism is said to be $P$ if it is locally $P$ and quasi-compact: a morphism is finite-type if it is locally finite type and quasi-compact; quasi-finite if it is locally quasi-finite and quasi-compact.
+
+However, this is not true of finite presentation. A morphism is of finite presentation if it is locally of finite presentation, quasi-compact \textit{and quasi-separarted}. This is because. really, finite presentation is a condition to correct for non-Noetherian-ness over arbitrary bases. Note that for Noetherian schemes, a morphism (locally) of finite type is automatically (locally) of finite presentation. Furthermore, quasi-separatedness is automatic for Noetherian scheme. There is a very nice discussion on mathoverflow on this that I encourage you to look up\footnote{\href{https://mathoverflow.net/questions/36737/why-does-finitely-presented-imply-quasi-separated}{https://mathoverflow.net/questions/36737/why-does-finitely-presented-imply-quasi-separated}}. 
 
 Examples:
 \begin{enumerate}
-	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
-	\item A non-quasi-compact, open-immersion. Polynomial ring in infinitely many variables and knock off the origin.
+	\item $x\mapsto x^2$ (more, generally $x^n$). This morphism is ramified at the origin (but unramified on $\A^1\setminus \lbrace 0\rbrace$), finitely presented, flat.
+	\item A non-quasi-compact open immersion. $\Spec k[x_1,x_2,\ldots]\setminus\lbrace (x_1,x_2,\ldots)\rbrace\hookrightarrow \Spec k[x_1,x_2,\ldots]$ Polynomial ring in infinitely many variables and knock off the origin.
 	\item A finite morphism. 
 	\item A smooth morphism. A non-smooth morphism (nodal curve over $\A^1$).
+	\item Open embeddings are locally of finite presentation\footnote{This is not true in perfectoid geometry, which is quite sad.}.
+	\item Open embedding is \'{e}tale is fppf is fpqc.
 \end{enumerate}
 
-Open embeddings are locally finite presentation.\footnote{This is not true in perfectoid geometry, which is quite sad.}
 
-Open embedding is \'{e}tale is fppf is fpqc
+
 
 %\bibliography{Mybib.bib}
 \bibliographystyle{alpha}
