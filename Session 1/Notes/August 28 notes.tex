@@ -170,6 +170,7 @@
 
 
 These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}
+
 \begin{comment}
 \section{Plan}
 
@@ -272,7 +273,7 @@ This is how commutative algebra meets geometry. Often, the properties that we wa
 
 \subsection{Two ways of Gluing $\A^1\setminus \lbrace 0\rbrace$}
 
-%Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed.}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
+Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed.}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
 
 \begin{center}
 \begin{tikzcd}
@@ -325,7 +326,12 @@ All the above are examples of locally normal (in fact, regular), locally reduced
 
 
 \subsection{A slightly more involved scheme: $\P^n$.}
-Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. And, we have a map $D(x_i)_{x_{j/i}}\rightarrow D(x_j)_{x_{i/j}}$ given by $x_{k/i}\mapsto x_{k/j}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
+Consider 
+\[D(x_i):= \Spec k[x_{0/i},x_{1/i},\ldots,\ldots,x_{n/i}]/(x_{i/i}-1).\]
+This is basically the same as $\A^n$, but we write it like this for reasons that will become evident soon. If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
+
+\[\phi_{ij}:x_{k/i}\mapsto x_{k/j}/x_{i/j}\;\; \&\;\; \phi_{ji}:x_{k/j}\mapsto x_{k/i}/x_{j/i}\]
+Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.} (what is the (co)domain of these maps?).
 
 If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
 
