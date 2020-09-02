@@ -271,7 +271,7 @@ Make special note of the next lemma. This basically lets us reduce problems abou
 
 This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
 
-\subsection{Two ways of Gluing $\A^1\setminus \lbrace 0\rbrace$}
+\subsection{Two ways of Gluing \texorpdfstring{$\A^1\setminus \lbrace 0\rbrace$}{Pn}}
 
 Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed.}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
 
@@ -315,25 +315,34 @@ Furthermore, any coherent sheaf (a quasi-coherent sheaf which is a finitely gene
 \end{tikzpicture}
 \end{comment}
 
-\subsection{$P$ versus locally $P$}\label{PvlP}
+\subsection{\texorpdfstring{$P$}{P} versus locally \texorpdfstring{$P$}{P}}\label{PvlP}
 All the above are examples of locally normal (in fact, regular), locally reduced and locally Noetherian scheme\footnote{This is probably not standard notation, but instructive for the current discussion.}. For any property that is locally $P$ (as defined in \ref{lemma-locally-P}), the usual rule of thumb for nomenclature is $P=$ locally $P\,\,+$ quasi-compact: for example, a scheme is Noetherian if it is locally Noetherian and quasi-compact. Not all properties are of this type: for example quasi-compactness, sepratedness, properness, etc. We will come back to this when we discuss morphisms.
 
 
 
-\subsection{Line Bundles on $\P^1$:}
+\subsection{Line Bundles on \texorpdfstring{$\P^1$}{P1}:}
  Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
 [Discussed till here as of August 28, 2020]
 
 
-\subsection{A slightly more involved scheme: $\P^n$.}
+\subsection{A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}.}
 Consider 
 \[D(x_i):= \Spec k[x_{0/i},x_{1/i},\ldots,\ldots,x_{n/i}]/(x_{i/i}-1).\]
 This is basically the same as $\A^n$, but we write it like this for reasons that will become evident soon. If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
 
 \[\phi_{ij}:x_{k/i}\mapsto x_{k/j}/x_{i/j}\;\; \&\;\; \phi_{ji}:x_{k/j}\mapsto x_{k/i}/x_{j/i}\]
-Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.} (what is the (co)domain of these maps?).
+Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$ (what is the (co)domain of these maps?). Note that this construction doesn't really utilise the fact that $k$ is a field.
 
-If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
+\subsection{A classical interlude.} Here's a classical definition of $\P^n$ in terms of \textit{homogeneous coordinates}. Let $k$ be a field. Consider $k^{n+1}\setminus{(0,0,\ldots,0)}$. We define $\P^n$ to be:
+\[\P^n:=\lbrace (x_0,x_1,\ldots,x_n)\; |\; (x_i)\simeq (y_i)\; \text{if there is a $\lambda\in k^{\times}$ such that for all $i$,}\; x_i=\lambda y_i\rbrace\]
+
+We denote the equivalence class of the tuple $(x_i)$ by $[x_0:x_1:\ldots:x_n]$. These are called homogeneous coordinates. If we assume one of the coordinates to be non-zero, say $x_i$, then we can divide the entire tuple by it. This gives us a set, $D(x_i):=\lbrace [x_0/x_i:x_1/x_i:\ldots:1:\ldots:x_n/x_i]\rbrace$. It is easy to see that this set in bijection with $k^n$. Set $x_k/x_i:=x_{k/i}$\footnote{This notation is meant to be suggestive.}, then tuples in $D(x_i)$ look like $[x_{0/i}:x_{1/i}:\ldots:1:\ldots:x_{n/i}]$. This $D(x_i)$ should be thought of as the complement of the hyperplane defined by $x_i$ (which is actually a projective space of one dimension less). 
+
+If an $x_j$ is non-zero, for a $j$ distinct from $i$, then we can divide by it. This gives us the relation, $x_{k/i}/x_{j/i}=x_{k/j}$. This is the origin of the morphisms $\phi_{ij}$ above\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}. Homogenisation and de-homogenisation(?).
+
+
+\subsection{\texorpdfstring{$\P^n$}{Pn} as a proj of a graded ring.} Now that we have defined $\P^n$, I want to motivate the proj construction for graded rings using the example of $\P^n$. In a section, this construction is not very different from the gluing construction above. However, it gives us more control ove the algebra and sheaf theory of $\P^n$ and its subschemes. For example, every closed subscheme of $\P^n$ comes from a graded ideal (this is a neat analogue of the affine case). Another advantage is that it lets us talk about affine open covers given by the complements of non-linear hypersurfaces. This can be useful when dealing with closed subschemes of $\P^n$. Consider the ring $k[x_0,x_1,\ldots,x_n]$, now thought of as a graded ring with the grading given by degrees of monomials. The degree of a monomial $x^{r_1}_{i_1}\ldots x^{r_m}_{i_m}$ is the integer $r_1+\ldots +r_m$.
+
 
 
 \subsection{Some more examples.}
