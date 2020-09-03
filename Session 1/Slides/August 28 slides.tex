@@ -263,14 +263,6 @@ A normal scheme, a reduced scheme and a Noetherian scheme.
 \end{frame}
 
 
-\begin{frame}{A slightly more involved scheme: $\P^n$.}
-Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. We have a maps $\phi_{ij}:D(x_i)_{x_j}\rightarrow D(x_j)_{x_i}$,\, given by $x_{k/i}\mapsto x_{k/j}$.
-\end{frame}
-\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
-
-If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
-
-\end{frame}
 
 \begin{frame}{Line Bundles on $\P^1$}
 Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course).
@@ -279,6 +271,26 @@ Locally on an affine open, this should be a free module of rank one. Let's contr
 
  There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.
 \footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
+
+\begin{frame}{A slightly more involved scheme: $\P^n$.}
+	Let $D(x_i):= k[x_{0/i},x_{1/i},\ldots,\hat{x_{i/i}},\ldots,x_{n/i}]$. We have a maps $\phi_{ij}:D(x_i)_{x_j}\rightarrow D(x_j)_{x_i}$,\, given by $x_{k/i}\mapsto x_{k/j}$.
+\end{frame}
+\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}
+
+If we are over an algebraically closed field, then closed points of $\P^n$ can be written in \textit{homogeneous coordinates} as $[x_0:x_1:\ldots:x_n]$, where two such coordinates are the same if they differ by scalar multiplication.
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
 
 More examples:
 \begin{frame}{More examples}
