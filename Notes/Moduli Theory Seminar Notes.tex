@@ -297,10 +297,10 @@ The second choice gives us the projective line $\P^1$. This is looks like $\A^1$
 Let $f,g\in\A^1$ be two polynomials such that $f(x)=g(1/x)$ in $k[x,1/x]$. Then straightforward algebra shows that this can happen only when $f, g$ are constant, i.e, $\Gamma(\P^1,\sO_{\P^1})=k$.
 \end{example}
 
-\subsection{A DVR with double origin.} Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
+\begin{example}[A DVR with double origin] Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
 
 Furthermore, to determine any coherent sheaf (a quasi-coherent sheaf which is a finitely generated module on each copy of $R$) it is sufficient to give a pair $(n,T)$ where $n$ is a positive integer and $T\in Gl_n(K)$. Since $R$ is a principal ideal domain, any finitely generated $R$-module $M$ is a direct sum of its free and torsion parts. Thus, if $M, N$ are two finitely generated $R$-modules,there exists an isomorphism (given by a $K$-linear map) $M\otimes K \simeq N\otimes K$ if and only if the rank of their free parts is the same. Of course, this description is not unique. However, if we restrict to locally free sheaves, then we have a correspondence between locally free sheaves on DVR with a double origin and pair $(n,T)$.
-
+\end{example}
 
 \begin{comment}
 \begin{tikzcd}[remember picture]
@@ -325,13 +325,14 @@ All the above are examples of locally normal (in fact, regular), locally reduced
 [Discussed till here as of August 28, 2020]
 
 
-\subsection{A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}.}
+\begin{example}[A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}]
 Consider 
 \[D(x_i):= \Spec k[x_{0/i},x_{1/i},\ldots,\ldots,x_{n/i}]/(x_{i/i}-1).\]
 This is basically the same as $\A^n$, but we write it like this for reasons that will become evident soon. If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
 
 \[\phi_{ij}:x_{k/i}\mapsto x_{k/j}/x_{i/j}\;\; \&\;\; \phi_{ji}:x_{k/j}\mapsto x_{k/i}/x_{j/i}\]
 Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$ (what is the (co)domain of these maps?). Note that this construction doesn't really utilise the fact that $k$ is a field.
+\end{example}
 
 \subsection{A classical interlude.} Here's a classical definition of $\P^n$ in terms of \textit{homogeneous coordinates}. Let $k$ be a field. Consider $k^{n+1}\setminus{(0,0,\ldots,0)}$. We define $\P^n$ to be:
 \[\P^n:=\lbrace (x_0,x_1,\ldots,x_n)\; |\; (x_i)\simeq (y_i)\; \text{if there is a $\lambda\in k^{\times}$ such that for all $i$,}\; x_i=\lambda y_i\rbrace\]
@@ -402,22 +403,50 @@ Let $I=\oplus_m \Gamma (\sI(m),\P^n)\subset \oplus_m\Gamma (\sO(m),\P^n) = k[x_0
 
 \subsection{Some more examples.}
 
-\begin{enumerate}
-	\item An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$. 
-	\item $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. Over $\C$, one have the following linear change of coordinates, $(x,y,z)\mapsto (x+iy,x-iy,iz)$. Then, $(x+iy) (x-iy) -z^2= x^2+y^2+(iz)^2$. So, this is the same as $V_+(uv-z^2)$, which is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$. Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$. This is just $\Proj k[x,y,z]/(x^2+y^2+z^2)$.
-	\item Blow-up of $\A^2$ at the origin. This is described as 
+\begin{example}
+An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$. 
+\end{example}
+
+
+\begin{example}
+$V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. $V_{+}(x^2+y^2+z^2)$ denotes the homogeneous prime ideals which contain the ideal $(x^2+y^2+z^2)$. Let $k=\R$ or $\C$. Consider, $\P_k^2=\Proj k[x,y,z]$. By the above discuss on closed subschemes of $\P^n$, $V_{+}(x^2+y^2+z^2)$ can be thought of as the closed subscheme $X=\Proj k[x,y,z]/(x^2+y^2+z^2)\subset \P_k^2$. This gives a curve in $\P_k^2$.\\
+Over $\C$, one have the following linear change of coordinates, 
+\[(x,y,z)\mapsto (x+iy,x-iy,iz).\] 
+Denote $u:=x+iy$ and $v:=x-iy$. Then, $(x+iy) (x-iy) -(iz)^2= x^2+y^2+(iz)^2$. So, $V_{+}(x^2+y^2+z^2)$ is the same as subscheme defined by $V_+(uv-z^2)$. The latter is the (2-fold-)Veronese embedding of $\P^1$ in $\P^2$ given by $[x:y]\mapsto [x^2:xy:y^2]$\footnote{Similarly, the $d$-fold Veronese embedding is given by $[x:y]\mapsto [x^d:x^{d-1}y:\ldots:xy^{d-1}:y^d]$.}. In terms of rings,
+\begin{align*}
+k[x,y,z]&\rightarrow k[x,y]\\
+(x,y,z)&\mapsto (x^2,y^2,xy)
+\end{align*}
+The image of this map is the subring $k[x^2,y^2,xy]\subset k[x,y]$ generated by degree $2$ elements. Thus, $X\simeq \P_{k}^1$ over $\C$.
+
+On the other hand, over $\R$ the equation $x^2+y^2+z^2$ has no real solutions. Since, $\P_{\R}^1$ clearly has lots of real solutions, $X$ is not isomorphic to $\P^1$ over $\R$.
+\end{example}
+
+
+\begin{example}
+	Blow-up of $\A^2$ at the origin. This is described as 
 	\[Y:=\lbrace ((x,y),[X:Y])\subset \A^2\times\P^1\; |\; xY=yX\rbrace\]
 	This comes with a projection map $p: Y\rightarrow \A^2$. Observe that outside the origin this is an isomorphism, i.e, $p^{-1}(\A^1\setminus 0)=\A^1\setminus 0$, and $p^{-1}(0)=\P^1$. Blow-up can be defined canonically using the Proj construction. If $I$ is an ideal of $\Spec A$, then Blow-up along $V(I)$ is $\Proj(\oplus_{n\geq 0}I^n)$. Observe that $\oplus_{n\geq 0}I^n$ can be thought of as a graded ring over $I^0:= A$. One can sheafify this construction to define blow-ups in arbitrary schemes\footnote{You will have to make sense of the Proj of a sheaf of graded algebras first! Do this by gluing the affine local patches.}.%(because everyone should know about blow-ups!)
-	\item An example of a scheme without a closed point. This one is a bit involved but idea is as follows. There is a valuation on the fraction field of the polynomial ring in infinitely many variable, such that every non-maximal prime ideal is contained in a non-maximal prime ideal\footnote{This example is due to Florian Pop. See Liu's book [Section 3.3, Exercise 3.27].}. Then, knocking off the maximal ideal gives a scheme without any closed point. This scheme is \textit{not} quasi-compact. The construction is as follows:
-	\begin{enumerate}
-		\item Let $I$ be a totally ordered set, and $k$ a field. Let $K=k(T_i)_{i\in I}$ be the fraction field with variables indexed over $I$. Let $\Gamma = \Z^{(I)}$ be the direct sum of copies $\Z$ indexed over $I$. This is an abelian group which is totally ordered (the order is given by the lexicographic order). Denote by $\lbrace e_i \rbrace_{i\in I}$ the canonical basis of $\Gamma$. Then there exists a unique valuation (upto isomorphism) $\nu : K^*\rightarrow \Gamma$ such that $\nu(T_i)=e_i$ and $\nu(k^*)=0$. Denote by $\sO_{\nu}$, the associated valuation ring.
-		\item Let $\mathfrak{p}(i):=\lbrace a\in K \,|\, \nu (a)\geq e_i \rbrace$, for $i\in I$. Then the radical of $\mathfrak{p}(i)$ is a prime ideal of the valuation ring $\sO_{\nu}$.
-		\item This gives a set map $I \rightarrow \Spec\sO_{\nu}$, which is injective and increasing. The order on $\Spec\sO_{\nu}$ is determined by inclusion of prime ideals.
-		\item Let $\theta:\Z^{(I)}\setminus 0\rightarrow I$ be the map defined by  $\theta(\lbrace n_i\rbrace_i)=$ the smallest $i$ such that $n_i\neq 0$.
-		\item If $\mathfrak{p}\in \Spec\sO_{\nu}$, and $\theta(\nu(\mathfrak{p}))$ is bounded from above by an index $i$, then for every $j\geq i$, we have $\mathfrak{p}\subset \mathfrak{p}(j)$. Moreover, if $\theta(\nu(\mathfrak{p}))$ is unbounded then $\mathfrak{p}=\mathfrak{m}_{\nu}$ is the maximal ideal.
-		\item Then $\Spec\sO_{\nu}\setminus \mathfrak{m}_{\nu}$ is the required example.
-	\end{enumerate}
+	
+	%One way to interpret this example is that it is moduli space of all lines in the origin.
+\end{example}
+
+
+\begin{example}
+	An example of a scheme without a closed point. This one is a bit involved but idea is as follows. There is a valuation on the fraction field of the polynomial ring in infinitely many variable, such that every non-maximal prime ideal is contained in a non-maximal prime ideal\footnote{This example is due to Florian Pop. See Liu's book [Section 3.3, Exercise 3.27].}. Then, knocking off the maximal ideal gives a scheme without any closed point. This scheme is \textit{not} quasi-compact. The construction is as follows:
+\begin{enumerate}
+	\item Let $I$ be a totally ordered set, and $k$ a field. Let $K=k(T_i)_{i\in I}$ be the fraction field with variables indexed over $I$. Let $\Gamma = \Z^{(I)}$ be the direct sum of copies $\Z$ indexed over $I$. This is an abelian group which is totally ordered (the order is given by the lexicographic order). Denote by $\lbrace e_i \rbrace_{i\in I}$ the canonical basis of $\Gamma$. Then there exists a unique valuation (upto isomorphism) $\nu : K^*\rightarrow \Gamma$ such that $\nu(T_i)=e_i$ and $\nu(k^*)=0$. Denote by $\sO_{\nu}$, the associated valuation ring.
+	\item Let $\mathfrak{p}(i):=\lbrace a\in K \,|\, \nu (a)\geq e_i \rbrace$, for $i\in I$. Then the radical of $\mathfrak{p}(i)$ is a prime ideal of the valuation ring $\sO_{\nu}$.
+	\item This gives a set map $I \rightarrow \Spec\sO_{\nu}$, which is injective and increasing. The order on $\Spec\sO_{\nu}$ is determined by inclusion of prime ideals.
+	\item Let $\theta:\Z^{(I)}\setminus 0\rightarrow I$ be the map defined by  $\theta(\lbrace n_i\rbrace_i)=$ the smallest $i$ such that $n_i\neq 0$.
+	\item If $\mathfrak{p}\in \Spec\sO_{\nu}$, and $\theta(\nu(\mathfrak{p}))$ is bounded from above by an index $i$, then for every $j\geq i$, we have $\mathfrak{p}\subset \mathfrak{p}(j)$. Moreover, if $\theta(\nu(\mathfrak{p}))$ is unbounded then $\mathfrak{p}=\mathfrak{m}_{\nu}$ is the maximal ideal.
+	\item Then $\Spec\sO_{\nu}\setminus \mathfrak{m}_{\nu}$ is the required example.
 \end{enumerate}
+	
+\end{example}
+
+\underline{Note:} Looking at the above example, it may seem like this argument should work for the spectrum of any local ring $\sO$. However, any quasi-compact scheme has a closed point. This already rules any Notherian examples.
+
 
 \section{Morphisms}
 As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
@@ -448,25 +477,6 @@ Examples:
 	\item Open embedding is \'{e}tale is fppf is fpqc.
 \end{enumerate}
 
-
-\section{Plan for September 11}
-
-Doing the examples in section 1.9. Can add more examples. Some points to ponder:
-
-\begin{enumerate}
-	\item hilbert scheme of hypersurface.
-	\item that curve in Hartshorne's deformation theory.
-	\item $Hom(-,\P^n)$, $Hom(-,\A^n)$.
-\end{enumerate}
-
-Here's a tentative plan:
-\begin{enumerate}
-	\item Do functor of point of $\A^n$. Do functor of points of $\P^n$.
-	\item Do those examples in 1.9.
-	\item Then finish morphisms.
-\end{enumerate}
-
-Start with Amitsur's lemma next week.
 
 %\bibliography{Mybib.bib}
 \bibliographystyle{alpha}
