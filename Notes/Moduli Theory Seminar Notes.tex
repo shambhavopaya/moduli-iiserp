@@ -6,7 +6,8 @@
 \usepackage{enumitem}
 \usepackage{tikz-cd}
 \usepackage{verbatim}
-
+\usepackage{perpage}
+\MakePerPage{footnote}
 
 \makeatletter
 \def\@settitle{\begin{center}%
@@ -148,6 +149,8 @@
 
 \newcommand{\colim}{{\rm colim \,}}
 \newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+\newcommand{\Ob}{\text{Ob}}
+
 
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -155,7 +158,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{question}[theorem]{Question}
 \newtheorem{example}[theorem]{Example}
-
+\newtheorem{remark}[theorem]{Remark}
 
 
 \begin{document}
@@ -297,7 +300,7 @@ The second choice gives us the projective line $\P^1$. This is looks like $\A^1$
 Let $f,g\in\A^1$ be two polynomials such that $f(x)=g(1/x)$ in $k[x,1/x]$. Then straightforward algebra shows that this can happen only when $f, g$ are constant, i.e, $\Gamma(\P^1,\sO_{\P^1})=k$.
 \end{example}
 
-\begin{example}[A DVR with double origin] Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
+\begin{example}[A DVR with double origin]\label{DVR-double-origin} Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
 
 Furthermore, to determine any coherent sheaf (a quasi-coherent sheaf which is a finitely generated module on each copy of $R$) it is sufficient to give a pair $(n,T)$ where $n$ is a positive integer and $T\in Gl_n(K)$. Since $R$ is a principal ideal domain, any finitely generated $R$-module $M$ is a direct sum of its free and torsion parts. Thus, if $M, N$ are two finitely generated $R$-modules,there exists an isomorphism (given by a $K$-linear map) $M\otimes K \simeq N\otimes K$ if and only if the rank of their free parts is the same. Of course, this description is not unique. However, if we restrict to locally free sheaves, then we have a correspondence between locally free sheaves on DVR with a double origin and pair $(n,T)$.
 \end{example}
@@ -386,7 +389,7 @@ x_{k/i} &\overset{\phi_{ij}}{\longrightarrow} \frac{x_{k/j}}{x_{i/j}}\\
 Now by the sheaf property, $\sI_{x_i}|_{D(x_i x_j)}=\sI_{x_j}|_{D(x_i x_j)}$. Thus, any generator $f_l$ of $\sI_{x_i}$ can be expressed in terms of the generators $g_k$'s of $\sI_{x_j}$ on $D(x_i x_j)$, and vice verse.
 
 Write $f_l=f_l(x_{0/i},\ldots,x_{n/i})$, and $g_k=g_k(x_{0/j},\ldots,x_{n/j})$. Then, on $D(x_i x_j)$, we have,
-\[f_l(x_{0/i},\ldots,x_{n/i})=f_l(\frac{x_{0/j}}{x_{i/j}},\ldots,\frac{x_{n/j}}{x_{i/j}})=\sum_k \frac{\alpha_k g_k}{x_{i/j}^{r_k}},\]
+\[ f_l(x_{0/i},\ldots,x_{n/i})= f_l(\frac{x_{0/j}}{x_{i/j}}, \ldots,\frac{x_{n/j}}{x_{i/j}})=\sum_k \frac{\alpha_k g_k}{x_{i/j}^{r_k}}, \]
 where $\alpha_k\in k[x_{0/j},\ldots,\widehat{x_{j/j}},\ldots,x_{n/j}]_{x_{i/j}}$. Let degree of the highest degree term of $f_l(x_{0/i},\ldots,x_{n/i})$ be $N$. Then, multiplying throughout by $x_{i/j}^N$, gives us
 \[x_{i/j}^N f_l(\frac{x_{0/j}}{x_{i/j}},\ldots,\frac{x_{n/j}}{x_{i/j}})= f_l(x_{0/j},\ldots,x_{n/j})=\sum_k  x_{i/j}^{N-r_k} \alpha_k g_k.\]
 Thus, $f_l|_{D(x_j)}\in \sI_{x_j}$. A similar argument shows that $g_k\in \sI_{x_i}$.
@@ -433,7 +436,7 @@ On the other hand, over $\R$ the equation $x^2+y^2+z^2$ has no real solutions. S
 
 
 \begin{example}
-	An example of a scheme without a closed point. This one is a bit involved but idea is as follows. There is a valuation on the fraction field of the polynomial ring in infinitely many variable, such that every non-maximal prime ideal is contained in a non-maximal prime ideal\footnote{This example is due to Florian Pop. See Liu's book [Section 3.3, Exercise 3.27].}. Then, knocking off the maximal ideal gives a scheme without any closed point. This scheme is \textit{not} quasi-compact. The construction is as follows:
+	An example of a scheme without a closed point. This one is a bit involved but idea is as follows. There is a valuation on the fraction field of the polynomial ring in infinitely many variable, such that every non-maximal prime ideal is contained in a non-maximal prime ideal\footnote{This example is due to Florian Pop. See Liu's book \cite[\S 3.3, Exercise 3.27]{Liu}.}. Then, knocking off the maximal ideal gives a scheme without any closed point. This scheme is \textit{not} quasi-compact. The construction is as follows:
 \begin{enumerate}
 	\item Let $I$ be a totally ordered set, and $k$ a field. Let $K=k(T_i)_{i\in I}$ be the fraction field with variables indexed over $I$. Let $\Gamma = \Z^{(I)}$ be the direct sum of copies $\Z$ indexed over $I$. This is an abelian group which is totally ordered (the order is given by the lexicographic order). Denote by $\lbrace e_i \rbrace_{i\in I}$ the canonical basis of $\Gamma$. Then there exists a unique valuation (upto isomorphism) $\nu : K^*\rightarrow \Gamma$ such that $\nu(T_i)=e_i$ and $\nu(k^*)=0$. Denote by $\sO_{\nu}$, the associated valuation ring.
 	\item Let $\mathfrak{p}(i):=\lbrace a\in K \,|\, \nu (a)\geq e_i \rbrace$, for $i\in I$. Then the radical of $\mathfrak{p}(i)$ is a prime ideal of the valuation ring $\sO_{\nu}$.
@@ -456,10 +459,11 @@ As mentioned before, many of the properties of morphisms that we are interested 
 	\begin{enumerate}
 		\item We say that $\mathcal{P}$ is \textit{affine-local on the target} if given any affine open cover $\lbrace V_i\rbrace$ of $Y$, $f:X\rightarrow Y$ has $\mathcal{P}$ if and only if the restriction $f: f^{-1}(V_i)\rightarrow V_i$ has $\mathcal{P}$ for each $i$.
 		\item We say that $\mathcal{P}$ is \textit{affine-local on the source} if given any affine open cover $\lbrace U_i\rbrace$ of $X$, $X\rightarrow Y$ has $\mathcal{P}$ if and only if the composite $U_i\rightarrow Y$ has $\mathcal{P}$ for each $i$.
+		\item We say that $\mathcal{P}$ is \textit{stable under base-change} if given any other morphism $Z\rightarrow Y$, the projection to $Z$ from the fibre product, $f_Z: X\times_Y Z\rightarrow Z$ also has $\mathcal{P}$.
 	\end{enumerate}
 \end{definition}
 
-Using \textit{affine communication lemma} one can then show that it suffices to check the above statements on single affine open cover.
+Using \textit{affine communication lemma} one can then show that it suffices to check statements (1) and (2) on single affine open cover.
 
 
 An important maxim of Grothendieck is that instead of considering schemes in isolation, we should look at things relative to each other, i.e, everything should be seen as a propery of morphisms. Then properties of schemes should really be thought of as properties of morphisms $X\rightarrow\Spec \Z$ (or whatever base you are working over. For a lot of people it is the spectrum of a field). This is mostly true: many property of schemes can be turned into properties of morphisms of schemes\footnote{For example, affine opens form a basis for the topology on a scheme. Can this statment be ``relativised" to affine morphisms $X\rightarrow Y$? I don't know the answer.}.
@@ -468,7 +472,47 @@ An important maxim of Grothendieck is that instead of considering schemes in iso
 
 However, this is not true of finite presentation. A morphism is of finite presentation if it is locally of finite presentation, quasi-compact \textit{and quasi-separarted}. This is because. really, finite presentation is a condition to correct for non-Noetherian-ness over arbitrary bases. Note that for Noetherian schemes, a morphism (locally) of finite type is automatically (locally) of finite presentation. Furthermore, quasi-separatedness is automatic for Noetherian scheme. There is a very nice discussion on mathoverflow on this that I encourage you to look up\footnote{\href{https://mathoverflow.net/questions/36737/why-does-finitely-presented-imply-quasi-separated}{https://mathoverflow.net/questions/36737/why-does-finitely-presented-imply-quasi-separated}}. 
 
-Examples:
+
+\begin{example}
+	Consider the map $f:k[x]\rightarrow k[x]$ given by $x\mapsto x^2$. Note that $x$ satisfies the polynomial $t^2 - x^2$ in $k[x^2][t]$, thought of as a polynomial ring in the variable $t$. Thus, this map is an integral extension of ring. Furthermore, we have a morphism of $k[x]$-algebras, $k[x,y]\rightarrow k[x]$ given by $(x,y)\mapsto (x^2,x)$, whose kernel is generated by the ideal $(x-y^2)$. This shows that it is a morphism of finite presentation, and hence is finite.
+\end{example}
+
+\begin{example}
+	Continuing with the above morphism $x\mapsto x^2$. We will show that for $k=\C$  it is unramified everywhere except at the origin.\\
+	\underline{At origin:} Localising at the ideal $(x)$, we get,
+	\begin{align*}
+	f: \C[x]_{(x)}&\rightarrow \C[x]_{(x)}\\
+	x &\mapsto x^2.
+	\end{align*}
+	As $x$ generates the maximal ideal in $\C[x]_{(x)}$. On the other hand, the image $x^2$ generate the square of the maximal ideal, since $(x)^2=(x^2)$\footnote{This is true, more generally, in any discrete valuation ring.}. This implies that $f$ is ramified at the origin.
+	\underline{At other points:} Let $(x-p)$ be a point. Localising at $x-p$ and its inverse image, we get,
+	\begin{align*}
+	f: \C[x]_{(x-p^2)}&\rightarrow \C[x]_{(x-p)}\\
+	x-p^2 &\mapsto x^2-p^2.
+	\end{align*}
+	Since $x+p$ is invertible in $\C[x]_{(x-p)}$, we see that $f(x-p^2)$ generates the maximal ideal.
+\end{example}
+	
+The above is a prototypical example of many kinds of morphisms.
+
+\begin{example}
+	Consider the inclusion $U:=\Spec k[x_1 ,x_2 ,\ldots] \setminus\lbrace (x_1 ,x_2 ,\ldots)\rbrace\hookrightarrow \Spec k[x_1 ,x_2 ,\ldots]$. This map is an open immersion which is not quasi-compact.% Take any finite covering of $\Spec k[x_1,x_2,\ldots]$, then the inverse image is not cover of $U$: we can reduce to distinguished affines to show this. If $\Spec k[x_1,x_2,\ldots]$ is covered by finitely many distinguished affines, then we have finitely many polynomials $f_i$'s corresponding to these open set. Let $x_N$ be that largest variable appearing in any of the $f_i$. Then, the $(x_{N+1},x_{N+2},\ldots)$
+\end{example}
+	
+	
+\begin{example}
+	Consider the nodal curve over $\A^1$ given by $\Proj k[t][X,Y,Z]/(XY-tZ^2)\rightarrow \Spec k[t]$. Affine locally, this has the form,
+	\[k[t]\rightarrow k[t][X,Y]/(XY-t).\]
+	Differentiating with respect to $X$ and $Y$, we get the Jacobian $[Y\;\; X]$. This can be zero only when $t=0$. Geometrically, this is a family of hyperbolas which degenerate to a pair of lines when $t=0$. Note that the restriction of this curve to $D(Y)$ and $D(X)$, are smooth (it given by the equations $X-tZ^2$ and $Y-tZ^2$ which are parabolas). Seen from opposite view-point, this tells us that homogenisation of smooth curves is not necessarily smooth!
+\end{example}
+
+\begin{remark}[Le sorite for open immersions]
+Open embeddings are locally of finite presentation\footnote{This is not true in perfectoid geometry, which is quite sad.}. Moreover we have the following implications:
+
+Open embedding $\Rightarrow$ \'{e}tale $\Rightarrow$ flat and locally of finite presentaion $\Rightarrow$ flat.
+\end{remark}
+
+\begin{comment}
 \begin{enumerate}
 	\item $x\mapsto x^2$ (more, generally $x^n$). This morphism is ramified at the origin (but unramified on $\A^1\setminus \lbrace 0\rbrace$), finitely presented, flat.
 	\item A non-quasi-compact open immersion. $\Spec k[x_1,x_2,\ldots]\setminus\lbrace (x_1,x_2,\ldots)\rbrace\hookrightarrow \Spec k[x_1,x_2,\ldots]$ Polynomial ring in infinitely many variables and knock off the origin.
@@ -477,16 +521,361 @@ Examples:
 	\item Open embeddings are locally of finite presentation\footnote{This is not true in perfectoid geometry, which is quite sad.}.
 	\item Open embedding is \'{e}tale is fppf is fpqc.
 \end{enumerate}
+\end{comment}
 
-\subsection{Morphisms to \texorpdfstring{$\P^n$}{Pn}} Let $X$ be a scheme. Then a morphism $X\rightarrow\P^n$ is the same as a line bundle $\sL$ on $X$ and $n+1$ sections $s_0,\ldots,s_n \in \Gamma (\sL,X)$ which globally generate $\sL$\footnote{This means that the global sections correspond to a surjection of sheaves $\sO_X^{\oplus n+1}\twoheadrightarrow \sL$}.
 
-\begin{lemma}[Amitsur's Lemma]
+\begin{example}[Separatedness is not a local property] Not all properties can be described locally. For example, take the line with the double origin. Then on each of the two $\A^1$'s is separated, but the whole scheme is not. 
+	
+Note, however, that separatedness is stable under base-change. A similar statement is true about properness.
+	
+\end{example}
+
+
+\subsection{Morphisms to \texorpdfstring{$\P^n$}{Pn}}\label{functor-of-Pn} Let $X$ be a scheme. Then a morphism $X\rightarrow\P^n$ is the same as a line bundle $\sL$ on $X$ and $n+1$ sections $s_0,\ldots,s_n \in \Gamma (\sL,X)$ which globally generate $\sL$\footnote{This means that the global sections correspond to a surjection of sheaves $\sO_X^{\oplus n+1}\twoheadrightarrow \sL$}. Note that given a morphism $f: X\rightarrow \P^n$, the pullback $f^* \sO(1)$ and the global sections $f^*x_i$ is such a datum.
+
+Given such line bundle $\sL$ with $n+1$ sections which globally generate it, we will construct a morphism to $\P^n$. Consider the open set $X_i$ (why is this open?) of $X$ given by,
+\[X_i:=\lbrace p\in X \, |\, s_i\notin \mathfrak{m}_p\sL_p\rbrace.\]
+This gives us $n$ sections $s_0/s_i,\ldots,s_n/s_i$ on $X_i$. Thus, we get a map $f_i:X_i\rightarrow \A^n$ corresponding to these sections. We can identify this $\A^n$ with $D(x_i)$. It is now suffices to check that $f_i$'s agree on the intersections. This follows because $s_j/s_i$ is invertible on $X_i\cap X_j$.
+
+
+\section{Sites, Sheaves, and Representable functors}
+
+In this section, we will collect all the ``sheafy jargon"\footnote{This may or may not be used in the sequel.} As I have mentioned before, modern Moduli theory is set in this language. Hence, it is a good idea to review some key points. More details can be found in Vistoli's notes on Descent (Chapter 1 of FGA Explained, \cite{FGAExplained}) or the Stacks project \cite{stacks-project}.
+
+\subsection{A Commutative Algebra Detour.}
+We begin with the following lemma which we will use at the end of this section to prove Theorem \ref{fpqc-representable}.
+
+\begin{lemma}[Amitsur's Lemma]\label{Amitsur}
 Let $f: A\rightarrow B$ be a faithfully flat ring map. Then the following sequence of $A$-modules is exact:
-\[0\rightarrow A\overset{f}{\rightarrow} B \overset{e_1-e_2}{\rightarrow} B\otimes_A B\]
+\begin{equation}\label{fpqc-modules}
+0\rightarrow A\overset{f}{\rightarrow} B \overset{e_1-e_2}{\rightarrow} B\otimes_A B.
+\end{equation}
+Here, $e_1$and $e_2$ are the inclusions $b\otimes 1$ and $1\otimes b$, respectively.
+\end{lemma}
+\begin{proof}
+Note that since $f$ is faithfully flat, it is injective (why?), and that $(e_1-e_2)\circ f=0$. So, we only need to check that $Ker(e_1-e_2)\subseteq Im(f)$.
+
+Let us first consider the special case when $f:A\rightarrow B$ is a retract, i.e, there exists a $g:B\rightarrow A$ such that $g\circ f = id_A$. Now, take a $b\in Ker(e_1-e_2)$, so that  $b\otimes 1 = 1\otimes b \in B\otimes_A B$. The retraction $g$ gives us a map $B\otimes_A B\overset{g\otimes id}{\rightarrow} A\otimes_A B\simeq B$. Applying this to the previous equality gives, $g(b)\otimes 1=1\otimes b$, which is the same as $g(b)\cdot 1=b$. Now, note that $f(g(b)\cdot 1)=g(b)\cdot f(1)=b$, since $f$ is an also $A$-module homomorphism, showing exactness.
+
+Now, observe that tensoring (\ref{fpqc-modules}) with $\otimes_A B$ gives a sequence,
+\[0\longrightarrow A\otimes_A B\overset{f\otimes id}{\longrightarrow} B\otimes_A B \overset{(e_1-e_2)\otimes id}{\longrightarrow} B\otimes_A B\otimes_A B.\]
+The map $f\otimes id$ is also a faithfully flat ring map. Moreover, it has a retraction\footnote{All these statements about retractions are just a dual way for saying that the map $\Spec B\rightarrow \Spec A$ has a section.} $g: B\otimes_A B\rightarrow A\otimes_A B$ given by $b\otimes b'\mapsto 1\otimes bb'$. Thus, this sequence is exact. Now, faithful flatness implies the exactness of (\ref{fpqc-modules}).
+\end{proof}
+
+
+\begin{remark}
+Observe that the above lemma holds for any faithfully flat $A$-module $M$, i.e, the sequence of $A$-modules,
+\[0\longrightarrow M\overset{id\otimes f}{\longrightarrow} M\otimes_A B \overset{id\otimes (e_1-e_2)}{\longrightarrow} M\otimes_A B\otimes_A B,\]
+is exact. You may ask what is happening at the map $id\otimes (e_1-e_2)$. To answer this, note that we can extend this above sequence to higher tensor powers,
+\[0\longrightarrow M\overset{id\otimes f}{\longrightarrow} M\otimes_A B \overset{id\otimes (e_1-e_2)}{\longrightarrow} M\otimes_A B\otimes_A B\rightarrow M\otimes_A B\otimes_A B\otimes B\rightarrow\ldots.\]
+The map 
+\[M\otimes_A B\otimes_A B\rightarrow M\otimes_A B\otimes_A B\otimes B\]
+can be described on pure tensors as the alternating sum,
+\[m\otimes b\otimes b'\mapsto m\otimes b\otimes b'\otimes 1- m\otimes b\otimes 1\otimes b + m\otimes 1\otimes b\otimes b'.\]
+The higher tensor powers are described similarly as alternating sums\footnote{This is can be stated more cleanly in terms of (co)simplicial objects. All we doing is taking the chain complex associated to the cosimplicial diagram of $M$.}. Then, this extended chain complex is exact. Essentially, this characterises effective descent for fpqc morphisms (see \cite[Tag 023F]{stacks-project} for more on this).
+\end{remark}
+
+We will now discuss some ``sheafy jargon".
+
+\begin{definition}
+	\label{definition-family-morphisms-fixed-target}
+	Let $\mathcal{C}$ be a category. A {\it family of morphisms with fixed target} in $\mathcal{C}$ is	given by an object $U \in \Ob(\mathcal{C})$, a set $I$ and
+	for each $i\in I$ a morphism $U_i \to U$ of $\mathcal{C}$ with target $U$.
+	We use the notation $\{U_i \to U\}_{i\in I}$ to indicate this.
+\end{definition}
+
+Our categories will almost always admit fiber products.
+
+\begin{definition}
+	\label{definition-site}
+	A {\it site}\footnote{This notation differs from that of SGA4. This is what they call a category with a pretopology.} is given by a category $\mathcal{C}$ and a set
+	$\text{Cov}(\mathcal{C})$ of families of morphisms with fixed target
+	$\{U_i \to U\}_{i \in I}$, called {\it coverings of $\mathcal{C}$},
+	satisfying the following axioms
+	\begin{enumerate}
+		\item If $V \to U$ is an isomorphism then $\{V \to U\} \in
+		\text{Cov}(\mathcal{C})$.
+		\item If $\{U_i \to U\}_{i\in I} \in \text{Cov}(\mathcal{C})$ and for each
+		$i$ we have $\{V_{ij} \to U_i\}_{j\in J_i} \in \text{Cov}(\mathcal{C})$, then
+		$\{V_{ij} \to U\}_{i \in I, j\in J_i} \in \text{Cov}(\mathcal{C})$.
+		\item If $\{U_i \to U\}_{i\in I}\in \text{Cov}(\mathcal{C})$
+		and $V \to U$ is a morphism of $\mathcal{C}$ then $U_i \times_U V$
+		exists for all $i$ and
+		$\{U_i \times_U V \to V \}_{i\in I} \in \text{Cov}(\mathcal{C})$.
+	\end{enumerate}
+\end{definition}
+
+A category  satisfying the above definition is said to be equipped with a \textit{Grothendieck topology}. Thus, a site is a category with a Grothendieck topology.
+
+\subsection{Various Topologies on Affine Schemes.} Let $\mathit{Ring}^{op}$ or $\mathit{Aff}$ denote the cateogry of affine schemes. We can define the following Grothendieck topologies\footnote{This list is by no means exhaustive. Some notable exculsions are the \textit{Nisnevich} and \textit{smooth} topologies.} on it:
+
+\begin{enumerate}
+	\item[\textit{Zariski:}]  Coverings are families of ring maps $\{ R \overset{f_i}{\to} R_{r_i}\}_{i \in I}$, where $R_{r_i}$ is the localisation with respect to $r_i\in R$ such that $(\{r_i\}_{i\in I})= R$.
+	\item[\textit{\'{E}tale}:] Covering are families of \'{e}tale ring maps $\{ R \overset{f_i}{\to} R_i\}_{i \in I}$ such that the product $\prod_i f_i$ is faithfully flat.
+	\item[\textit{fppf}:] Coverings are families of ring maps $\{ R \overset{f_i}{\to} R_i\}_{i \in I}$ which are flat, finite presentation and such that the product $\prod_i f_i$ is faithfully flat. (fppf: fid\`{e}lement plat et de pr\'{e}sentation fini)
+	\item[\textit{fpqc}:] Coverings are families of morphisms $\{ R \overset{f_i}{\to} R_i\}_{i \in I}$ such that each $f_i$ is faithfully flat. (fpqc: fid\`{e}lement plat et quasi-compacte)
+\end{enumerate}
+\text
+
+Note that all the rings maps in the topologies above are used to define local properties of morphisms of schemes which are also stable under base change. Hence, we can extend these toplogies to schemes.
+
+\subsection{Various Topologies on Schemes.}
+Let $(\mathit{Sch})$ be the category of schemes. We will now ``globalise" the topologies defined for affine schemes to schemes. Note, however, the important change that needs to be made to get the correct notion of \textit{fpqc} coverings:
+
+
+\begin{enumerate}
+	\item[\textit{Zariski:}]  Coverings are families of open immersions $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$ such that $U= \bigcup_i f(U_i)$.
+	\item[\textit{\'{E}tale:}] Covering are families of \'{e}tale morphisms $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$ such that $U= \bigcup_i f(U_i)$.
+	\item[\textit{fppf:}] Coverings are families of morphisms $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$ such that each $f_i$ is flat, locally of finite presentation and $U= \bigcup_i f(U_i)$.
+	\item[\textit{fpqc:}] Coverings are families of morphisms $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$ such that each $f_i$ is flat and for every affine open $V \subset U$ there exist quasi-compact opens $V_i \subset U_i$ which are almost all empty, such that $V = \bigcup f_i(V_i)$.
+\end{enumerate}
+
+
+\begin{remark}
+	We have the follow inclusion of topologies:
+	\[\textit{Zariski}\;\subset\; \textit{\'{E}tale}\;\subset\; \textit{fppf}\;\subset\; \textit{fpqc}.\]
+\end{remark}
+
+In light of the above remark, note that if we simply define fpqc coverings to be morphisms of schemes which are faithfully flat and quasi-compact, then Zariski covers would no longer be fpqc coverings.
+
+
+Let $S$ be a scheme. Let $(\mathit{Sch}/S)$ be the category of schemes over $S$. $\Ob(\mathit{Sch}/S)$ are given by morphisms $X\rightarrow S$ and morphisms are $S$-morphisms, i.e, commuting diagrams,
+\begin{center}
+	\begin{tikzcd}
+	X\arrow[rd]\arrow[rr]& & Y\arrow[ld]\\
+	&S&
+	\end{tikzcd}
+\end{center}
+Similarly, we will denote by $(\mathit{Aff}/S)$, the category of affine morphisms to $S$.\\
+
+The next two definitions capture some general notions about sites that good to know but not really essential.
+
+\noindent\textbf{Notation:} For the next definition we will adopt the following terminology: Let $\mathcal{P}$ be a property of morphisms of schemes which is stable under composition and base change, and includes isomorphisms. A \textit{family of $\mathcal{P}$-morphisms} is collection of morphisms $\{U_i \overset{f_i}{\to} U\}_{i\in I}$ such that each $f_i\in \mathcal{P}$ and is jointly surjective, i.e, $U = \bigcup f_i(U_i)$. Since $\mathcal{P}$ is stable under composition and base-change and includes isomorphisms, it is easy to see that these famililes will define a topology on $\mathit{Sch}$, which we will denote by $\tau$.
+
+
+\begin{definition}[Big site, Small site]
+	Let $(\mathit{Sch}/S)$ be the category of schemes over $S$ and let $\tau$ be a topology on schemes which comes from families of $\mathcal{P}$-morphisms. We have the following conventions for topologies on $(\mathit{Sch}/S)$:
+	\begin{enumerate}
+		\item[\textsc{Big site:}] For the topology $\tau$, we denote the site by $(\mathit{Sch}/S)_{\tau}$ and call it the \textit{Big $\tau$ site}.
+		\item[\textsc{Small site:}] Consider the full subcategory of $(\mathit{Sch}/S)$ whose objects are $f: X\rightarrow S$ such that $f\in\mathcal{P}$. We define coverings for this subcategory as families of $\mathcal{P}$-morphisms which are jointly surjective. We denote this site by $S_{\tau}$ and call it the \textit{Small $\tau$ site}.
+	\end{enumerate}
+\end{definition}
+For example, we have the big and small Zariski sites, the big and small \'{e}tale sites etc.\footnote{People mostly talk about small sites only in the Zariski and \'{e}tale topologies (and the Nisnevich topology if you are doing $\A^1$-homotopy theory)} The following is another notion which we will probably never use in this seminar\footnote{Unless we start discussing algebraic stacks at some point!}.
+
+
+\begin{definition}[$\mathcal{P}$-$\mathcal{Q}$ site]
+	Let $\mathcal{P}$ and $\mathcal{Q}$ be classes of morphisms that are stable under base change and composition, and contain isomorphisms. Then, the $\mathcal{P}$-$\mathcal{Q}$ site of $S$ is defined as follows: the objects are $S$-schemes, $f:X\rightarrow S$ such that $f\in \mathcal{P}$ and coverings are families of $\mathcal{Q}$-morphisms $\{U_i \overset{f_i}{\to} U\}_{i\in I}$ over $S$ which are jointly surjective.
+\end{definition}
+
+Notable examples are the smooth-\'{e}tale\footnote{also called the lisse-\'{e}tale site. Lisse is french for smooth.} and the flat-fppf sites.
+
+\subsection{Presheaves and the Yoneda Embedding.}
+
+\begin{definition}
+	Let $\mathcal{C}$ be a category. A \textit{presheaf of sets} or simply a \textit{presheaf} is a functor
+	\[F:\mathcal{C}^{opp}\rightarrow \mathit{Sets}.\]
+	We denote the cateogory of all presheaves by $\mathit{Psh}(\mathcal{C})$.
+\end{definition}
+
+\begin{example}[Functor of points]
+	\label{example-hom-functor}
+
+	For any $U\in \Ob(\mathcal{C})$ there is a
+	functor
+	$$
+	\begin{matrix}
+	h_U & : & \mathcal{C}^{opp}
+	&
+	\longrightarrow
+	&
+	\textit{Sets} \\
+	& &
+	X
+	&
+	\longmapsto
+	&
+	\textit{Mor}_\mathcal{C}(X, U)
+	\end{matrix}
+	$$
+	which takes an object $X$ to the set
+	$\textit{Mor}_\mathcal{C}(X, U)$. In other words $h_U$ is a presheaf.
+	Given a morphism $f : X\to Y$ the corresponding map
+	$h_U(f) :  \textit{Mor}_\mathcal{C}(Y, U)\to \textit{Mor}_\mathcal{C}(X, U)$
+	takes $\phi$ to $\phi\circ f$. It is called the {\it representable presheaf} associated to $U$.
+	If $\mathcal{C}$ is the category of schemes this functor is
+	sometimes referred to as the
+	\emph{functor of points} of $U$.
+\end{example}
+
+Note that given a morphism $\phi : U \to V$ in $\mathcal{C}$ we get a
+corresponding natural transformation of functors $h(\phi) : h_U \to h_V$
+defined by composing with the morphism $U \to V$. This turns
+composition of morphisms in $\mathcal{C}$ into composition of
+transformations of functors. In other words we get a functor
+$$
+h :
+\mathcal{C}
+\longrightarrow
+\textit{PSh}(\mathcal{C}).
+$$
+
+The following lemma says that $h$ is a fully faithful embedding.
+
+\begin{lemma}[Yoneda lemma]
+	\label{lemma-yoneda}
+	Let $U, V \in \Ob(\mathcal{C})$.
+	Given any morphism of functors $s : h_U \to h_V$
+	there is a unique morphism $\phi : U \to V$
+	such that $h(\phi) = s$. In other words the
+	functor $h$ is fully faithful. More generally,
+	given any contravariant functor $F$ and any object
+	$U$ of $\mathcal{C}$ we have a natural bijection
+	$$
+	\mathit{Mor}_{\textit{PSh}(\mathcal{C})}(h_U, F) \longrightarrow F(U),
+	\quad
+	s \longmapsto s_U(\text{id}_U).
+	$$
 \end{lemma}
 
+\begin{definition}
+	\label{definition-representable-functor}
+	A presheaf $F : \mathcal{C}^{opp}\to \textit{Sets}$ is said
+	to be {\it representable} if it is isomorphic to the functor of
+	points $h_U$ for some object $U$ of $\mathcal{C}$.
+\end{definition}
 
-%\bibliography{Mybib.bib}
+Seen one way, the basic objective in moduli theory is to show representability of various presheaves. We will often confuse a scheme $X$ with its associated functor $h_X$.
+
+\begin{example}[Three representable functors] We will now describe three important functors which are representable\footnote{Convince yourself that all these assignments define presheaves of sets.}.
+	\begin{enumerate}
+		\item $X \mapsto \Gamma (X,\sO_X)^{\oplus n}$. This is same as giving a ring map $\Z[x_1,\ldots,x_n]\rightarrow \Gamma (X,\sO_X)^{\oplus n}$. But such a ring map corresponds a morphism to $\A_{\Z}^n$.
+		\item $X \mapsto \Gamma (X,\sO_X)^{\times}$. A similar argument as above tells us that these are morphisms to $\A_{\Z}^1\setminus \{0\}:= \Spec \Z[t,t^{-1}]$.
+		\item $X \mapsto \{ (\sL,s)\;|\; \text{$\sL$ is a line bundle on $X$ with a surjection}\; p:\sO_X^{n+1}\twoheadrightarrow \sL\}$. We have already seen in \ref{functor-of-Pn} that this is $\mathit{Hom}(-,\P^n)$.
+	\end{enumerate}
+\end{example}
+
+
+\begin{example}[A non-representable functor] Some moduli of curves.
+\end{example}
+Let $\mathcal{C}$ be a site, and $\{U_i \overset{f_i}{\to} U\}_{i\in I}$ be an element of $\text{Cov}(\mathcal{C})$. We have the fibre products for all $i,j$
+\begin{center}
+	\begin{tikzcd}
+	U_i\times_U U_j\arrow[r,"\text{pr}_1"]\arrow[d,"\text{pr}_0"] & U_j\arrow[d,"f_j"]\\
+	U_i\arrow[r,"f_i"] & U
+	\end{tikzcd}
+\end{center}
+
+Let $\sF$ be a presheaf on $\mathcal{C}$. For the above covering we have a diagram,
+\begin{equation}\label{equation-sheaf-condition}
+\begin{tikzcd}
+\sF(U)\arrow[r] &\prod_{i\in I} \sF(U_i)\arrow[r,shift left,"\text{pr}^*_0"]\arrow[r,shift right,"\text{pr}^*_1"'] & \prod_{i,j\in I}\sF(U_i\times_U U_j)
+\end{tikzcd}
+\end{equation}
+
+\begin{definition}
+	Let $\mathcal{C}$ be a site, and let $\mathcal{F}$ be a presheaf of sets
+	on $\mathcal{C}$. We say $\mathcal{F}$ is a {\it sheaf} if
+	for every covering $\{U_i \to U\}_{i \in I} \in \text{Cov}(\mathcal{C})$,
+	the diagram (\ref{equation-sheaf-condition}) represents the first arrow as the equalizer of $\text{pr}_0^*$
+	and $\text{pr}_1^*$.	
+\end{definition}
+
+Loosely speaking this means that given sections $s_i \in \mathcal{F}(U_i)$
+such that
+$$
+s_i|_{U_i \times_U U_j} = s_j|_{U_i \times_U U_j}
+$$
+in $\mathcal{F}(U_i \times_U U_j)$ for all $i, j \in I$
+then there exists a unique $s \in \mathcal{F}(U)$ such
+that $s_i = s|_{U_i}$\footnote{It is instructive to write out all the details in diagram (\ref{equation-sheaf-condition}) when the covering family has $3$ elements.}. Note that the above definition implies that $\sF(\emptyset)=\{*\}$ is a singleton.
+
+\begin{example}
+	Any scheme $X$ is sheaf on the big Zariski site $(\mathit{Sch}/S)_{\textit{Zar}}$ (why?).
+\end{example}
+
+
+\begin{definition}
+	\label{definition-category-sheaves-sets}
+	The category {\it $\Sh(\mathcal{C})$}
+	of sheaves of sets is the full subcategory of the category
+	$\textit{PSh}(\mathcal{C})$ whose objects are the sheaves of sets.
+\end{definition}
+
+
+If the inclusion $\iota: \Sh(\mathcal{C})\hookrightarrow \textit{Psh}(\mathcal{C})$ admits a left adjoint, we call it the `\textit{sheafification functor}. It may not exist even if fairy concrete situations. For example, it does not exist in the fpqc topology (see \cite[Theorem 5.5]{Waterhouse-fpqc-sheafification}). However, we have the following theorem due to Grothendieck.
+
+\begin{theorem}[Grothendieck]\label{fpqc-representable}
+	Every representable functor satisfies the sheaf property in the fpqc topology.
+\end{theorem}
+
+We always want representable objects to be sheaves, as the sheaf property expresses the correct categorical notion of ``gluing" things. And representable functors being sheaves means that morphisms glue. Moreover, the statements in Definition \ref{locally-P-morphisms} can now be generalised to covering families of the various topologies on schemes.
+
+\begin{definition}
+	Let $\mathcal{C}$ be a category. We say that a topology $\tau$ on $\mathcal{C}$ is \textit{subcanonical} if every representable functor is a sheaf with respect to $\tau$. The \textit{canonical} topology is the finest on $\mathcal{C}$ such that every representable functor is a sheaf.
+\end{definition}
+
+
+\begin{example}[A non-subcanonical site]
+	Consider the topology on $(\textit{Sch})$ with coverings given by $\{U_i \to U\}_{i \in I}$ which are jointly surjective families of flat morphisms. This ``wild" flat topology is not subcanonical.
+	
+	Take a smooth integral curve $U$ over an algebraically closed field $k$\footnote{For example, take $\P^1$.}. Let $K$ be its quotient field. For every closed point $p\in U(k)$, consider the spectrum of its local ring $V_p:=\Spec \sO_{U,p}$. Then $\{V_p \to U\}_{p \in U(k)}$ is a covering in this wild flat topology.
+	
+	Note that each of these local rings are discrete valuation rings with generic point $\Spec K$ and closed point $p$\footnote{Well, the maximal ideal in $\sO_{U,p}$ corresponding to $p$.}. Thus, $V_p\times_U V_q =V_p$ if $p=q$, and $\Spec K$ otherwise.
+	
+	We can now construct a scheme $X$ by gluing all the $V_p$'s along $\Spec K$\footnote{Note that this is just the construction in Example \ref{DVR-double-origin} iterated over all $p\in U(k)$}. The functor $\mathit{Hom}(-,X)$ is not a sheaf in the wild flat topology. In fact, we will show that it does not satisfy the sheaf condition for the covering $\{V_p \to U\}_{p \in U(k)}$. For this, consider the diagram
+	\begin{center}
+		\begin{tikzcd}
+		\prod_{p\in U(k)} h_X(V_p)\arrow[r,shift left,"\text{pr}^*_0"]\arrow[r,shift right,"\text{pr}^*_1"'] & \prod_{p,q\in U(k)}h_X(V_p\times_U V_q)
+		\end{tikzcd}
+	\end{center}
+	By construction of $X$, we have inclusions $i_p:V_p\hookrightarrow X$ for each $p\in U(k)$. This gives us an element $\{i_p\}_{p\in U(k)}$ of $\prod_{p\in U(k)} h_X(V_p)$ whose images in along $\text{pr}_0$ and $\text{pr}_1$ agree (why?). However, there is no morphism $U\rightarrow X$. This is because all subsets of $X$ formed by closed points are closed, but only finite set are closed in $U$.
+	
+\end{example}
+
+
+To prove Theorem \ref{fpqc-representable}, we will use the following lemma.
+
+\begin{lemma}
+	\label{lemma-sheaf-property-fpqc}
+	Let $F$ be a presheaf on the category of schemes with values in sets. Then $F$ satisfies the sheaf property for the fpqc topology if and only
+	if it satisfies
+	\begin{enumerate}
+		\item the sheaf property for every Zariski covering, and
+		\item the sheaf property for $\{V \to U\}$
+		with $V$, $U$ affine and $V \to U$ faithfully flat.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Note that since every Zariki cover is an fpqc cover, the only if direction is obvious. So we only need to show the ($\Rightarrow$) direction.
+	
+	First observe that it is sufficient to prove this for fpqc covers $\{V\rightarrow U\}$ consisting of a single morphism (given an fpqc cover $\{U_i\rightarrow U\}_{i\in I}$, set $V:=\amalg_i U_i$). 
+	
+	The rest of the proof involves ``resolving" $F(U)$ in two different ways. First using the sheaf property for Zariski covers and second using the sheaf property the faithfully flat maps of affine. To do this, we will cover $U$ and $V$ by compatible affine opens.
+	
+	Take an fpqc cover $\{f: V\rightarrow U\}$. By definition, we have an open covering $V=\cup_i V_i$ such that each $V_i$ is quasi-compact and $f(V_i):=U_i$ is open and affine in $U$. Write $V_i$ as a union of finitely many open affines $V_{ia}$. Then we have the following diagram\footnote{or a ``resolution" of $F(U)$ in two different way.}
+	\begin{center}
+		\begin{tikzcd}
+		F(U)\arrow[d]\arrow[r] &F(V)\arrow[d]\arrow[r,shift left]\arrow[r,shift right] & \prod_{i,j}F(V\times_U V)\arrow[d]\\
+		\prod_{i} F(U_i)\arrow[d,shift left]\arrow[d,shift right]\arrow[r] &\prod_{i}\prod_a F(V_{ia})\arrow[d,shift left]\arrow[d,shift right]\arrow[r,shift left]\arrow[r,shift right] & \prod_i\prod_{a,b}F(V_{ia}\times_U V_{ib})\\
+		\prod_{i,j I}F(U_i\cap U_j)\arrow[r] &\prod_i\prod_{a,b}F(V_{ia}\cap V_{ib})
+		\end{tikzcd}
+	\end{center}
+	Since $F$ is a Zariski sheaf, the columns are equalizers. Further, note that since  $\{\amalg_a V_{ia}\rightarrow U_i\}$ is a faithfully flat ring map the diagram
+	\begin{center}
+		\begin{tikzcd}
+		F(U_i)\arrow[r] &\prod_a F(V_{ia})\arrow[r,shift left]\arrow[r,shift right] & \prod_{a,b}F(V_{ia}\times_U V_{ib})
+		\end{tikzcd}
+	\end{center}
+	is an equalizer. As equalizers commute with products, the second row is also an equalizer. Hemce, $F(U)\rightarrow F(V)$ is injective, and so the bottom row is also injective. Now, a diagram chase show that the top row is an equalizer.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{fpqc-representable}]
+We only have to check condition (2) of Lemma \ref{lemma-sheaf-property-fpqc}. Further, we can write $X=\cup_i X_i$ as a union of affines. So, we are reduced to the case of affine schemes. But, for affine this follows easily from Lemma \ref{Amitsur}.
+\end{proof}
+
+
+\newpage
+\bibliography{Mybib.bib}
 \bibliographystyle{alpha}
 
 
