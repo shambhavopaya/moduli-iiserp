@@ -873,6 +873,77 @@ To prove Theorem \ref{fpqc-representable}, we will use the following lemma.
 We only have to check condition (2) of Lemma \ref{lemma-sheaf-property-fpqc}. Further, we can write $X=\cup_i X_i$ as a union of affines. So, we are reduced to the case of affine schemes. But, for affine this follows easily from Lemma \ref{Amitsur}.
 \end{proof}
 
+\subsection{A Criteria for Representability.} Theorem \ref{fpqc-representable} implies that for a functor $F$ to be representable by a scheme, it must satisfy the sheaf property in the fpqc topology. Also, note that $(\mathit{Sch})$ is a full subcategory of $\mathit{Psh}(\mathit{Aff})$\footnote{This is straightforward to prove using the sheaf condition for the Zariski topology.}, a natural question is to identify when a functor $F$ lies in $\mathit{Sch}$. We will do this now.
+
+Let $F,G$ be two functors on a category $\mathcal{C}$ with values in $\mathit{Sets}$. Note that by Lemma \ref{lemma-yoneda}, an element $\xi\in G(U)$ is the same as a morphism of functors $\xi: h_U\rightarrow G$.
+
+
+\begin{definition}
+	\label{definition-representable-map-presheaves}
+	Let $\mathcal{C}$ be a category.
+	Let $F, G : \mathcal{C}^{opp} \to \textit{Sets}$
+	be functors. We say a morphism $a : F \to G$ is
+	{\it representable}, or that {\it $F$ is relatively representable
+		over $G$}, if for every $U \in \Ob(\mathcal{C})$
+	and any $\xi \in G(U)$ the functor
+	$h_U \times_G F$ is representable\footnote{Fibre products exist for functors to $\mathit{Sets}$ because fibre products of sets exists.}.
+\end{definition}
+
+\begin{remark}[Important reality check]
+	Any morphism $h_U\rightarrow h_V$ between representable functors is representable.
+\end{remark}
+We have the following lemma about representable morphisms.
+
+\begin{lemma}
+	\label{lemma-representable-diagonal}
+	Let $\mathcal{C}$ be a category.
+	Let $F : \mathcal{C}^{opp} \to \textit{Sets}$ be a functor.
+	Assume $\mathcal{C}$ has products of pairs of objects and fibre products.
+	The following are equivalent:
+	\begin{enumerate}
+		\item the diagonal $\Delta : F \to F \times F$ is representable,
+		\item for every $U$ in $\mathcal{C}$,
+		and any $\xi \in F(U)$ the map $\xi : h_U \to F$ is representable,
+		\item for every pair $U, V$ in $\mathcal{C}$
+		and any $\xi \in F(U)$, $\xi' \in F(V)$ the fibre product
+		$h_U \times_{\xi, F, \xi'} h_V$ is representable.
+	\end{enumerate}
+\end{lemma}
+This is a straightforward exercise in definitions. The thing to keep in mind is the ``magic diagram"\footnote{as Ravi Vakil calls it.} (see \cite[Tag 0024]{stacks-project} for hints).
+
+Representable morphisms of functors is a useful notion because any property of morphisms of schemes can be extended to representable morphisms.
+
+\begin{definition}
+	Let $\mathcal{P}$ be a property of morphisms of schemes that is stable under base change. Let $a: F\rightarrow G$ be a representable morphism of functors. We say that $a$ has the property $\mathcal{P}$, if for every scheme $U$ and every $\xi\in G(U)$ the morphism of schemes $a_U: h_U\times_G F\rightarrow h_U$ has $\mathcal{P}$. 
+\end{definition}
+
+Henceforth, we will confuse $U$ with its functor of points $h_U$.
+
+\begin{definition}\label{separated-scheme}
+	Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{separated scheme} if the following conditions are satisfied:
+	\begin{enumerate}
+		\item $F$ is a sheaf on $(\mathit{Aff})_{\textit{Zar}}$.
+		\item The diagonal $\Delta: F\rightarrow F\times F$ is a representable closed immersion.
+		\item There exist affine schemes $\{U_i\}_{i\in I}$ and morphisms $\xi_i: U_i\rightarrow F$ which are representable open immersions, such that the map from the disjoint union $\amalg_i U_i\rightarrow F$ is an epimorphism of sheaves in the Zariski topology.
+	\end{enumerate}
+\end{definition}
+
+We can tweak Definition \ref{definition-representable-map-presheaves} to the following: We will say $a: F\rightarrow G$ is \textit{representable by separated schemes} if the fibre product $h_U\times_G F$ is a separated scheme in the sense of Definition \ref{separated-scheme}.
+
+\begin{definition}\label{scheme}
+		Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{scheme} if the following conditions are satisfied:
+	\begin{enumerate}
+		\item $F$ is a sheaf on $(\mathit{Aff})_{\textit{Zar}}$.
+		\item The diagonal $\Delta: F\rightarrow F\times F$ is a representable by separated schemes.
+		\item There exist affine schemes $\{U_i\}_{i\in I}$ and morphisms $\xi_i: U_i\rightarrow F$ which are representable open immersions, such that the map from the disjoint union $\amalg_i U_i\rightarrow F$ is an epimorphisms of sheaves in the Zariski topology.
+	\end{enumerate}
+\end{definition}
+
+Be sure to check this gives this agrees with the usual description of a scheme.
+
+\begin{remark}
+	It is not possible to directly define the category of schemes without defining separated schemes first. The reason is that for a scheme the intersection of affine opens need not be an affine. This kind of functorial description was first thought of by Artin (and Grothendieck) to define quotients by \'{e}tale equivalence relations\footnote{For example, a $\Z/2$-action on a proper threefold. The details will show up in detail at some point in our seminar.} that do not exist as schemes. These are what are called \textit{algebraic spaces} (replace Zariski with \'{e}tale in Definition \ref{separated-scheme} above and you will have defined an (separated) algebraic space). You will find mentions of such a construction for schemes in any source discussing algebraic spaces. However, the first place where I found a complete construction as above was in Martin Olsson's book (see \cite{olsson16})\footnote{Definition \ref{scheme} is the same as the one given in \cite{olsson16}. But, one could also use schemes with affine diagonal instead of separated scheme for this construction.}.
+\end{remark}
 
 \newpage
 \bibliography{Mybib.bib}
