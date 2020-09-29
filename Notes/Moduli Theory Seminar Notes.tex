@@ -613,7 +613,7 @@ Our categories will almost always admit fiber products.
 
 A category  satisfying the above definition is said to be equipped with a \textit{Grothendieck topology}. Thus, a site is a category with a Grothendieck topology.
 
-\subsection{Various Topologies on Affine Schemes.} Let $\mathit{Ring}^{op}$ or $\mathit{Aff}$ denote the cateogry of affine schemes. We can define the following Grothendieck topologies\footnote{This list is by no means exhaustive. Some notable exculsions are the \textit{Nisnevich} and \textit{smooth} topologies.} on it:
+\subsection{Various Topologies on Affine Schemes.} Let $\mathit{Ring}^{op}$ or $\mathit{Aff}$ denote the category of affine schemes. Let $I$ be a finite set. We can define the following Grothendieck topologies\footnote{This list is by no means exhaustive. Some notable exculsions are the \textit{Nisnevich} and \textit{smooth} topologies.} on it:
 
 \begin{enumerate}
 	\item[\textit{Zariski:}]  Coverings are families of ring maps $\{ R \overset{f_i}{\to} R_{r_i}\}_{i \in I}$, where $R_{r_i}$ is the localisation with respect to $r_i\in R$ such that $(\{r_i\}_{i\in I})= R$.
@@ -622,6 +622,8 @@ A category  satisfying the above definition is said to be equipped with a \texti
 	\item[\textit{fpqc}:] Coverings are families of morphisms $\{ R \overset{f_i}{\to} R_i\}_{i \in I}$ such that each $f_i$ is faithfully flat. (fpqc: fid\`{e}lement plat et quasi-compacte)
 \end{enumerate}
 \text
+
+%Note that if $I$ is not finite, then the above definitions do not give a meaningful notions of topology. This is because $\amalg_{i\in I}\Spec A_i$ is not isomorphic to $\Spec \prod_{i\in I} A_i$, but we want the faithful flatness to the product map $\prod_i f_i$ to represent surjectivity of the map $\amalg_{i\in I}\Spec A_i $\rightarrow$ \Spec A$. This makes sense only when $I$ is finite. This is a reasonable assumption to make because all objects are quasi-compact.
 
 Note that all the rings maps in the topologies above are used to define local properties of morphisms of schemes which are also stable under base change. Hence, we can extend these toplogies to schemes.
 
@@ -640,6 +642,7 @@ Let $(\mathit{Sch})$ be the category of schemes. We will now ``globalise" the to
 \begin{remark}
 	We have the follow inclusion of topologies:
 	\[\textit{Zariski}\;\subset\; \textit{\'{E}tale}\;\subset\; \textit{fppf}\;\subset\; \textit{fpqc}.\]
+	The first three inclusions are direct implications of the definitions. For the last one, take an fppf covering $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$. Then by definition, since each $f_i$ is locally of finite presentation, for any affine open $V\subset U$, the inverse image in each $U_i$ can be written as $f_i^{-1}(V)=\cup_a U_{ia}$ where each $U_{ia}$ is affine and $f_i: U_{ia}\rightarrow V$ is flat and of finite presentation. Since, the $f_i$'s are jointly surjective, the union $\bigcup_{i,a}f_i(U_{ia})=V$. Note that this is a covering of $V$ by open sets since each $f_i$ is an open map. As $V$ is quasi-compact, this admits a finite refinement. This shows that $\{ U_i \overset{f_i}{\to} U\}_{i \in I}$ is an fpqc covering.
 \end{remark}
 
 In light of the above remark, note that if we simply define fpqc coverings to be morphisms of schemes which are faithfully flat and quasi-compact, then Zariski covers would no longer be fpqc coverings.
@@ -666,14 +669,14 @@ The next two definitions capture some general notions about sites that good to k
 		\item[\textsc{Small site:}] Consider the full subcategory of $(\mathit{Sch}/S)$ whose objects are $f: X\rightarrow S$ such that $f\in\mathcal{P}$. We define coverings for this subcategory as families of $\mathcal{P}$-morphisms which are jointly surjective. We denote this site by $S_{\tau}$ and call it the \textit{Small $\tau$ site}.
 	\end{enumerate}
 \end{definition}
-For example, we have the big and small Zariski sites, the big and small \'{e}tale sites etc.\footnote{People mostly talk about small sites only in the Zariski and \'{e}tale topologies (and the Nisnevich topology if you are doing $\A^1$-homotopy theory)} The following is another notion which we will probably never use in this seminar\footnote{Unless we start discussing algebraic stacks at some point!}.
+For example, we have the big and small Zariski sites, the big and small \'{e}tale sites etc.\footnote{People generally talk about small sites only in the Zariski and \'{e}tale topologies (and the Nisnevich topology if you are doing $\A^1$-homotopy theory)} The following is another notion which we will probably never use in this seminar\footnote{Unless we start discussing algebraic stacks at some point!}.
 
 
 \begin{definition}[$\mathcal{P}$-$\mathcal{Q}$ site]
 	Let $\mathcal{P}$ and $\mathcal{Q}$ be classes of morphisms that are stable under base change and composition, and contain isomorphisms. Then, the $\mathcal{P}$-$\mathcal{Q}$ site of $S$ is defined as follows: the objects are $S$-schemes, $f:X\rightarrow S$ such that $f\in \mathcal{P}$ and coverings are families of $\mathcal{Q}$-morphisms $\{U_i \overset{f_i}{\to} U\}_{i\in I}$ over $S$ which are jointly surjective.
 \end{definition}
 
-Notable examples are the smooth-\'{e}tale\footnote{also called the lisse-\'{e}tale site. Lisse is french for smooth.} and the flat-fppf sites.
+Notable examples are the smooth-\'{e}tale\footnote{Also called the lisse-\'{e}tale site. Lisse is french for smooth.} and the flat-fppf sites.
 
 \subsection{Presheaves and the Yoneda Embedding.}
 
@@ -761,7 +764,8 @@ Seen one way, the basic objective in moduli theory is to show representability o
 \end{example}
 
 
-\begin{example}[A non-representable functor] Some moduli of curves. Let $k$ be an algebraically closed field. Consider the functor $F$ which assigns to any $k$-scheme a conic in $\P^2$ upto isomorphism. That is, 
+
+\begin{example}[A non-representable functor] I have taken this example from \cite{Bogges}. Let $k$ be an algebraically closed field. Consider the functor $F$ which assigns to any $k$-scheme $S$ a conic in $\P_S^2$ upto isomorphism. That is, 
 	\begin{align*}
 	F: (\mathit{Sch}/k)^{opp} & \rightarrow \mathit{Sets}\\
 	S & \mapsto \left\{
