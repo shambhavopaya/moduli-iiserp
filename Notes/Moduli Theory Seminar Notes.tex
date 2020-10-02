@@ -765,7 +765,7 @@ Seen one way, the basic objective in moduli theory is to show representability o
 
 
 
-\begin{example}[A non-representable functor] I have taken this example from \cite{Bogges}. Let $k$ be an algebraically closed field. Consider the functor $F$ which assigns to any $k$-scheme $S$ a conic in $\P_S^2$ upto isomorphism. That is, 
+\begin{example}[A non-representable functor]\label{functor-of-conics} I have taken this example from \cite{Bogges}. Let $k$ be an algebraically closed field. Consider the functor $F$ which assigns to any $k$-scheme $S$ a conic in $\P_S^2$ upto isomorphism. That is, 
 	\begin{align*}
 	F: (\mathit{Sch}/k)^{opp} & \rightarrow \mathit{Sets}\\
 	S & \mapsto \left\{
@@ -954,6 +954,11 @@ Representable morphisms of functors is a useful notion because any property of m
 
 Henceforth, we will confuse $U$ with its functor of points $h_U$.
 
+\begin{example}[A representable diagonal] 
+	Let $F$ be the functor on $\mathit{Sch/k}$ defined in Example \ref{functor-of-conics}. The diagonal of this functor $\Delta: F\rightarrow F\times_k F$ is representable by $k$-schemes! I will add a proof soon. These is essentially because we have flat families. Moduli problems dealing with non-flat families are almost impossible to work with.
+	
+\end{example}
+
 \begin{definition}\label{separated-scheme}
 	Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{separated scheme} if the following conditions are satisfied:
 	\begin{enumerate}
@@ -979,6 +984,7 @@ Be sure to check this gives this agrees with the usual description of a scheme.
 \begin{remark}
 	It is not possible to directly define the category of schemes without defining separated schemes first. The reason is that for a scheme the intersection of affine opens need not be an affine. This kind of functorial description was first thought of by Artin (and Grothendieck) to define quotients by \'{e}tale equivalence relations\footnote{For example, a $\Z/2$-action on a proper threefold. The details will show up in detail at some point in our seminar.} that do not exist as schemes. These are what are called \textit{algebraic spaces} (replace Zariski with \'{e}tale in Definition \ref{separated-scheme} above and you will have defined an (separated) algebraic space). You will find mentions of such a construction for schemes in any source discussing algebraic spaces. However, the first place where I found a complete construction as above was in Martin Olsson's book (see \cite{olsson16})\footnote{Definition \ref{scheme} is the same as the one given in \cite{olsson16}. But, one could also use schemes with affine diagonal instead of separated scheme for this construction.}.
 \end{remark}
+
 
 \newpage
 \bibliography{Mybib.bib}
