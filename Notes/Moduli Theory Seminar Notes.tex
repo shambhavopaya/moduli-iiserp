@@ -955,9 +955,23 @@ Representable morphisms of functors is a useful notion because any property of m
 Henceforth, we will confuse $U$ with its functor of points $h_U$.
 
 \begin{example}[A representable diagonal] 
-	Let $F$ be the functor on $\mathit{Sch/k}$ defined in Example \ref{functor-of-conics}. The diagonal of this functor $\Delta: F\rightarrow F\times_k F$ is representable by $k$-schemes! I will add a proof soon. These is essentially because we have flat families. Moduli problems dealing with non-flat families are almost impossible to work with.
+	Let $\mathit{FSch/k}$ be the category of finite type schemes over an algebraically closed field $k$. Let $F$ be the functor on $\mathit{FSch/k}$ defined in Example \ref{functor-of-conics}. The diagonal of this functor $\Delta: F\rightarrow F\times_k F$ is representable by $k$-schemes! I will add a proof soon. These is essentially because we have flat families. Moduli problems dealing with non-flat families are almost impossible to work with.
 	
+	By Lemma \ref{lemma-representable-diagonal}, it is sufficient to prove that for any $U,V$ and any morphisms $\xi:U\rightarrow F$, $\xi':V\rightarrow F$, The fibre product $U\times_{\xi,F,\xi'} V$ is representable. By definition, $\xi$ and $\xi'$ are closed subschemes $Z\subset \P_U^2$ and $Z'\subset \P_V^2$ which are flat over $U$ and $V$, respectively. Base-changing $Z$ and $Z'$ along the projection maps $U\times_k V\rightarrow U$ and $U\times_k V\rightarrow V$, we have two closed subschemes $Z\times_k V$ and $Z'\times_k U$ of $\P_{U\times_k V}^2$ which are flat over $U\times_k V$. Then, then following lemma implies that $U\times_{\xi,F,\xi'} V$ is representable by a closed subscheme of $U\times_k V$.
+	
+	%Now, one can prove that there exist a closed subscheme $W$ of $U\times_k V$ on which $Z\times_k V$ and $Z'\times_k U$ become equal\footnote{This subcheme can also be empty!}, i.e, $Z\times_k V\times_{U\times_k V} W$ and $Z'\times_k U\times_{U\times_k V} W$ become equal in $\P_W^2$. This require a certain lemma which we will prove later. We express this fact by saying that the condition for two closed subscheme of $\P^2$ flat over the base to become equal is a closed condition on the base.
+	
+	%We claim that this $W$ represents $U\times_{\xi,F,\xi'} V$. Clearly, we have a map $W\rightarrow U\times_{\xi,F,\xi'} V$ given by $(\xi_W,\xi'_W)$.
+	
+\begin{lemma}
+	\label{lemma-equalising-flat-subschemes}
+	Let $f: X\rightarrow S$ be a flat projective morphism of Noetherian schemes. Let $D$ and $E$ be two closed subschemes of $X$ with $E$ flat over $S$. Then there exists a closed subscheme $S'$ of $S$ such that for any morphism $T\rightarrow S$, the fibre product $T\times_S E\subseteq T\times_S X$ is contained in $T\times_S X$ if and only if the morphism $T\rightarrow S$ factors through $S'$.
+\end{lemma}
+
+Since $Z$ and $Z'$ are both flat families, we get the required result\footnote{proving such a statement for non-flat families is quite hard, and is not true, in general.}. Ultimately, the above lemma is a statement about coherent sheaves on $X$. We will surely discuss a proof at some point in our seminar. You can also find a proof in \cite[Lemma B.6.2]{ACV03}.
+
 \end{example}
+
 
 \begin{definition}\label{separated-scheme}
 	Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{separated scheme} if the following conditions are satisfied:

@@ -1,2 +1,2 @@
 # moduli-iiserp
-notes and handouts for the moduli theory seminar
+Notes and handouts for the moduli theory seminar at IISER Pune (ongoing from August 2020)
