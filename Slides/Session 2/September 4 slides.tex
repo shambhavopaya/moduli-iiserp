@@ -1,0 +1,317 @@
+\documentclass[ignorenonframetext,t]{beamer}
+\usepackage{amscd}
+\usepackage{verbatim}
+
+\usetheme{Frankfurt}
+
+\setbeamerfont{block body}{size=\small}
+
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\hfill\insertshorttitle\, - \insertsubtitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshortauthor\hfill%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+			\hfill\insertframenumber\,/\,\inserttotalframenumber
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+
+% Document information
+\title[Moduli@IISERP]{Seminar on Moduli Theory}
+\subtitle{Lecture 2}
+\author{Neeraj Deshmukh}
+\date{September 4, 2020}
+%\address[IISERM]{Indian Institute of Science Education and Research, Mohali}
+
+\begin{document}
+	
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Last Week}
+\begin{enumerate}
+	\item Affine Communication Lemma.
+	\item Two ways of gluing $\A^1$ outside the origin.
+	\item DVR with a double origin, and sheaves on it.
+	\item Line bundles on $\P^1$.
+\end{enumerate}
+\end{frame}
+
+%\subsection{A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}.}
+
+\begin{frame}{A slightly more involved scheme: $\P^n$}
+Let $D(x_i):= \Spec k[x_{0/i},x_{1/i},\ldots,\ldots,x_{n/i}]/(x_{i/i}-1)$.
+If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
+
+\[\phi_{ij}:x_{k/i}\mapsto x_{k/j}/x_{i/j}\;\; \&\;\; \phi_{ji}:x_{k/j}\mapsto x_{k/i}/x_{j/i}\]
+\end{frame}
+This is basically the same as $\A^n$, but we write it like this for reasons that will become evident soon. If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
+
+\[\phi_{ij}:x_{k/i}\mapsto x_{k/j}/x_{i/j}\;\; \&\;\; \phi_{ji}:x_{k/j}\mapsto x_{k/i}/x_{j/i}\]
+Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$ (what is the (co)domain of these maps?). Note that this construction doesn't really utilise the fact that $k$ is a field.
+
+%\subsection{A classical interlude.} 
+\begin{frame}{A classical interlude}
+Let $k$ be a field. Consider $k^{n+1}\setminus{(0,0,\ldots,0)}$. We define $\P^n$ to be:
+\[\P^n:=\lbrace (x_i)\; |\; (x_i)\simeq (y_i)\; \text{if there is a $\lambda\in k^{\times}$ such that}\; x_i=\lambda y_i\rbrace\]
+
+\end{frame}
+
+
+Here's a classical definition of $\P^n$ in terms of \textit{homogeneous coordinates}. Let $k$ be a field. Consider $k^{n+1}\setminus{(0,0,\ldots,0)}$. We define $\P^n$ to be:
+\[\P^n:=\lbrace (x_0,x_1,\ldots,x_n)\; |\; (x_i)\simeq (y_i)\; \text{if there is a $\lambda\in k^{\times}$ such that for all $i$,}\; x_i=\lambda y_i\rbrace\]
+
+We denote the equivalence class of the tuple $(x_i)$ by $[x_0:x_1:\ldots:x_n]$. These are called homogeneous coordinates. If we assume one of the coordinates to be non-zero, say $x_i$, then we can divide the entire tuple by it. This gives us a set, $D(x_i):=\lbrace [x_0/x_i:x_1/x_i:\ldots:1:\ldots:x_n/x_i]\rbrace$. It is easy to see that this set in bijection with $k^n$. Set $x_k/x_i:=x_{k/i}$\footnote{This notation is meant to be suggestive.}, then tuples in $D(x_i)$ look like $[x_{0/i}:x_{1/i}:\ldots:1:\ldots:x_{n/i}]$. This $D(x_i)$ should be thought of as the complement of the hyperplane defined by $x_i$ (which is actually a projective space of one dimension less). 
+
+If an $x_j$ is non-zero, for a $j$ distinct from $i$, then we can divide by it. This gives us the relation, $x_{k/i}/x_{j/i}=x_{k/j}$. This is the origin of the morphisms $\phi_{ij}$ above\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}. Homogenisation and de-homogenisation(?).
+
+
+\begin{frame}{Motivating $\Proj$}
+	Consider $k[x_0,x_1,\ldots,x_n]$, now thought of as a graded ring with the grading given by degrees of monomials.\\
+	$\Proj(k[x_0,x_1,\ldots,x_n])$ is the set of those \text{homogeneous} prime ideals which do not contain the ideal $(x_0,x_1,\ldots,x_n)$. The resulting scheme is $\P^n$.
+\end{frame}
+
+%\subsection{Proj of a graded ring.} Now that we have defined $\P^n$, I want to motivate the proj construction for graded rings using the example of $\P^n$. In a sense, this construction is not very different from the gluing construction above. However, it gives us more control ove the algebra and sheaf theory of $\P^n$ and its subschemes. For example, every closed subscheme of $\P^n$ comes from a graded ideal (this is a neat analogue of the affine case). Another advantage is that it lets us talk about affine open covers given by the complements of non-linear hypersurfaces. This can be useful when dealing with closed subschemes of $\P^n$, but then we won't need to make any choices about waht affine covers should be. 
+
+Consider the ring $S_{\bullet}:=k[x_0,x_1,\ldots,x_n]$, now thought of as a graded ring with the grading given by degrees of monomials. The degree of a monomial $x^{r_1}_{i_1}\ldots x^{r_m}_{i_m}$ is the integer $r_1+\ldots +r_m$. The constants have degree zero. We can write our ring as $S_{\bullet}=\oplus_{i\geq 0}S_i$, where each $S_i$ is the homogeneous component of degree $i$. Note that $S_{\bullet}$ is generated by the elements $x_i$'s as an $S_0$-algebra (here, $S_0$ is $k$). The ideal generated by the $x_i$'s is just $S_{+}=\oplus_{i>0}S_i$. This is just the ideal $(x_0,\ldots,x_n)$ written by keeping track of the grading. We will call this the irrelevant ideal. Then, proj of the graded ring $S_{\bullet}$, $\Proj(S_{\bullet})$ is the set of those \text{homogeneous} prime ideals which do not contain $S_+$. This inherits a Zariski topology from $\Spec S_{\bullet}$. We can then to check that this is a scheme by producing affine open covers using the homogeneous elements. The resulting scheme is $\P^n$.
+
+\begin{frame}
+Here's an alternative description of $\P^1$ using degree $2$ hypersufaces
+\end{frame}
+
+\begin{frame}
+Relation to our original construction of $\P^1$
+\end{frame}
+
+
+\begin{frame}
+Note that if you just invert $x^2$ and $xy$, then this does not give a cover $\P^1$, since the the radical of $(x^2,xy)$ does not contain the irrelevant ideal. Geometrically speaking, this is because inverting $xy$ corresponds to the affine open of $\P^1$ obtained by knocking off $0$ and $\infty$.\\
+\end{frame}
+
+This can be a bit tricky to write down when the homogeneous elements have large degrees. But to give you a flavour of what is going on, let's examine what this is in for $\P^1$. We have already seen a description of $\P^1$ above, by gluing $\A^1\setminus 0$ in an ``inverse fashion".  By the above discussion, $\P^1:=\Proj k[x,y]$. Here's a slightly different description of $\P^1$ using degree $2$ hypersurfaces. Consider the homogeneous ideal $(x^2,xy,y^2)$. Localise $k[x,y]$ with respect to $x^2$. This gives us a graded ring $(S_{\bullet})_{x^2}=k[x,y]_{x^2}$, where $1/x^2$ has degree $-2$. Thus, elements here are of the form $f(x,y)/(x^{2})^N$ and can have negative degrees. Look at the zero graded piece of this ring which we will denote by the horrible notation, $((S_{\bullet})_{x^2})_0$. This ring can be described as,
+\[((S_{\bullet})_{x^2})_0=k[xy/x^2,y^2/x^2].\]
+This can be identified with $k[y/x]$. So, $\Spec ((S_{\bullet})_{x^2})_0=\A^1$. At this point, we have to check that this does give an affine open in $\Proj k[x,y]$. This is true because there is a bijection between prime ideal of $((S_{\bullet})_{x^2})_0$ and the homogeneous prime ideals of $(S_{\bullet})_{x^2}$ (One way is easy. For the other direction, take a prime $\mathfrak{p}$ in $((S_{\bullet})_{x^2})_0$ and show that the \textit{radical} of the homogeneous ideal generated by $\mathfrak{p}$ in $(S_{\bullet})_{x^2}$ in prime\footnote{SThere is nothing particularly enlightening in doing this exercise for $x^2$, the exact same proof works for any element of positive degree.}). Similarly, inverting the elements $xy$ and $y^2$ in $S_{\bullet}$ and looking at the zeroth graded pieces gives us the polynomial rings,
+\begin{align*}
+((S_{\bullet})_{y^2})_0 &=k[x^2/y^2,xy/y^2]\longleftrightarrow \A^1\\
+((S_{\bullet})_{xy})_0 &=k[x^2/xy,y^2/xy]\longleftrightarrow \A^1\setminus 0.
+\end{align*}
+The radical of the ideal $(x^2,xy,y^2)$ contains the irrelevant ideal (why?). This implies that every homogeneous prime ideal is contained in one of the above three affine pieces. Thus, this gives us a covering of $\P^1$.
+
+If instead we invert degree one element $x$ and $y$, the zeroth graded pieces of these localisations look like,
+\begin{align*}
+((S_{\bullet})_{x})_0 &=k[x/y]\longleftrightarrow\A^1\\
+((S_{\bullet})_{y})_0 &=k[y/x]\longleftrightarrow\A^1.
+\end{align*}
+This will then recover our original construction of $\P^1$.
+
+\underline{\textbf{Caution:}} While using affine opens corresponding to degree $2$ elements, it may seem like it should be sufficient to just invert $x^2$, and $y^2$ to get an open cover of $\P^1$. This is false! For example, the homogeneous ideal $(x-y)$ is not contained in the radical of $(x^2,y^2)$.
+
+
+%\subsection{Some more examples.}
+\begin{frame}{More Examples}
+$V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$.
+\end{frame}
+
+\begin{frame}{More Examples}
+Blow-up of $\A^2$ at the origin.	
+\end{frame}
+
+
+\begin{frame}{More Examples}
+An example of a scheme without a closed point.
+	
+\end{frame}
+
+
+
+
+
+%\section{Morphism}
+As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
+
+\begin{frame}{Morphisms}
+\begin{definition}
+	Let $\mathcal{P}$ be a property of morphisms of schemes. Let $f:X\rightarrow Y$ be a morphism which satisfies $\mathcal{P}$. Then,
+	\begin{enumerate}
+		\item We say that $\mathcal{P}$ is \textit{affine-local on the target} if given any affine open cover $\lbrace V_i\rbrace$ of $Y$, $f:X\rightarrow Y$ has $\mathcal{P}$ if and only if the restriction $f: f^{-1}(V_i)\rightarrow V_i$ has $\mathcal{P}$ for each $i$.
+		\item We say that $\mathcal{P}$ is \textit{affine-local on the source} if given any affine open cover $\lbrace U_i\rbrace$ of $X$, $X\rightarrow Y$ has $\mathcal{P}$ if and only if the composite $U_i\rightarrow Y$ has $\mathcal{P}$ for each $i$.
+	\end{enumerate}
+\end{definition}
+
+Using \textit{affine communication lemma} one can then show that it suffices to check the above statements on single affine open cover.
+
+\end{frame}
+
+An important maxim of Grothendieck was that instead of considering schemes in isolation, we should look at things relative to each other, i.e, everything should be seen as a propery of morphisms. This is mostly true: every property of schemes can be turned into a property of morphisms of schemes.
+
+Examples:
+
+\begin{frame}
+	Something flat, something finitely presented/finite type, something finite.
+\end{frame}
+
+\begin{frame}
+	Not all properties are like this. For example, separatedness, properness, quasi-compactness, etc.
+\end{frame}
+
+\begin{frame}
+	Something ramified, something smooth, something singular.
+\end{frame}
+
+\begin{enumerate}
+	\item $x\mapsto x^2$ (more, generally $x^n$). This covers ramified, finitely presented, flat.
+	\item A non-quasi-compact, open-immersion. Polynomial ring in infinitely many variables and knock off the origin.
+	\item A finte morphism. 
+	\item A smooth morphism. A non-smooth morphism (nodal curve over $\A^1$).
+\end{enumerate}
+
+Open embeddings are locally finite presentation.\footnote{This is not true in perfectoid geometry, which is quite sad.}
+
+Open embedding is \'{e}tale is fppf is fpqc
+
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
