@@ -276,3 +276,8 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+#More random files
+*.py
+tags.txt
+
