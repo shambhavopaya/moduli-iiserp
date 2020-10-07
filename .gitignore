@@ -278,6 +278,5 @@ TSWLatexianTemp*
 *.lpz
 
 #More random files
-*.py
-tags.txt
+
 
