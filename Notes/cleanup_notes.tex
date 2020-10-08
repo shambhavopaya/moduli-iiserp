@@ -248,7 +248,7 @@
 \maketitle
 
 
-These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}.
+These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of the \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}.
 
 \begin{comment}
 \section{Plan}
@@ -290,7 +290,7 @@ List of morphisms:
 For the sake of completeness we begin by reviewing the definition of a locally ringed space.
 
 \begin{definition}
-	\label{definition-locally-ringed-space}\marginnote{0000}
+	\label{definition-locally-ringed-space}
 	Locally ringed spaces.
 	\begin{enumerate}
 		\item A {\it locally ringed space $(X, \mathcal{O}_X)$}
@@ -316,7 +316,7 @@ We know that affine schemes are locally ringed spaces: we take $\Spec R$ with th
 
 
 \begin{definition}
-	\label{definition-scheme}\marginnote{0001}
+	\label{definition-scheme}
 	A {\it scheme} is a locally ringed space with the property that
 	every point has an open neighbourhood which is an affine scheme.
 	A {\it morphism of schemes} is a morphism of locally
@@ -325,16 +325,15 @@ We know that affine schemes are locally ringed spaces: we take $\Spec R$ with th
 \end{definition}
 
 \begin{definition}
-	\label{definition-quasi-coherent-sheaf}\marginnote{0002}
+	\label{definition-quasi-coherent-sheaf}
 	Let $(X,\mathcal{O}_X)$ be a scheme. A sheaf of modules on $X$ is a sheaf $\mathcal{F}$ on $X$ such that for every open set $U$, $\mathcal{F}(U)$ is an $\mathcal{O}_X(U)$-module. We say that a sheaf of modules $\mathcal{F}$ is \textit{quasi-coherent} if for every affine open $U\simeq \Spec(R)$, the sheaf $\mathcal{F}|_U$ on $U$ is of the form $\tilde{M}$ for some $R$-module $M$.
 \end{definition}
 
 
 Make special note of the next lemma. This basically lets us reduce problems about schemes to statement about affine schemes (ergo, ring theory), whenever the problem at hand is of a \textit{local} nature. Ravi Vakil calls this \textit{affine communication lemma}.
 
-
 \begin{lemma}
-	\label{lemma-locally-P}\marginnote{0003}
+	\label{lemma-locally-P}
 	Let $X$ be a scheme. Let $P$ be a local property of rings.
 	The following are equivalent:
 	\begin{enumerate}
@@ -353,7 +352,7 @@ Make special note of the next lemma. This basically lets us reduce problems abou
 This is how commutative algebra meets geometry. Often, the properties that we want to consider are ``globalised" versions of statements about rings.\footnote{You can also ``globalise" morphisms of rings, but now you have two schemes to work locally on. We'll do this soon.}
 
 \subsection{Two ways of Gluing \texorpdfstring{$\A^1\setminus \lbrace 0\rbrace$}{Pn}.}
-\label{subsection-gluing-A1}\marginnote{0004}
+\label{subsection-gluing-A1}
 Take two copies of $\A^1:= \Spec k[x]$\footnote{For simplicity, assume that $k$ is field, but this is not needed.}. Let $U:= \Spec k[x,1/x]$, be the complement of the origin in $\A^1$.
 
 \begin{center}
@@ -368,18 +367,18 @@ Giving this information is that same giving a scheme which is looks like $\A^1$ 
 x &\mapsto x\\
 x &\mapsto 1/x
 \end{align*}
-\begin{example}\label{example-double-origin}\marginnote{0005}
+\begin{example}\label{example-double-origin}
  The first choice gives us a scheme which is like $\A^1$ everywhere except at the origin where it is now two points instead of one. Notice that the ring of global section of this scheme is $k[x]$ (a global section is same as giving polynomials $f, g\in k[x]$, one for each copy of $\A^1$ which are equal on $U$; conclude form this).
 \end{example}
 
-\begin{example}\label{example-projective-line}\marginnote{0006}
+\begin{example}\label{example-projective-line}
 The second choice gives us the projective line $\P^1$. This is looks like $\A^1$ with ``a point added at infinity". We will now compute its global sections.
 
 Let $f,g\in\A^1$ be two polynomials such that $f(x)=g(1/x)$ in $k[x,1/x]$. Then straightforward algebra shows that this can happen only when $f, g$ are constant, i.e, $\Gamma(\P^1,\sO_{\P^1})=k$.
 \end{example}
 
 \begin{example}[A DVR with double origin]
-	\label{example-dvr-double-origin}\marginnote{0007}
+	\label{example-dvr-double-origin}
 Similar to $\A^1$ with double origin, we can glue two copies of a DVR. Let $R$ be a discrete valuation ring. Then $\Spec R$ has exactly two point: the generic point (zero ideal) and the closed point (maximal ideal). The generic point is open in $\Spec R$ and is given by $\Spec K$, where $K$ is quotient field of $R$. As for $\A^1$, the ring of global sections of a DVR with double origin is $R$.
 
 Furthermore, to determine any coherent sheaf (a quasi-coherent sheaf which is a finitely generated module on each copy of $R$) it is sufficient to give a pair $(n,T)$ where $n$ is a positive integer and $T\in Gl_n(K)$. Since $R$ is a principal ideal domain, any finitely generated $R$-module $M$ is a direct sum of its free and torsion parts. Thus, if $M, N$ are two finitely generated $R$-modules,there exists an isomorphism (given by a $K$-linear map) $M\otimes K \simeq N\otimes K$ if and only if the rank of their free parts is the same. Of course, this description is not unique. However, if we restrict to locally free sheaves, then we have a correspondence between locally free sheaves on DVR with a double origin and pair $(n,T)$.
@@ -399,18 +398,18 @@ Furthermore, to determine any coherent sheaf (a quasi-coherent sheaf which is a 
 \end{comment}
 
 \subsection{\texorpdfstring{$P$}{P} versus locally \texorpdfstring{$P$}{P}.}
-\label{subsection-P-versus-locallyP}\marginnote{0008}
+\label{subsection-P-versus-locallyP}
 All the above are examples of locally normal (in fact, regular), locally reduced and locally Noetherian scheme\footnote{This is probably not standard notation, but instructive for the current discussion.}. For any property that is locally $P$ (as defined in \ref{lemma-locally-P}), the usual rule of thumb for nomenclature is $P=$ locally $P\,\,+$ quasi-compact: for example, a scheme is Noetherian if it is locally Noetherian and quasi-compact. Not all properties are of this type: for example quasi-compactness, sepratedness, properness, etc. We will come back to this when we discuss morphisms.
 
 
 
 \subsection{Line Bundles on \texorpdfstring{$\P^1$}{P1}.}
-\label{P1-line-bundles}\marginnote{0009}
+\label{P1-line-bundles}
  Locally on an affine open, this should be a free module of rank one. Let's contruct one such line bundle (non-trivial, of course): There are two open sets, $D(x)$ and $D(y)$, on these our line bundle looks like $k[x]$ and $k[y]$, respectively. Now, how do they glue on $k[x,1/x]\simeq k[y,1/y]$? Let's use the map which sends $\phi(1):f(x)\mapsto f(x)y$, since $y$ is $1/x$ in this ring, we see that the global sections are linear polynomials. You construct such a map $\phi(n)$ for every power of $y$. That will give you degree $n$ monomials. These line bundles are called $\sO(n)$'s. Playing around with the algebra of the maps $\phi(n)$ a little will that these line bundles satisfy relations like $\sO(n)\otimes\sO(m)\simeq \sO(m+n)$, and admit duals which are denote by $\sO(-n)$.\footnote{The line bundle $\sO(1)$ is important. To say that a variety is projective, we need to show that something like $\sO(1)$ lives on it. Actually, some lesser works, but we will come back to this later.}
 [Discussed till here as of August 28, 2020]
 
 
-\begin{example}[A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}]\label{example-projective-space}\marginnote{000A}
+\begin{example}[A slightly more involved scheme: \texorpdfstring{$\P^n$}{Pn}]\label{example-projective-space}
 Consider 
 \[D(x_i):= \Spec k[x_{0/i},x_{1/i},\ldots,\ldots,x_{n/i}]/(x_{i/i}-1).\]
 This is basically the same as $\A^n$, but we write it like this for reasons that will become evident soon. If we invert one of the variables, say $x_{j/i}$, we can write an isomorphism $D(x_i)_{x_{j/i}}\cong D(x_j)_{x_{i/j}}$ given by the maps 
@@ -419,7 +418,7 @@ This is basically the same as $\A^n$, but we write it like this for reasons that
 Now we just have to check that this agrees on triples. For this, you just have to check that $\phi_{ij}\circ\phi_{jk}=\phi_{ik}$ (what is the (co)domain of these maps?). Note that this construction doesn't really utilise the fact that $k$ is a field.
 \end{example}
 
-\subsection{A classical interlude.}\label{subsection-homogeneous-coordinates}\marginnote{000B}
+\subsection{A classical interlude.}\label{subsection-homogeneous-coordinates}
 Here's a classical definition of $\P^n$ in terms of \textit{homogeneous coordinates}. Let $k$ be a field. Consider $k^{n+1}\setminus{(0,0,\ldots,0)}$. We define $\P^n$ to be:
 \[\P^n:=\lbrace (x_0,x_1,\ldots,x_n)\; |\; (x_i)\simeq (y_i)\; \text{if there is a $\lambda\in k^{\times}$ such that for all $i$,}\; x_i=\lambda y_i\rbrace\]
 
@@ -428,7 +427,7 @@ We denote the equivalence class of the tuple $(x_i)$ by $[x_0:x_1:\ldots:x_n]$. 
 If an $x_j$ is non-zero, for a $j$ distinct from $i$, then we can divide by it. This gives us the relation, $x_{k/i}/x_{j/i}=x_{k/j}$. This is the origin of the morphisms $\phi_{ij}$ above\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}. Homogenisation and de-homogenisation(?).
 
 
-\subsection{Proj of a graded ring.}\label{subsection-proj-construction}\marginnote{000C}
+\subsection{Proj of a graded ring.}\label{subsection-proj-construction}
 Now that we have defined $\P^n$, I want to motivate the proj construction for graded rings using the example of $\P^n$. In a sense, this construction is not very different from the gluing construction above. However, it gives us more control ove the algebra and sheaf theory of $\P^n$ and its subschemes. For example, every closed subscheme of $\P^n$ comes from a graded ideal (this is a neat analogue of the affine case). Another advantage is that it lets us talk about affine open covers given by the complements of non-linear hypersurfaces. This can be useful when dealing with closed subschemes of $\P^n$, but then we won't need to make any choices about waht affine covers should be. 
 
 Consider the ring $S_{\bullet}:=k[x_0,x_1,\ldots,x_n]$, now thought of as a graded ring with the grading given by degrees of monomials. The degree of a monomial $x^{r_1}_{i_1}\ldots x^{r_m}_{i_m}$ is the integer $r_1+\ldots +r_m$. The constants have degree zero. We can write our ring as $S_{\bullet}=\oplus_{i\geq 0}S_i$, where each $S_i$ is the homogeneous component of degree $i$. Note that $S_{\bullet}$ is generated by the elements $x_i$'s as an $S_0$-algebra (here, $S_0$ is $k$). The ideal generated by the $x_i$'s is just $S_{+}=\oplus_{i>0}S_i$. This is just the ideal $(x_0,\ldots,x_n)$ written by keeping track of the grading. We will call this the irrelevant ideal. Then, proj of the graded ring $S_{\bullet}$, $\Proj(S_{\bullet})$ is the set of those \text{homogeneous} prime ideals which do not contain $S_+$. This inherits a Zariski topology from $\Spec S_{\bullet}$. We can then to check that this is a scheme by producing affine open covers using the homogeneous elements. The resulting scheme is $\P^n$.
@@ -452,7 +451,7 @@ This will, then, recover our original construction of $\P^1$.
 Note that if you just invert $x^2$ and $xy$, then this does not give a cover $\P^1$, since the the radical of $(x^2,xy)$ does not contain the irrelevant ideal. Geometrically speaking, this is because inverting $xy$ corresponds to the affine open of $\P^1$ obtained by removing $0$ and $\infty$. However, the radical of the ideal $(x^2,y^2)$ does, indeed, contain the irrelevant ideal\footnote{This was pointed out to me by Kartik Roy.}. This makes geometric sense because the elements $x$ and $x^2$ have the same vanishing locus.
 
 \subsection{Closed subschemes of \texorpdfstring{$\P^n$}{Pn}.}
-\label{subsection-closed-in-proj}\marginnote{000D}
+\label{subsection-closed-in-proj}
 Just as in closed subschemes of an affine scheme $\Spec R$, are given by ideals $I\subset R$, closed subschemes of $\P^n$ correspond to homogeneous ideals of $k[x_0,\ldots,x_n]$.
 
 Let $Y\overset{i}{\hookrightarrow} \P^n$ be a closed subscheme. This is given by a sheaf of ideals $\sI$ such that,
@@ -497,7 +496,7 @@ An example of a non-Noetherian scheme is $\Spec R[x_1,x_2,\ldots]$.
 \end{example}
 
 
-\begin{example}\label{example-forms}\marginnote{000E}
+\begin{example}\label{example-forms}
 $V_{+}(x^2+y^2+z^2)$ over $\R$ and $\C$. $V_{+}(x^2+y^2+z^2)$ denotes the homogeneous prime ideals which contain the ideal $(x^2+y^2+z^2)$. Let $k=\R$ or $\C$. Consider, $\P_k^2=\Proj k[x,y,z]$. By the above discuss on closed subschemes of $\P^n$, $V_{+}(x^2+y^2+z^2)$ can be thought of as the closed subscheme $X=\Proj k[x,y,z]/(x^2+y^2+z^2)\subset \P_k^2$. This gives a curve in $\P_k^2$.\\
 Over $\C$, one have the following linear change of coordinates, 
 \[(x,y,z)\mapsto (x+iy,x-iy,iz).\] 
@@ -512,13 +511,13 @@ On the other hand, over $\R$ the equation $x^2+y^2+z^2$ has no real solutions. S
 \end{example}
 
 
-\begin{remark}[Forms]\label{remark-forms}\marginnote{000F}
+\begin{remark}[Forms]\label{remark-forms}
 	Note that $V_+(x^2+y^2+z^2)\subset \P_{\R}^2$ has the following interesting property: $V_+(x^2+y^2+z^2)\times_{\R}\Spec \C\simeq \P_{\C}^1$, but $V_+(x^2+y^2+z^2)$ itself not isomorphic to $\P_{\R}^1$. In algebra, this is the notion of a ``form": these are objects that become the given object \textit{after a field extension}. For example, algebraic tori become isomorphic to $\G_m^n$ after field extension. In geometry (especially differential geometry), this notion is called local triviality\footnote{The word ``local" needs to be interpreted correctly. We will do this in section \ref{section-sites}.}.
 	
 	Things which become projective space after field extension - like $V_+(x^2+y^2+z^2)$ - are called  \textit{Brauer-Severi varieties}.
 \end{remark}
 
-\begin{example}\label{example-blow-up}\marginnote{000G}
+\begin{example}\label{example-blow-up}
 	Blow-up of $\A^2$ at the origin. This is described as 
 	\[Y:=\lbrace ((x,y),[X:Y])\subset \A^2\times\P^1\; |\; xY=yX\rbrace\]
 	This comes with a projection map $p: Y\rightarrow \A^2$. Observe that outside the origin this is an isomorphism, i.e, $p^{-1}(\A^1\setminus 0)=\A^1\setminus 0$, and $p^{-1}(0)=\P^1$. Blow-up can be defined canonically using the Proj construction. If $I$ is an ideal of $\Spec A$, then Blow-up along $V(I)$ is $\Proj(\oplus_{n\geq 0}I^n)$. Observe that $\oplus_{n\geq 0}I^n$ can be thought of as a graded ring over $I^0:= A$. One can sheafify this construction to define blow-ups in arbitrary schemes\footnote{You will have to make sense of the Proj of a sheaf of graded algebras first! Do this by gluing the affine local patches.}.%(because everyone should know about blow-ups!)
@@ -546,7 +545,7 @@ On the other hand, over $\R$ the equation $x^2+y^2+z^2$ has no real solutions. S
 \section{Morphisms}
 As mentioned before, many of the properties of morphisms that we are interested in are ``globalised" versions of properties of ring maps. However, we have to first say what it means for morphism of schemes to be a local property. There are three kinds of local properties: local on the source, local on the target, local on the source and target. We will say what this means now:
 
-\begin{definition}\label{definition-locally-P-morphisms}\marginnote{000H}
+\begin{definition}\label{definition-locally-P-morphisms}
 	Let $\mathcal{P}$ be a property of morphisms of schemes. Let $f:X\rightarrow Y$ be a morphism which satisfies $\mathcal{P}$. Then,
 	\begin{enumerate}
 		\item We say that $\mathcal{P}$ is \textit{affine-local on the target} if given any affine open cover $\lbrace V_i\rbrace$ of $Y$, $f:X\rightarrow Y$ has $\mathcal{P}$ if and only if the restriction $f: f^{-1}(V_i)\rightarrow V_i$ has $\mathcal{P}$ for each $i$.
@@ -592,7 +591,7 @@ The above is a prototypical example of many kinds of morphisms.
 \end{example}
 	
 	
-\begin{example}\label{example-family-nodal}\marginnote{0017}
+\begin{example}\label{example-family-nodal}
 	Consider the nodal curve over $\A^1$ given by $\Proj k[t][X,Y,Z]/(XY-tZ^2)\rightarrow \Spec k[t]$. Affine locally, this has the form,
 	\[k[t]\rightarrow k[t][X,Y]/(XY-t).\]
 	Differentiating with respect to $X$ and $Y$, we get the Jacobian $[Y\;\; X]$. This can be zero only when $t=0$. Geometrically, this is a family of hyperbolas which degenerate to a pair of lines when $t=0$. Note that the restriction of this curve to $D(Y)$ and $D(X)$, are smooth (it given by the equations $X-tZ^2$ and $Y-tZ^2$ which are families of parabolas degenerating to the axes). Seen from the opposite view-point, this tells us that homogenisation of smooth curves is not necessarily smooth!
@@ -616,7 +615,9 @@ Open embedding $\Rightarrow$ \'{e}tale $\Rightarrow$ flat and locally of finite 
 \end{comment}
 
 
-\begin{example}[Separatedness is not a local property] Not all properties can be described locally. For example, take the line with the double origin. Then on each of the two $\A^1$'s is separated, but the whole scheme is not. 
+\begin{example}[Separatedness is not a local property]
+	 \label{example-not-local-property}
+	 Not all properties can be described locally. For example, take the line with the double origin. Then on each of the two $\A^1$'s is separated, but the whole scheme is not. 
 	
 Note, however, that separatedness is stable under base-change. A similar statement is true about properness.
 	
@@ -624,7 +625,7 @@ Note, however, that separatedness is stable under base-change. A similar stateme
 
 
 \subsection{Morphisms to \texorpdfstring{$\P^n$}{Pn}.}
-\label{subsection-functor-of-Pn}\marginnote{000J} 
+\label{subsection-functor-of-Pn} 
 
 Let $X$ be a scheme. Then a morphism $X\rightarrow\P^n$ is the same as a line bundle $\sL$ on $X$ and $n+1$ sections $s_0,\ldots,s_n \in \Gamma (\sL,X)$ which globally generate $\sL$\footnote{This means that the global sections correspond to a surjection of sheaves $\sO_X^{\oplus n+1}\twoheadrightarrow \sL$}. Note that given a morphism $f: X\rightarrow \P^n$, the pullback $f^* \sO(1)$ and the global sections $f^*x_i$ is such a datum.
 
@@ -633,16 +634,16 @@ Given such line bundle $\sL$ with $n+1$ sections which globally generate it, we 
 This gives us $n$ sections $s_0/s_i,\ldots,s_n/s_i$ on $X_i$. Thus, we get a map $f_i:X_i\rightarrow \A^n$ corresponding to these sections. We can identify this $\A^n$ with $D(x_i)$. It is now suffices to check that $f_i$'s agree on the intersections. This follows because $s_j/s_i$ is invertible on $X_i\cap X_j$.
 
 
-\section{Sites, Sheaves, and Representable functors}\label{section-sites}\marginnote{000K}
+\section{Sites, Sheaves, and Representable functors}\label{section-sites}
 
 In this section, we will collect all the ``sheafy jargon"\footnote{This may or may not be used in the sequel.} As I have mentioned before, modern Moduli theory is set in this language. Hence, it is a good idea to review some key points. More details can be found in Vistoli's notes on Descent (Chapter 1 of FGA Explained, \cite{FGAExplained}) or the Stacks project \cite{stacks-project}.
 
 \subsection{A Commutative Algebra Detour.}
 We begin with the following lemma which we will use at the end of this section to prove Theorem \ref{theorem-fpqc-representable}.
 
-\begin{lemma}[Amitsur's Lemma]\label{lemma-Amitsur}\marginnote{000L}
+\begin{lemma}[Amitsur's Lemma]\label{lemma-Amitsur}
 Let $f: A\rightarrow B$ be a faithfully flat ring map. Then the following sequence of $A$-modules is exact:
-\begin{equation}\label{equation-fpqc-modules}\marginnote{0018}
+\begin{equation}\label{equation-fpqc-modules}
 0\rightarrow A\overset{f}{\rightarrow} B \overset{e_1-e_2}{\rightarrow} B\otimes_A B.
 \end{equation}
 Here, $e_1$and $e_2$ are the inclusions $b\otimes 1$ and $1\otimes b$, respectively.
@@ -652,9 +653,9 @@ Note that since $f$ is faithfully flat, it is injective (why?), and that $(e_1-e
 
 Let us first consider the special case when $f:A\rightarrow B$ is a retract, i.e, there exists a $g:B\rightarrow A$ such that $g\circ f = id_A$. Now, take a $b\in Ker(e_1-e_2)$, so that  $b\otimes 1 = 1\otimes b \in B\otimes_A B$. The retraction $g$ gives us a map $B\otimes_A B\overset{g\otimes id}{\rightarrow} A\otimes_A B\simeq B$. Applying this to the previous equality gives, $g(b)\otimes 1=1\otimes b$, which is the same as $g(b)\cdot 1=b$. Now, note that $f(g(b)\cdot 1)=g(b)\cdot f(1)=b$, since $f$ is an also $A$-module homomorphism, showing exactness.
 
-Now, observe that tensoring (\ref{fpqc-modules}) with $\otimes_A B$ gives a sequence,
+Now, observe that tensoring (\ref{equation-fpqc-modules}) with $\otimes_A B$ gives a sequence,
 \[0\longrightarrow A\otimes_A B\overset{f\otimes id}{\longrightarrow} B\otimes_A B \overset{(e_1-e_2)\otimes id}{\longrightarrow} B\otimes_A B\otimes_A B.\]
-The map $f\otimes id$ is also a faithfully flat ring map. Moreover, it has a retraction\footnote{All these statements about retractions are just a dual way for saying that the map $\Spec B\rightarrow \Spec A$ has a section.} $g: B\otimes_A B\rightarrow A\otimes_A B$ given by $b\otimes b'\mapsto 1\otimes bb'$. Thus, this sequence is exact. Now, faithful flatness implies the exactness of (\ref{fpqc-modules}).
+The map $f\otimes id$ is also a faithfully flat ring map. Moreover, it has a retraction\footnote{All these statements about retractions are just a dual way for saying that the map $\Spec B\rightarrow \Spec A$ has a section.} $g: B\otimes_A B\rightarrow A\otimes_A B$ given by $b\otimes b'\mapsto 1\otimes bb'$. Thus, this sequence is exact. Now, faithful flatness implies the exactness of (\ref{equation-fpqc-modules}).
 \end{proof}
 
 
@@ -673,7 +674,7 @@ The higher tensor powers are described similarly as alternating sums\footnote{Th
 We will now discuss some ``sheafy jargon".
 
 \begin{definition}
-	\label{definition-family-morphisms-fixed-target}\marginnote{000M}
+	\label{definition-family-morphisms-fixed-target}
 	Let $\mathcal{C}$ be a category. A {\it family of morphisms with fixed target} in $\mathcal{C}$ is	given by an object $U \in \Ob(\mathcal{C})$, a set $I$ and
 	for each $i\in I$ a morphism $U_i \to U$ of $\mathcal{C}$ with target $U$.
 	We use the notation $\{U_i \to U\}_{i\in I}$ to indicate this.
@@ -682,7 +683,7 @@ We will now discuss some ``sheafy jargon".
 Our categories will almost always admit fiber products.
 
 \begin{definition}
-	\label{definition-site}\marginnote{000N}
+	\label{definition-site}
 	A {\it site}\footnote{This notation differs from that of SGA4. This is what they call a category with a pretopology.} is given by a category $\mathcal{C}$ and a set
 	$\text{Cov}(\mathcal{C})$ of families of morphisms with fixed target
 	$\{U_i \to U\}_{i \in I}$, called {\it coverings of $\mathcal{C}$},
@@ -751,7 +752,7 @@ The next two definitions capture some general notions about sites that good to k
 \noindent\textbf{Notation:} For the next definition we will adopt the following terminology: Let $\mathcal{P}$ be a property of morphisms of schemes which is stable under composition and base change, and includes isomorphisms. A \textit{family of $\mathcal{P}$-morphisms} is collection of morphisms $\{U_i \overset{f_i}{\to} U\}_{i\in I}$ such that each $f_i\in \mathcal{P}$ and is jointly surjective, i.e, $U = \bigcup f_i(U_i)$. Since $\mathcal{P}$ is stable under composition and base change and includes isomorphisms, it is easy to see that these famililes will define a topology on $\mathit{Sch}$, which we will denote by $\tau$.
 
 
-\begin{definition}[Big site, Small site]\label{definition-big-small-site}\marginnote{000P}
+\begin{definition}[Big site, Small site]\label{definition-big-small-site}
 	Let $(\mathit{Sch}/S)$ be the category of schemes over $S$ and let $\tau$ be a topology on schemes which comes from families of $\mathcal{P}$-morphisms. We have the following conventions for topologies on $(\mathit{Sch}/S)$:
 	\begin{enumerate}
 		\item[\textsc{Big site:}] For the topology $\tau$, we denote the site by $(\mathit{Sch}/S)_{\tau}$ and call it the \textit{Big $\tau$ site}.
@@ -776,7 +777,7 @@ Notable examples are the smooth-\'{e}tale\footnote{Also called the lisse-\'{e}ta
 \end{definition}
 
 \begin{example}[Functor of points]
-	\label{example-hom-functor}\marginnote{000Q}
+	\label{example-hom-functor}
 
 	For any $U\in \Ob(\mathcal{C})$ there is a
 	functor
@@ -820,7 +821,7 @@ $$
 The following lemma says that $h$ is a fully faithful embedding.
 
 \begin{lemma}[Yoneda lemma]
-	\label{lemma-yoneda}\marginnote{000R}
+	\label{lemma-yoneda}
 	Let $U, V \in \Ob(\mathcal{C})$.
 	Given any morphism of functors $s : h_U \to h_V$
 	there is a unique morphism $\phi : U \to V$
@@ -836,7 +837,7 @@ The following lemma says that $h$ is a fully faithful embedding.
 \end{lemma}
 
 \begin{definition}
-	\label{definition-representable-functor}\marginnote{000S}
+	\label{definition-representable-functor}
 	A presheaf $F : \mathcal{C}^{opp}\to \textit{Sets}$ is said
 	to be {\it representable} if it is isomorphic to the functor of
 	points $h_U$ for some object $U$ of $\mathcal{C}$.
@@ -844,7 +845,7 @@ The following lemma says that $h$ is a fully faithful embedding.
 
 Seen one way, the basic objective in moduli theory is to show representability of various presheaves. We will often confuse a scheme $X$ with its associated functor $h_X$.
 
-\begin{example}[Three representable functors]\label{example-three-representable}\marginnote{000T} 
+\begin{example}[Three representable functors]\label{example-three-representable} 
 	We will now describe three important functors which are representable\footnote{Convince yourself that all these assignments define presheaves of sets.}.
 	\begin{enumerate}
 		\item $X \mapsto \Gamma (X,\sO_X)^{\oplus n}$. This is same as giving a ring map $\Z[x_1,\ldots,x_n]\rightarrow \Gamma (X,\sO_X)^{\oplus n}$. But such a ring map corresponds a morphism to $\A_{\Z}^n$.
@@ -856,7 +857,7 @@ Seen one way, the basic objective in moduli theory is to show representability o
 
 
 \begin{example}[A non-representable functor]
-	\label{example-functor-of-conics}\marginnote{000U} 
+	\label{example-functor-of-conics} 
 	I have taken this example from \cite{Bogges}. Let $k$ be an algebraically closed field. Consider the functor $F$ which assigns to any $k$-scheme $S$ a conic in $\P_S^2$ upto isomorphism. That is, 
 	\begin{align*}
 	F: (\mathit{Sch}/k)^{opp} & \rightarrow \mathit{Sets}\\
@@ -870,7 +871,7 @@ Seen one way, the basic objective in moduli theory is to show representability o
 	
 	For if it were representable, then there would exist a scheme $X$ such that $F\simeq h_X$. Moreover, for any $k$-scheme $S$, any element of $F(S)$ would then correspond to a morphism of schemes $S\rightarrow X$ (why?). Now, upto isomorphism there are only two conics in $\P_k^2$: the pair of lines $P$, and the smooth conic $Q$. This means that $X$ has only two $k$ points which we will also denote by $\{p,q\}$, respectively.
 	
-	Consider the family $Z$ over $\A_t^1$ described in Example \ref{family-nodal} (here the subscript $t$ is just to keep track of the variable used to define $\A^1$). This is a family of conics given by the equation $XY-tW^2$ in $\P_{\A_t^1}^2$. Its geometric fibres are given by,
+	Consider the family $Z$ over $\A_t^1$ described in Example \ref{example-family-nodal} (here the subscript $t$ is just to keep track of the variable used to define $\A^1$). This is a family of conics given by the equation $XY-tW^2$ in $\P_{\A_t^1}^2$. Its geometric fibres are given by,
 	\begin{center}
 		\begin{align*}
 		Z_t = &\left\{
@@ -893,14 +894,14 @@ Seen one way, the basic objective in moduli theory is to show representability o
 \end{center}
 
 Let $\sF$ be a presheaf on $\mathcal{C}$. For the above covering we have a diagram,
-\begin{equation}\label{equation-sheaf-condition}\marginnote{000V}
+\begin{equation}\label{equation-sheaf-condition}
 \begin{tikzcd}
 \sF(U)\arrow[r] &\prod_{i\in I} \sF(U_i)\arrow[r,shift left,"\text{pr}^*_0"]\arrow[r,shift right,"\text{pr}^*_1"'] & \prod_{i,j\in I}\sF(U_i\times_U U_j)
 \end{tikzcd}
 \end{equation}
 
 \begin{definition}
-	\label{definition-sheaf}\marginnote{000W}
+	\label{definition-sheaf}
 	Let $\mathcal{C}$ be a site, and let $\mathcal{F}$ be a presheaf of sets
 	on $\mathcal{C}$. We say $\mathcal{F}$ is a {\it sheaf} if
 	for every covering $\{U_i \to U\}_{i \in I} \in \text{Cov}(\mathcal{C})$,
@@ -923,7 +924,7 @@ that $s_i = s|_{U_i}$\footnote{It is instructive to write out all the details in
 
 
 \begin{definition}
-	\label{definition-category-sheaves-sets}\marginnote{000X}
+	\label{definition-category-sheaves-sets}
 	The category {\it $\Sh(\mathcal{C})$}
 	of sheaves of sets is the full subcategory of the category
 	$\textit{PSh}(\mathcal{C})$ whose objects are the sheaves of sets.
@@ -932,19 +933,19 @@ that $s_i = s|_{U_i}$\footnote{It is instructive to write out all the details in
 
 If the inclusion $\iota: \Sh(\mathcal{C})\hookrightarrow \textit{Psh}(\mathcal{C})$ admits a left adjoint, we call it the \textit{sheafification functor}. It may not exist even if fairy concrete situations. For example, it does not exist in the fpqc topology (see \cite[Theorem 5.5]{Waterhouse-fpqc-sheafification}). However, we have the following theorem due to Grothendieck.
 
-\begin{theorem}[Grothendieck]\label{theorem-fpqc-representable}\marginnote{000Y}
+\begin{theorem}[Grothendieck]\label{theorem-fpqc-representable}
 	Every representable functor satisfies the sheaf property in the fpqc topology.
 \end{theorem}
 
 We always want representable objects to be sheaves, as the sheaf property expresses the correct categorical notion of ``gluing" things. And representable functors being sheaves means that morphisms glue. Moreover, the statements in Definition \ref{definition-locally-P-morphisms} can now be generalised to covering families of the various topologies on schemes.
 
-\begin{definition}\label{definition-subcanonical-site}\marginnote{000Z}
+\begin{definition}\label{definition-subcanonical-site}
 	Let $\mathcal{C}$ be a category. We say that a topology $\tau$ on $\mathcal{C}$ is \textit{subcanonical} if every representable functor is a sheaf with respect to $\tau$. The \textit{canonical} topology is the finest on $\mathcal{C}$ such that every representable functor is a sheaf.
 \end{definition}
 
 
 \begin{example}[A non-subcanonical site]
-	\label{example-non-subcanonical-site}\marginnote{0010}
+	\label{example-non-subcanonical-site}
 	Consider the topology on $(\textit{Sch})$ with coverings given by $\{U_i \to U\}_{i \in I}$ which are jointly surjective families of flat morphisms. This ``wild" flat topology is not subcanonical.
 	
 	Take a smooth integral curve $U$ over an algebraically closed field $k$\footnote{For example, take $\P^1$.}. Let $K$ be its quotient field. For every closed point $p\in U(k)$, consider the spectrum of its local ring $V_p:=\Spec \sO_{U,p}$. Then $\{V_p \to U\}_{p \in U(k)}$ is a covering in this wild flat topology.
@@ -965,7 +966,7 @@ We always want representable objects to be sheaves, as the sheaf property expres
 To prove Theorem \ref{theorem-fpqc-representable}, we will use the following lemma.
 
 \begin{lemma}
-	\label{lemma-sheaf-property-fpqc}\marginnote{0011}
+	\label{lemma-sheaf-property-fpqc}
 	Let $F$ be a presheaf on the category of schemes with values in sets. Then $F$ satisfies the sheaf property for the fpqc topology if and only
 	if it satisfies
 	\begin{enumerate}
@@ -1008,7 +1009,7 @@ Let $F,G$ be two functors on a category $\mathcal{C}$ with values in $\mathit{Se
 
 
 \begin{definition}
-	\label{definition-representable-map-presheaves}\marginnote{0012}
+	\label{definition-representable-map-presheaves}
 	Let $\mathcal{C}$ be a category.
 	Let $F, G : \mathcal{C}^{opp} \to \textit{Sets}$
 	be functors. We say a morphism $a : F \to G$ is
@@ -1024,7 +1025,7 @@ Let $F,G$ be two functors on a category $\mathcal{C}$ with values in $\mathit{Se
 We have the following lemma about representable morphisms.
 
 \begin{lemma}
-	\label{lemma-representable-diagonal}\marginnote{0013}
+	\label{lemma-representable-diagonal}
 	Let $\mathcal{C}$ be a category.
 	Let $F : \mathcal{C}^{opp} \to \textit{Sets}$ be a functor.
 	Assume $\mathcal{C}$ has products of pairs of objects and fibre products.
@@ -1049,7 +1050,7 @@ Representable morphisms of functors is a useful notion because any property of m
 Henceforth, we will confuse $U$ with its functor of points $h_U$.
 
 \begin{example}[A morphism representable by affine schemes]
-	\label{example-G-H-bundles}\marginnote{0019}
+	\label{example-G-H-bundles}
 	Let $G$ be a finite group. Let $X$ be a scheme with a free and faithful action $G$. Define the functor $X_G$ which classifies \textit{principal $G$-bundles with an equivariant map to $X$}, as follows
 	\begin{align*}
 	X_G: (\mathit{Aff})^{opp} & \rightarrow \mathit{Sets}\\
@@ -1059,7 +1060,7 @@ Henceforth, we will confuse $U$ with its functor of points $h_U$.
 	V
 	\end{tikzcd}\right\} \Bigg/\!\sim
 	\end{align*}
-	where $p: P\rightarrow V$ is a principal $G$-bundle and $\phi$ is a $G$-equivariant map. We will denote this entire data by the map $p$, and say that $p\in X_G(V)$. 
+	where $p: P\rightarrow V$ is a principal $G$-bundle and $\phi$ is a $G$-equivariant map. We will denote this entire data by the map $p$, and say that $p\in X_G(V)$. Note that if the quotient $X/G$ exists (as a scheme), then the $X_G$ is precisely represented by $X/G$\footnote{$X/G$ may not be a scheme (see Remark \ref{remark-algebraic-spaces}).}.
 	
 	If $H$ is a subgroup of $G$, we also have an action of $H$ of $X$. This gives us a functor $X_H$ which is defined similarly. There is a natural map $\alpha: X_H\rightarrow X_G$ which send any principal $H$-bundle $q: Q\rightarrow V$ to the principal $G$-bundle $Q\times_H G\rightarrow V $. The map $\alpha$ is affine\footnote{if $H$ is normal, it is, in fact, a $G/H$-torsor.}. For any affine $V$, quotients by finite groups exist as affine scheme\footnote{Take $\Spec R^G$, the $G$-invariant subring of $R$.}. We will show that the base change $X_H\times_{X_G} V$ is representable by $(P\times_H G)/G$, where $P$ is the $G$-bundle associated to the map $p:V\rightarrow X_G$.
 	
@@ -1098,7 +1099,7 @@ The above observation about $(G,H)$-bundles is canonical and applies to schemes 
 \end{proof}
 
 \begin{example}[A representable diagonal]
-	\label{example-schematic-diagonal}\marginnote{001A}
+	\label{example-schematic-diagonal}
 	Let $\mathit{FSch/k}$ be the category of finite type schemes over an algebraically closed field $k$. Let $F$ be the functor on $\mathit{FSch/k}$ defined in Example \ref{example-functor-of-conics}. The diagonal of this functor $\Delta: F\rightarrow F\times_k F$ is representable by $k$-schemes! I will add a proof soon. These is essentially because we have flat families. Moduli problems dealing with non-flat families are almost impossible to work with.
 	
 	By Lemma \ref{lemma-representable-diagonal}, it is sufficient to prove that for any $U,V$ and any morphisms $\xi:U\rightarrow F$, $\xi':V\rightarrow F$, The fibre product $U\times_{\xi,F,\xi'} V$ is representable. By definition, $\xi$ and $\xi'$ are closed subschemes $Z\subset \P_U^2$ and $Z'\subset \P_V^2$ which are flat over $U$ and $V$, respectively. Base-changing $Z$ and $Z'$ along the projection maps $U\times_k V\rightarrow U$ and $U\times_k V\rightarrow V$, we have two closed subschemes $Z\times_k V$ and $Z'\times_k U$ of $\P_{U\times_k V}^2$ which are flat over $U\times_k V$. Then, then following lemma implies that $U\times_{\xi,F,\xi'} V$ is representable by a closed subscheme of $U\times_k V$.
@@ -1108,7 +1109,7 @@ The above observation about $(G,H)$-bundles is canonical and applies to schemes 
 	%We claim that this $W$ represents $U\times_{\xi,F,\xi'} V$. Clearly, we have a map $W\rightarrow U\times_{\xi,F,\xi'} V$ given by $(\xi_W,\xi'_W)$.
 	
 \begin{lemma}
-	\label{lemma-equalising-flat-subschemes}\marginnote{0014}
+	\label{lemma-equalising-flat-subschemes}
 	Let $f: X\rightarrow S$ be a flat projective morphism of Noetherian schemes. Let $D$ and $E$ be two closed subschemes of $X$ with $E$ flat over $S$. Then there exists a closed subscheme $S'$ of $S$ such that for any morphism $T\rightarrow S$, the fibre product $T\times_S E\subseteq T\times_S X$ is contained in $T\times_S X$ if and only if the morphism $T\rightarrow S$ factors through $S'$.
 \end{lemma}
 
@@ -1118,7 +1119,7 @@ Since $Z$ and $Z'$ are both flat families, we get the required result\footnote{p
 
 
 \begin{definition}
-	\label{definition-separated-scheme-functor}\marginnote{0015}
+	\label{definition-separated-scheme-functor}
 	Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{separated scheme} if the following conditions are satisfied:
 	\begin{enumerate}
 		\item $F$ is a sheaf on $(\mathit{Aff})_{\textit{Zar}}$.
@@ -1130,7 +1131,7 @@ Since $Z$ and $Z'$ are both flat families, we get the required result\footnote{p
 We can tweak Definition \ref{definition-representable-map-presheaves} to the following: We will say $a: F\rightarrow G$ is \textit{representable by separated schemes} if the fibre product $h_U\times_G F$ is a separated scheme in the sense of Definition \ref{definition-separated-scheme-functor}.
 
 \begin{definition}
-	\label{definition-scheme-functor}\marginnote{0016}
+	\label{definition-scheme-functor}
 		Let $F$ be a functor on the category of affine schemes $\mathit{Aff}$. We say that $F$ is a \textit{scheme} if the following conditions are satisfied:
 	\begin{enumerate}
 		\item $F$ is a sheaf on $(\mathit{Aff})_{\textit{Zar}}$.
@@ -1142,6 +1143,7 @@ We can tweak Definition \ref{definition-representable-map-presheaves} to the fol
 Be sure to check this gives this agrees with the usual description of a scheme. (Hint: since the $U_i\times_F U_j$'s are schemes, you can glue the $U_i$ along these fibre products to construct a scheme $X$ and then show that it is isomorphic to the functor $F$.)
 
 \begin{remark}
+	\label{remark-algebraic-spaces}
 	It is not possible to directly define the category of schemes without defining separated schemes first. The reason is that for a scheme the intersection of affine opens need not be an affine. This kind of functorial description was first thought of by Artin (and Grothendieck) to define quotients by \'{e}tale equivalence relations\footnote{For example, a $\Z/2$-action on a proper threefold. The details will show up in detail at some point in our seminar.} that do not exist as schemes. These are what are called \textit{algebraic spaces} (replace Zariski with \'{e}tale in Definition \ref{definition-separated-scheme-functor} above and you will have defined an (separated) algebraic space). You will find mentions of such a construction for schemes in any source discussing algebraic spaces. However, the first place where I found a complete construction as above was in Martin Olsson's book (see \cite{olsson16})\footnote{Definition \ref{definition-scheme-functor} is the same as the one given in \cite{olsson16}. But, one could also use schemes with affine diagonal instead of separated scheme for this construction.}.
 \end{remark}
 
