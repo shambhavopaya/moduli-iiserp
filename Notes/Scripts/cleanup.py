@@ -1,5 +1,9 @@
 import glob
 import re
+import subprocess
+import shutil
+
+
 
 # no I, no O
 CHARACTERS = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ"
@@ -26,21 +30,17 @@ except FileNotFoundError:
   pass
 
 
-
 filenames = ["notes.tex"]
 
 
 for filename in filenames:
   file_data = open(filename).read()
   for key in tags.keys():
-      if "\label{"+ tags[key] + "}\marginnote{" + key + "}" not in file_data :
-          file_data = file_data.replace("\label{"+ tags[key] + "}" ,"\label{"+ tags[key] + "}\marginnote{" + key + "}")
-  new_filename = filename.replace("notes.tex","tags_notes.tex")
-  file = open(new_filename,"w")
+      if "\label{"+ tags[key] + "}\marginnote{" + key + "}" in file_data :
+          file_data = file_data.replace("\marginnote{" + key + "}", '')
+  #new_filename = filename.replace("notes.tex","cleanup_notes.tex")
+  file = open(filename,"w")
   file.write(file_data)
   file.close()
 
-subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
-subprocess.check_call(['bibtex', 'cleanup_notes'])
-subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
-subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
+
