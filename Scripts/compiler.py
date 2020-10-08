@@ -3,11 +3,11 @@ import shutil
 
 
 
-file = input('')
+#file = input('')
 
-subprocess.check_call(['pdflatex', file +'.tex'])
-subprocess.check_call(['bibtex', file])
-subprocess.check_call(['pdflatex', file + '.tex'])
-subprocess.check_call(['pdflatex', file + '.tex'])
+subprocess.check_call(['pdflatex', 'tag_notes.tex'])
+subprocess.check_call(['bibtex', 'tag_notes'])
+subprocess.check_call(['pdflatex', 'tag_notes.tex'])
+subprocess.check_call(['pdflatex', 'tag_notes.tex'])
 
-shutil.move(file +'.pdf', "notes.pdf")
+shutil.move("tag_notes.pdf", "notes.pdf")
