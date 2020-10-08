@@ -39,3 +39,8 @@ for filename in filenames:
   file = open(new_filename,"w")
   file.write(file_data)
   file.close()
+
+subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
+subprocess.check_call(['bibtex', 'cleanup_notes'])
+subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
+subprocess.check_call(['pdflatex', 'cleanup_notes.tex'])
