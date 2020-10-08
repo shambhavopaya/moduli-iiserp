@@ -38,3 +38,4 @@ for filename in filenames:
   new_filename = filename.replace(".tex","1.tex")
   file = open(new_filename,"w")
   file.write(file_data)
+  file.close()
