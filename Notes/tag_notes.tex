@@ -1149,6 +1149,92 @@ Be sure to check this gives this agrees with the usual description of a scheme. 
 \end{remark}
 
 
+
+\section{Hilbert Polynomials}
+
+In this section we will discuss theory of Hilbert polynomials of subschemes (and, more generally coherent sheaves) of $\P^n$. An important fact about Hilbert polynomials is that they are (locally) constant in flat families. This has some important consequences for the Hilbert scheme.
+
+\subsection{Integer-valued polynomials and polynomial-like functions.}
+
+This discussion has been taken from Serre's local algebra. For an integer $k$, we denote by $Q_k(X)$ the \textit{binomial polynomials}:
+\[Q_k(X) = \begin{pmatrix}
+X \\
+k
+\end{pmatrix} = \frac{X(X-1)\ldots(X-k+1)}{k!}\]
+We set $Q_0(X)=1$. These form a basis of $\Q[X]$.
+
+If $\Delta$ denotes the difference operator $\Delta f(n)=f(n+1)-f(n)$, observe that for $k> 0$:
+
+\begin{align*}
+\Delta Q_k(n) &= \frac{(n+1)n\ldots(n-k+2)}{k!} - \frac{n(n-1)\ldots(n-k+1)}{k!}\\
+&= \frac{n(n-1)\ldots(n-k+2)}{k!}[(n+1)- (n-k+1)]\\
+&= \frac{n(n-1)\ldots(n-k+2)}{(k-1)!}\\
+&= Q_{k-1}(n)
+\end{align*}
+
+\begin{lemma}
+	Let f be an element of $\Q[X]$. The following are equivalent:
+	\begin{enumerate}
+		\item $f$ is a $\Z$-linear combination of the binomial polynomials $Q_k$.
+		\item $f(n)\in \Z$ for all $n\in\Z$.
+		\item $f(n)\in \Z$ for all $n\in\Z$ large enough.
+		\item $\Delta f$ has property (1), and $f(n)\in\Z$ for some integer $n$.
+	\end{enumerate}
+\end{lemma}
+
+A polynomial $f$ satisfying the equivalent conditions of the above lemma is called an \textit{integer-valued polynomial}. Any such $f$ can be written as $\sum e_k Q_k$. We shall often write the coefficient of $Q_k$ as $e_k(f)$. A simple computation shows that $e_k(f)= e_{k-1}(\Delta f)$. If $deg(f)=\leq k$, then $\Delta^k f$ is the constant polynomial $e_k(f)$.
+
+We will now relate integer-valued polynomomials to certain special kind of integer valued functions. A function $f:\Z_{\geq n_0}\rightarrow Z$ is said to be \textit{polynomial-like} if there exists a polynomial $P_f(X)$ such that $f(n)=P_f(n)$ for $n\gg0$\footnote{This notation means for $n$ sufficiently large.}. $P_f$ is uniquely detemined by $f$. This is because if there exists another polynomial $Q_f$ such that $f(n)=Q_f(n)$ for $m\gg 0$, then $P_f-Q_f$ is zero for all $n$ large enough. But the degree of $P_f-Q_f$ is bounded. Hence, it is the zero polynomial. Note that this means $P_f$ is integer-valued.
+
+\begin{lemma}
+	The following are equivalent:
+	\begin{enumerate}
+		\item $f$ is polynomial-like;
+		\item $\Delta f$ is polynomial-like;
+		\item there exists $r\geq 0$ such that $\Delta^r f(n)=0$ for $n\gg 0$.
+	\end{enumerate}
+\end{lemma}
+
+\subsection{The Hilbert function.}
+Let $k$ be a field and $\sF$ a coherent sheaf on $\P_k^n$. By similar arguments as in \ref{subsection-closed-in-proj}, we can show that $\sF$ corresponds to a graded module $M_{\bullet}$ over the graded ring $S:= k[X_0,X_1,\ldots, X_n]$. We will the hilbert function for $\sF$ in terms of the associated graded module.
+
+Let $M_{\bullet}$ be a graded module over $S$. We define the \textit{Hilbert function} $\chi(M,n)$ of $M$ by the assignment $\chi(M,n): n\mapsto  dim_k(M_n)$\footnote{If $k$ was a Noetherian ring, then we can define the Hilbert function using length of $M_n$ over $k$}.
+
+\begin{theorem}
+	$\chi(M,n)$ is a polynomial-like function of $n$, of degree $\leq r-1$.
+\end{theorem}
+
+We call the associated polynomial as the Hilbert polynomial of $M$. For a closed subscheme $X\subseteq \P_k^n$, the Hilbert polynomial of $X$ is defined to be the Hilbert polynomial of the graded module $\Gamma(X):=S/I$, where $I$ is the graded ideal of $X$.
+We will now compute the Hilbert function in some concrete examples.
+
+\begin{example}
+	\begin{enumerate}
+		\item ($d$ points)
+		\item $d$-fold Veronese
+		\item degree $d$ curve in $\P_k^2$. Let $X\subset \P_k^2$ be a curve given by the irreducible homogeneous polynomial $F$ of degree $d$. For $m\geq d$, the $m$-th graded piece $I(X)_m$ of the ideal of $X$ is given by elements of the form $F\cdot(\Gamma(X))_{m-d}$.
+		Thus, we compute, for $m\geq d$,
+		\begin{align*}
+		\chi(\Gamma(X),m) & = \begin{pmatrix}
+		m + 2 \\
+		2
+		\end{pmatrix}
+		- \begin{pmatrix}
+		m - d + 2 \\
+		2
+		\end{pmatrix}\\
+		&= d\cdot m - \frac{(d-1)(d-2)}{2}
+		\end{align*} 
+	\end{enumerate}
+\end{example}
+
+%remarks on degree and dimension, and arithmetic genus.
+
+%We want to prove the following theorem:
+
+
+%\subsection{Flat base change.}
+
+
 \newpage
 \bibliography{Mybib.bib}
 \bibliographystyle{alpha}
