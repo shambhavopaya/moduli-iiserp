@@ -50,7 +50,7 @@ except IndexError:
 
 
 #filenames = glob.glob("*.tex")
-filenames = ["notes.tex"]
+filenames = ["Notes.tex"]
 
 # where we should start
 i = last + 1

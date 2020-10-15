@@ -30,7 +30,7 @@ except FileNotFoundError:
   pass
 
 
-filenames = ["notes.tex"]
+filenames = ["Notes.tex"]
 
 
 for filename in filenames:

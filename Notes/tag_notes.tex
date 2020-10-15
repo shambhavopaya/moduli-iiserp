@@ -1181,12 +1181,26 @@ If $\Delta$ denotes the difference operator $\Delta f(n)=f(n+1)-f(n)$, observe t
 		\item $\Delta f$ has property (1), and $f(n)\in\Z$ for some integer $n$.
 	\end{enumerate}
 \end{lemma}
+\begin{proof}
+	The implication $(1)\Rightarrow (2)\Rightarrow (3)$ is obvious. For $(1)\Rightarrow (4)$, given an $f$ which satisfies $(1)$, we compute
+	\begin{align*}
+	\Delta f(n) &= f(n+1) - f(n)\\
+	&= \sum_k e_k Q_k (n+1) - \sum_k e_k Q_k(n)\\
+	\end{align*}
+	Rearranging the terms, we see that
+	\[\Delta f(n)= \sum_k e_k \Delta Q_k(n)=\sum_k e_k Q_{k-1}(n)\]
+	Hence, $\Delta f$ satisfies property $(1)$.
+	
+	To prove $(4)\Rightarrow (1)$, write $\Delta f = \sum_k e_k Q_k$, with $e_k\in \Z$. Then, by the above computation, $f=\sum_k e_k Q_{k+1} + e_0$ with $e_0\in \Q$. But as $f$ take at least one integer value $e_0$ must be an integer. Hence, $(1)\Leftrightarrow (4)$.	
+	To prove $(3)\Rightarrow (1)$, we use induction on the degree of $f$. If $f$ is a constant, then this is certainly true. If $f$ has degree $n$, then note that the degree of $\Delta f$ is strictly less than $n$. So, by the induction hypothesis, $\Delta f$ satisfies property $(1)$. Moreover, $f(n)\in \Z$ for large enough $n$. Thus, $(3)\Rightarrow (4)\Leftrightarrow (1)$.
+\end{proof}
 
-A polynomial $f$ satisfying the equivalent conditions of the above lemma is called an \textit{integer-valued polynomial}. Any such $f$ can be written as $\sum e_k Q_k$. We shall often write the coefficient of $Q_k$ as $e_k(f)$. A simple computation shows that $e_k(f)= e_{k-1}(\Delta f)$. If $deg(f)=\leq k$, then $\Delta^k f$ is the constant polynomial $e_k(f)$.
+A polynomial $f$ satisfying the equivalent conditions of the above lemma is called an \textit{integer-valued polynomial}. Any such $f$ can be written as $\sum e_k Q_k$. We shall often write the coefficient of $Q_k$ as $e_k(f)$. A simple computation shows that $e_k(f)= e_{k-1}(\Delta f)$. If $deg(f)\leq k$, then $\Delta^k f$ is the constant polynomial $e_k(f)$.
 
 We will now relate integer-valued polynomomials to certain special kind of integer valued functions. A function $f:\Z_{\geq n_0}\rightarrow Z$ is said to be \textit{polynomial-like} if there exists a polynomial $P_f(X)$ such that $f(n)=P_f(n)$ for $n\gg0$\footnote{This notation means for $n$ sufficiently large.}. $P_f$ is uniquely detemined by $f$. This is because if there exists another polynomial $Q_f$ such that $f(n)=Q_f(n)$ for $m\gg 0$, then $P_f-Q_f$ is zero for all $n$ large enough. But the degree of $P_f-Q_f$ is bounded. Hence, it is the zero polynomial. Note that this means $P_f$ is integer-valued.
 
 \begin{lemma}
+	\label{lemma-polynomial-like-function}\marginnote{001E}
 	The following are equivalent:
 	\begin{enumerate}
 		\item $f$ is polynomial-like;
@@ -1194,23 +1208,57 @@ We will now relate integer-valued polynomomials to certain special kind of integ
 		\item there exists $r\geq 0$ such that $\Delta^r f(n)=0$ for $n\gg 0$.
 	\end{enumerate}
 \end{lemma}
+\begin{proof}
+	$(1)\Rightarrow (2)\Rightarrow (3)$ are straight-forward.
+	
+	For $(2)\Rightarrow (1)$, let $P_{\Delta f}$ be the polynomial associated to $\Delta f$. Let $R$ be an integer valued polynomial with $\Delta R= P_{\Delta F}$. Then, the function $g: n\mapsto f(n)-R(n)$ satisfies $\Delta g(n)=0$, for $n\gg 0$. Hence, $g$ is constant for $n\gg 0$, so that $f(n)=R(n)+e_0$ for $n\gg 0$. This shows that $f$ is polynomial-like.
+	
+	Applying $(2)\Rightarrow (1)$ $r$-times gives $(3)\Rightarrow (1)$.
+\end{proof}
 
 \subsection{The Hilbert function.}
-Let $k$ be a field and $\sF$ a coherent sheaf on $\P_k^n$. By similar arguments as in \ref{subsection-closed-in-proj}, we can show that $\sF$ corresponds to a graded module $M_{\bullet}$ over the graded ring $S:= k[X_0,X_1,\ldots, X_n]$. We will the hilbert function for $\sF$ in terms of the associated graded module.
+Let $k$ be a field and $\sF$ a coherent sheaf on $\P_k^n$. By similar arguments as in \ref{subsection-closed-in-proj}, we can show that $\sF$ corresponds to a graded module $M_{\bullet}$ over the graded ring $S:= k[X_0,X_1,\ldots, X_r]$. We will the hilbert function for $\sF$ in terms of the associated graded module.
 
 Let $M_{\bullet}$ be a graded module over $S$. We define the \textit{Hilbert function} $\chi(M,n)$ of $M$ by the assignment $\chi(M,n): n\mapsto  dim_k(M_n)$\footnote{If $k$ was a Noetherian ring, then we can define the Hilbert function using length of $M_n$ over $k$}.
 
 \begin{theorem}
-	$\chi(M,n)$ is a polynomial-like function of $n$, of degree $\leq r-1$.
+	$\chi(M,n)$ is a polynomial-like function of $n$, of degree $\leq r$.
 \end{theorem}
+\begin{proof}
+	We use induction on $r$. If $r=-1$\footnote{This is an oddity because of our choice of indexing.}, $M$ is a finitely generated module over $k$. Hence, $M_n=0$ for $n\gg 0$. Assume now that $r\geq 0$, and that the theorem has been proved for $r-1$. Let $\phi$ be the endomorphism of $M$ defined by $X_r$, i.e, $m\overset{\phi}{\mapsto} X_r m$. This is a graded endomosphism of degree $1$. We thus have a short exact sequence,
+	\[0\rightarrow N_n\rightarrow M_n\rightarrow M_{n+1}\rightarrow R_{n+1}\rightarrow 0\]
+	Hence:
+	\[\Delta\chi(M,n)=\chi(M,n+1)-\chi(M,n)=\chi(R,n+1)-\chi(N,n).\]
+	Since $X_r R=0=X_r N$, $R$ and $N$ can be viewed as graded modules over $k[X_0,X_1,\ldots,X_{r-1}]$. Therefore, by the induction hypothesis, $\chi(R,n)$ and $\chi(N,n)$ are polynomial-like functions of degree $\leq r-2$ and, so $\Delta\chi(M,n)$ has the same property. Thus, by Lemma \ref{lemma-polynomial-like-function}, $\chi(M,n)$ is polynomial-like of degree $\leq r-1$.
+\end{proof}
 
-We call the associated polynomial as the Hilbert polynomial of $M$. For a closed subscheme $X\subseteq \P_k^n$, the Hilbert polynomial of $X$ is defined to be the Hilbert polynomial of the graded module $\Gamma(X):=S/I$, where $I$ is the graded ideal of $X$.
+We call the polynomial associated to $\chi(M, n)$ as the Hilbert polynomial of $M$. For a closed subscheme $X\subseteq \P_k^n$, the Hilbert polynomial $h_X$ of $X$ is defined to be the Hilbert polynomial of the graded module $\Gamma(X):=S/I$, where $I$ is the graded ideal of $X$.
 We will now compute the Hilbert function in some concrete examples.
 
 \begin{example}
+	\label{example-hilbert-function}\marginnote{001F}
 	\begin{enumerate}
-		\item ($d$ points)
-		\item $d$-fold Veronese
+		\item ($d$ points) Let $V=(p_1,p_2,\ldots, p_d)$ be $d$ points in $\P_k^n$. For $m\geq d-1$, we can write a map
+		\begin{align*}
+		\phi: k[X_0,X_1,\ldots,X_n]_{m} &\rightarrow k^{d}\\
+		F &\mapsto (F(p_1),F(p_2),\ldots,F(p_d))
+		\end{align*}
+		Note that this map is surjective. Moreover, $\phi(F)=0$ if and only if $F\in I(V)$. This tells us that the Hilbert polynomial of $d$ points is $h_V(m)=d$.
+		\item ($d$-fold Veronese) For $\P_k^1$, the Veronese embedding is the map $\nu: \P_k^1\rightarrow \P_k^d$ given by $[X:Y]\mapsto [X^d:X^{d-1}Y:\ldots:XY^{d-1}:Y^d]$. The coordinate ring of the image can be identified with the subring $R:=\oplus_{m\geq 0} k[X_0,X_1]_{dm}\subset k[X_0,X_1]$. Then,
+		\begin{align*}
+		\chi(R,m)= \begin{pmatrix}
+		dm+1\\
+		1
+		\end{pmatrix} = dm +1
+		\end{align*}
+		Similarly, for $\P_k^n$, the $d$-fold Veronese embedding $\nu: \P_k^n\rightarrow \P_k^N$ is given by the subring $R:=\oplus_{m\geq 0}k[X_0,X_1,\ldots,X_n]_{dm}\subset k[X_0,X_1,\ldots, X_n]$. And we see that the Hilbert function can be computed as,
+		\begin{align*}
+		\chi(R,m)= \begin{pmatrix}
+		dm+n\\
+		n
+		\end{pmatrix}
+		\end{align*}
+		Thus, the Hilbert polynomial of $X:=\nu(\P_k^n)$ has the form \[h_X= \frac{d^n}{n!}m^n+\ldots.\]
 		\item degree $d$ curve in $\P_k^2$. Let $X\subset \P_k^2$ be a curve given by the irreducible homogeneous polynomial $F$ of degree $d$. For $m\geq d$, the $m$-th graded piece $I(X)_m$ of the ideal of $X$ is given by elements of the form $F\cdot(\Gamma(X))_{m-d}$.
 		Thus, we compute, for $m\geq d$,
 		\begin{align*}
@@ -1221,16 +1269,41 @@ We will now compute the Hilbert function in some concrete examples.
 		- \begin{pmatrix}
 		m - d + 2 \\
 		2
-		\end{pmatrix}\\
-		&= d\cdot m - \frac{(d-1)(d-2)}{2}
-		\end{align*} 
-	\end{enumerate}
+		\end{pmatrix}
+		\end{align*}
+		Thus, we see that for $m\geq d$ the hilbert polynomial $h_X$ is
+		\[h_X(m) = d\cdot m - \frac{d(d-3)}{2}.\]
+		One can extend this reasoning to any degree $d$ hypersurface in $\P_k^n$. Thus, for $m\geq d$, we have
+		\begin{align*}
+		\chi(\Gamma(X),m) & = \begin{pmatrix}
+		m + n \\
+		n
+		\end{pmatrix}
+		- \begin{pmatrix}
+		m - d + n \\
+		n
+		\end{pmatrix}
+		\end{align*}
+		Expanding the terms tell us that for $m\geq d$, $h_X$ has the form,
+		\[h_X = \frac{d}{(n-1)!}m^{n-1}+\ldots .\]
+		\end{enumerate}
 \end{example}
+
+\begin{definition}
+	Let $X\subset \P_k^n$ be a projective scheme fof dimension $r$, and $h_X$ be its Hilbert polynomial. We define the \textit{degree} of $X$ to be $r!$ times the leading coefficient of $h_X$. We define the \textit{arithmetic genus} as the constant term $h_X(0)$ of the Hilbert polynomial.
+\end{definition}
+
+From Example \ref{example-hilbert-function}(3), we can see that the degree of a hypersurface in $\P_k^n$ is precisely the degree of the irreducible homogeneous polynomial which defines it. Also, note that the degree is non-negative.
 
 %remarks on degree and dimension, and arithmetic genus.
 
-%We want to prove the following theorem:
+We want to prove the following theorem about Hilbert polynomials:
 
+\begin{theorem}
+	Let $X\rightarrow Y$ be a projective morphism to a locally Noetherian scheme $Y$. If $\sF$ is a coherent sheaf on $X$, then the Hilbert polynomial $\chi(\sF_{X_y},d)$ is locally constant for $y\in Y$.
+\end{theorem}
+
+The rest of the section will be dedicated to establishing this fact.
 
 %\subsection{Flat base change.}
 
