@@ -48,3 +48,7 @@
 001D,example-no-closed-point
 001E,lemma-polynomial-like-function
 001F,example-hilbert-function
+001G,theorem-hilbert-polynomial-in-flat-family
+001H,lemma-base-change-map-flat-case
+001J,lemma-flat-base-change-cohomology
+001K,lemma-local-ring-hilbert-polynomial-in-flat-family
