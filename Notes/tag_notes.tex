@@ -1,7 +1,7 @@
 \documentclass[11pt]{amsart}
 \usepackage[margin=1.2in,marginparsep=0.2in,marginparwidth=1in]{geometry}
 \geometry{asymmetric}
-\usepackage{amssymb,amsmath,amsthm,amstext,amscd,latexsym,graphics,graphicx,bbm,caption}
+\usepackage{amssymb,amsmath,amsthm,amstext,amscd,latexsym,graphics,graphicx,bbm,caption, mathtools}
 \usepackage{marginnote}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[plainpages=false,colorlinks=true, linkcolor=blue, citecolor=red, pagebackref]{hyperref}
@@ -1259,7 +1259,7 @@ We will now compute the Hilbert function in some concrete examples.
 		\end{pmatrix}
 		\end{align*}
 		Thus, the Hilbert polynomial of $X:=\nu(\P_k^n)$ has the form \[h_X= \frac{d^n}{n!}m^n+\ldots.\]
-		\item degree $d$ curve in $\P_k^2$. Let $X\subset \P_k^2$ be a curve given by the irreducible homogeneous polynomial $F$ of degree $d$. For $m\geq d$, the $m$-th graded piece $I(X)_m$ of the ideal of $X$ is given by elements of the form $F\cdot(\Gamma(X))_{m-d}$.
+		\item (degree $d$ curve in $\P_k^2$) Let $X\subset \P_k^2$ be a curve given by the irreducible homogeneous polynomial $F$ of degree $d$. For $m\geq d$, the $m$-th graded piece $I(X)_m$ of the ideal of $X$ is given by elements of the form $F\cdot(\Gamma(X))_{m-d}$.
 		Thus, we compute, for $m\geq d$,
 		\begin{align*}
 		\chi(\Gamma(X),m) & = \begin{pmatrix}
@@ -1286,15 +1286,38 @@ We will now compute the Hilbert function in some concrete examples.
 		\end{align*}
 		Expanding the terms tell us that for $m\geq d$, $h_X$ has the form,
 		\[h_X = \frac{d}{(n-1)!}m^{n-1}+\ldots .\]
+		\item (Segre embedding) Let $\sigma_{m,n} : \P_k^m \times \P_k^n \rightarrow \P_k^{mn+m+n}$ be the Segre embedding given by $((x_i),(y_j))\mapsto (x_iy_j)$. Let $z_{ij}$ denote the coordinates of $\P_k^{mn+m+n}$. Then $\sigma_{m,n}$ is a closed subscheme of $\P_k^{mn+m+n}$ defined by the equations $z_{ij}z_{kl}-z_{il}z_{kj}$. If we write the coordinate $z_{ij}$ as a matrix with $i$ rows and $j$ columns then the equations defining $\sigma_{m,n}$ are the $2\times 2$ minors the matrix $(z_{ij})$. Let $S(\sigma_{m,n})$ denote the coordinate ring of $\sigma_{m,n}$. For every $d$-th graded piece, there is an obvious map of modules,
+		\begin{align*}
+		S(\P_k^m)_d \otimes S(\P_k^n)_d &\rightarrow S(\sigma_{m,n})_d\\
+		f \otimes g &\mapsto fg.
+		\end{align*}
+		It is easy to see that this map is an isomorphism.\\
+		Hence, the Hilbert polynomial of $\sigma_{m,n}$ can be computed as,
+		\begin{align*}
+		h_{\sigma_{m,n}}(d) &= dim_k (S(\P_k^m)_d \otimes S(\P_k^n)_d)\\
+		&= \begin{pmatrix}
+		d + m \\
+		m
+		\end{pmatrix}
+		\cdot \begin{pmatrix}
+		d + n \\
+		n
+		\end{pmatrix}\\
+		&= \frac{1}{m!n!}d^{m+n}+\ldots
+		\end{align*}
 		\end{enumerate}
+	
 \end{example}
 
 \begin{definition}
 	Let $X\subset \P_k^n$ be a projective scheme fof dimension $r$, and $h_X$ be its Hilbert polynomial. We define the \textit{degree} of $X$ to be $r!$ times the leading coefficient of $h_X$. We define the \textit{arithmetic genus} as the constant term $h_X(0)$ of the Hilbert polynomial.
 \end{definition}
 
-From Example \ref{example-hilbert-function}(3), we can see that the degree of a hypersurface in $\P_k^n$ is precisely the degree of the irreducible homogeneous polynomial which defines it. Also, note that the degree is non-negative.
-
+From Example \ref{example-hilbert-function}(3), we can see that the degree of a hypersurface in $\P_k^n$ is precisely the degree of the irreducible homogeneous polynomial which defines it. The degree of Segre embedding $\sigma_{m,n}$ is $\begin{psmallmatrix}
+	m + n \\
+	m
+\end{psmallmatrix}$. Also, note that the degree is always non-negative.
+\medskip
 %remarks on degree and dimension, and arithmetic genus.
 
 We want to prove the following theorem about Hilbert polynomials:
@@ -1305,6 +1328,27 @@ We want to prove the following theorem about Hilbert polynomials:
 \end{theorem}
 
 The rest of the section is dedicated to establishing this fact.
+
+
+\subsection{Coherent sheaves on Projective space.}
+
+\begin{theorem}[Serre Vanishing]
+	\label{theorem-serre-vanishing}\marginnote{001L}
+	Let $A$ be a Noetherian ring\footnote{The Noetherian assumption is not necessary. But then, we have to assume that $X$ is defined by a finite type ideal sheaf, and that $\sF$ is finitely presented.}. Let $\sF$ be a coherent sheaf on a projective $A$-scheme $X$. Then, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$.
+\end{theorem}
+\begin{proof}
+	Choose an embedding $i:X\hookrightarrow \P_A^n$. By taking the pushforward $i_*\sF$, we may assume that $X=\P_A^n$. In this situation, $\sF$ admits a surjection from a direct sum of line bundles $\sO(m)^{\oplus j}\twoheadrightarrow \sF$. Let $\sR$ denote the kernel. This gives us a short exact sequence of coherent sheaves. 
+	\[0\rightarrow \sR \rightarrow\sO(m)^{\oplus j}\rightarrow \sF\rightarrow 0\]
+	Note that the statement holds for line bundles $\sO_{\P_A^n}(m)$. Now, taking the associated long exact sequence in cohomology, and apply descending induction (see Vakil's notes or \cite[III, 5.2]{Hart1} for more details).
+\end{proof}
+
+
+\begin{remark}
+	You can also define the Hilbert polynomial as the Euler characteristic. In fact, our notation is suggestive of this. For any coherent sheaf $\sF$, define
+	\[h_{\sF}(m)= \sum_i (-1)^i dim_k H^i(X,\sF(m)).\]
+	Checking that this is indeed a polynomial takes a bit of work. But note that this definition also works for finite type scheme with given a line bundle.\\
+	Moreover, Theorem \ref{theorem-serre-vanishing} tell us that for $m\gg 0$, this agrees with our definition.
+\end{remark}
 
 
 \subsection{Flat base change.}
@@ -1435,6 +1479,7 @@ In order to prove Theorem \ref{theorem-hilbert-polynomial-in-flat-family}, we ne
 	By induction, the base change map is an isomorphism for $U$, $V$ and $U\cup V$. A diagram chase now tells us that this is also true for $X$\footnote{The isomorphism of the left-most vertical arrow follows easily. You can use five lemma for the higher direct images.}.
 \end{remark}
 
+
 \subsection{Hilbert polynomial in flat families.}
 
 The following lemma is a special case of Theorem \ref{theorem-hilbert-polynomial-in-flat-family}. In fact, we will prove Theorem \ref{theorem-hilbert-polynomial-in-flat-family} by reducing to Lemma \ref{lemma-local-ring-hilbert-polynomial-in-flat-family}. The argument follows \cite[III, 9.8]{Hart1}.
@@ -1453,7 +1498,7 @@ The following lemma is a special case of Theorem \ref{theorem-hilbert-polynomial
 \begin{proof}
 	(1) $\Rightarrow$ (2). We can use \v{C}ech cohomology to compute the cohomology of $\sF(m)$. For the standard affine open cover $\sU$ of $X$, we have
 	\[H^i(X,\sF(m))=h^i(C^{\bullet}(\sU,\sF(m))).\]
-	Since $\sF$ is flat over $S$, each term $C^{i}(\sU,\sF(m))$ of the \v{C}ech complex is a flat $A$-module. On the other hand, by Serre-vanishing, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$. Thus, we have an exact sequence
+	Since $\sF$ is flat over $S$, each term $C^{i}(\sU,\sF(m))$ of the \v{C}ech complex is a flat $A$-module. On the other hand, by Theorem \ref{theorem-serre-vanishing}, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$. Thus, we have an exact sequence
 	\[0\rightarrow H^0(X,\sF(m))\rightarrow C^{0}(\sU,\sF(m))\rightarrow C^{1}(\sU,\sF(m))\rightarrow \ldots \rightarrow C^{n}(\sU,\sF(m))\rightarrow 0,\]
 	which gives a resolution of the $A$-module $H^0(X,\sF(m))$. We can now split this sequence into short exact sequences. Since, each $C^i$ is a flat $A$-module, we conclude that so is $H^0(X,\sF(m))$. But, since it also finitely generated, we see that it also has finite rank.\\
 	(2) $\Rightarrow$ (1). Let $S=A[x_0,x_1,\ldots,x_n]$. Consider the graded $S$-module
