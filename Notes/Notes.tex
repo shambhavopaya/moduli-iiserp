@@ -1332,10 +1332,10 @@ The rest of the section is dedicated to establishing this fact.
 
 \subsection{Coherent sheaves on Projective space.}
 
-\begin{theorem}[Serre Vanishing]
-	\label{theorem-serre-vanishing}
+\begin{lemma}[Serre Vanishing]
+	\label{lemma-serre-vanishing}
 	Let $A$ be a Noetherian ring\footnote{The Noetherian assumption is not necessary. But then, we have to assume that $X$ is defined by a finite type ideal sheaf, and that $\sF$ is finitely presented.}. Let $\sF$ be a coherent sheaf on a projective $A$-scheme $X$. Then, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$.
-\end{theorem}
+\end{lemma}
 \begin{proof}
 	Choose an embedding $i:X\hookrightarrow \P_A^n$. By taking the pushforward $i_*\sF$, we may assume that $X=\P_A^n$. In this situation, $\sF$ admits a surjection from a direct sum of line bundles $\sO(m)^{\oplus j}\twoheadrightarrow \sF$. Let $\sR$ denote the kernel. This gives us a short exact sequence of coherent sheaves. 
 	\[0\rightarrow \sR \rightarrow\sO(m)^{\oplus j}\rightarrow \sF\rightarrow 0\]
@@ -1346,9 +1346,39 @@ The rest of the section is dedicated to establishing this fact.
 \begin{remark}
 	You can also define the Hilbert polynomial as the Euler characteristic. In fact, our notation is suggestive of this. For any coherent sheaf $\sF$, define
 	\[h_{\sF}(m)= \sum_i (-1)^i dim_k H^i(X,\sF(m)).\]
-	Checking that this is indeed a polynomial takes a bit of work. But note that this definition also works for finite type scheme with given a line bundle.\\
-	Moreover, Theorem \ref{theorem-serre-vanishing} tell us that for $m\gg 0$, this agrees with our definition.
+	Checking that this is indeed a polynomial takes a bit of work. But note that this definition also works for a finite type scheme with given a line bundle.\\
+	Moreover, Lemma \ref{lemma-serre-vanishing} tells us that for $m\gg 0$, this agrees with our definition.
 \end{remark}
+
+We also have the following relative version of Serre Vanishing:
+
+\begin{lemma}\cite[Tag 02O1]{stacks-project}
+	\label{lemma-relative-serre-vanishing}
+	Let $f : X \to S$ be a projective morphism of schemes with $S$ Noetherian.
+	Let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+	Then there exists an $m\gg 0$ such that
+	$$
+	R^pf_*\left(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{O}(m)\right)
+	=
+	0
+	$$
+	for all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+	Since higher direct images are quasi-coherent sheaves, it is sufficient to show that for $m\gg 0$, $R^pf_*\left(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{O}(m)\right)$ is zero when restricted to an open cover.\\
+	Choose a finite affine open covering $S = \bigcup V_j$ and
+	set $X_j = f^{-1}(V_j)$. Thus, we are reduced to the case of $S$ affine.
+	
+	Consider the Leray spectral sequence. For a quasi-coherent sheaf $\sF$, it has the $E_2$-page,
+	\[E_2^{p,q}=H^p(S,R^qf_*\sF)\Rightarrow H^{p+q}(X,\sF).\]
+	Since $S$ is affine, $H^p(S,R^qf_*\sF)=0$ for all $p>0$. Hence, the spectral sequence degenerates at $E_2$, implying that $H^0(S,R^qf_*\sF)= H^{q}(X,\sF)$. Thus, vanishing of
+	$R^pf_*(\mathcal{F}(m))$
+	is equivalent to the vanishing of
+	$H^p(X, \mathcal{F}(m))$. This is true by Lemma \ref{lemma-serre-vanishing}.
+	
+	This gives us an $m_j$ for each $V_j$ such that $H^p(X_j, \mathcal{F}(m_j))=0$ for all $p>0$. Since the $m_j$'s are finitely many\footnote{This last step needs quasi-compactness of $S$!}, we can find an $m\gg 0$ which works for all $V_j$'s.
+\end{proof}
 
 
 \subsection{Flat base change.}
@@ -1451,7 +1481,7 @@ In order to prove Theorem \ref{theorem-hilbert-polynomial-in-flat-family}, we ne
 \end{proof}
 
 \begin{remark}
-	If you wish to avoid using spectral sequences in Case 2, you can alternatively use Mayer-Vietoris sequence and argue as follows:
+	As point out in \cite[Tag 02KH]{stacks-project}, if you wish to avoid using spectral sequences in Case 2, you can alternatively use Mayer-Vietoris sequence and argue as follows:
 	Let $X=U_1\cup U_2 \cup \ldots \cup U_t$ be an affine cover of $X$. Since $X$ is quasi-compact, $t$ is finite. We will use induction minimal $t$ required to cover $X$. If $t=1$, then $X$ is affine, and we have the result by Case 1. \\
 	If $t>1$, we may write $X=U\cup V$, where $U=U_1\cup U_2 \cup \ldots \cup U_{t-1}$, and $V$ is affine. Denote $a = f|_U : U \to S$, $b = f|_V : V \to S$, and $c = f|_{U \cap V} : U \cap V \to S$. Observe that $U$ can be covered by at least $t-1$ affines, and $V$, $U\cup V$ are separated.\\
 	Then, (relative) Mayer-Vietoris \cite[Tag 01EC]{stacks-project} gives us a long exact sequence of cohomology sheaves,
@@ -1498,7 +1528,7 @@ The following lemma is a special case of Theorem \ref{theorem-hilbert-polynomial
 \begin{proof}
 	(1) $\Rightarrow$ (2). We can use \v{C}ech cohomology to compute the cohomology of $\sF(m)$. For the standard affine open cover $\sU$ of $X$, we have
 	\[H^i(X,\sF(m))=h^i(C^{\bullet}(\sU,\sF(m))).\]
-	Since $\sF$ is flat over $S$, each term $C^{i}(\sU,\sF(m))$ of the \v{C}ech complex is a flat $A$-module. On the other hand, by Theorem \ref{theorem-serre-vanishing}, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$. Thus, we have an exact sequence
+	Since $\sF$ is flat over $S$, each term $C^{i}(\sU,\sF(m))$ of the \v{C}ech complex is a flat $A$-module. On the other hand, by Lemma \ref{lemma-serre-vanishing}, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$. Thus, we have an exact sequence
 	\[0\rightarrow H^0(X,\sF(m))\rightarrow C^{0}(\sU,\sF(m))\rightarrow C^{1}(\sU,\sF(m))\rightarrow \ldots \rightarrow C^{n}(\sU,\sF(m))\rightarrow 0,\]
 	which gives a resolution of the $A$-module $H^0(X,\sF(m))$. We can now split this sequence into short exact sequences. Since, each $C^i$ is a flat $A$-module, we conclude that so is $H^0(X,\sF(m))$. But, since it also finitely generated, we see that it also has finite rank.\\
 	(2) $\Rightarrow$ (1). Let $S=A[x_0,x_1,\ldots,x_n]$. Consider the graded $S$-module

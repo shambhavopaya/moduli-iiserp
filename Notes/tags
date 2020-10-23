@@ -52,4 +52,5 @@
 001H,lemma-base-change-map-flat-case
 001J,lemma-flat-base-change-cohomology
 001K,lemma-local-ring-hilbert-polynomial-in-flat-family
-001L,theorem-serre-vanishing
+001L,lemma-serre-vanishing
+001M,lemma-relative-serre-vanishing
