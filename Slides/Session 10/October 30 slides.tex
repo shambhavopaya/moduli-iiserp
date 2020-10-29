@@ -1,0 +1,365 @@
+\documentclass[ignorenonframetext,t]{beamer}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{tikz-cd}
+
+\usetheme{Frankfurt}
+
+\setbeamerfont{block body}{size=\small}
+
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\hfill\insertshorttitle\, - \insertsubtitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshortauthor\hfill%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+			\hfill\insertframenumber\,/\,\inserttotalframenumber
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+
+% Document information
+\title[Moduli@IISERP]{Seminar on Moduli Theory}
+\subtitle{Lecture 10}
+\author{Neeraj Deshmukh}
+\date{October 30, 2020}
+%\address[IISERP]{Indian Institute of Science Education and Research, Pune}
+
+\begin{document}
+	
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Last Week}
+\begin{enumerate}
+	\item Serre vanishing
+	\item Flat base change
+\end{enumerate}
+\end{frame}
+
+
+
+The rest of the section is dedicated to establishing this fact.
+
+
+%\subsection{Coherent sheaves on Projective space.}
+
+\begin{proof}
+	Choose an embedding $i:X\hookrightarrow \P_A^n$. By taking the pushforward $i_*\sF$, we may assume that $X=\P_A^n$. In this situation, $\sF$ admits a surjection from a direct sum of line bundles $\sO(m)^{\oplus j}\twoheadrightarrow \sF$. Let $\sR$ denote the kernel. This gives us a short exact sequence of coherent sheaves. 
+	\[0\rightarrow \sR \rightarrow\sO(m)^{\oplus j}\rightarrow \sF\rightarrow 0\]
+	Note that the statement holds for line bundles $\sO_{\P_A^n}(m)$. Now, taking the associated long exact sequence in cohomology, and apply descending induction (see Vakil's notes or \cite[III, 5.2]{Hart1} for more details).
+\end{proof}
+
+
+\begin{remark}
+	You can also define the Hilbert polynomial as the Euler characteristic. In fact, our notation is suggestive of this. For any coherent sheaf $\sF$, define
+	\[h_{\sF}(m)= \sum_i (-1)^i dim_k H^i(X,\sF(m)).\]
+	Checking that this is indeed a polynomial takes a bit of work. But note that this definition also works for finite type scheme with given a line bundle.\\
+	Moreover, Theorem \ref{theorem-serre-vanishing} tell us that for $m\gg 0$, this agrees with our definition.
+\end{remark}
+
+
+%\subsection{Flat base change.}
+
+In order to prove Theorem \ref{theorem-hilbert-polynomial-in-flat-family}, we need some result about cohomology and base change.
+
+
+\begin{proof}
+	Choose injective resolutions $\sF\rightarrow \sI^{\bullet}$, and $(g')^*\sF\rightarrow \sJ^{\bullet}$. Since $(g')^*$ is flat, it is also exact. This implies that the pushforward $(g')_*$ preserves injectives\footnote{Use adjunction formula with the fact that $(g')^*$ preserves injections.}. Thus, $(g')_*(g')^*\sF\rightarrow (g')_*\sJ^{\bullet}$ is an injective resolution of $(g')_*(g')^*\sF$. By adjunction we have a map, $\alpha: \sF \rightarrow (g')_*(g')^*\sF$. And since $(g')_*\sJ^{\bullet}$ and $\sI^{\bullet}$ are injective resolutions, we have a lift $\beta$ of $\alpha$,
+	\begin{center}
+		\begin{tikzcd}
+		\sF \arrow[r]\arrow[d,"\alpha"] & \sI^{\bullet}\arrow[d, "\beta"]\\
+		(g')_*(g')^*\sF\arrow[r]	& (g')_*\sJ^{\bullet}
+		\end{tikzcd}
+	\end{center}
+	such that $\beta$ is unique upto homotopy. Pushing down to $S$, we get
+	\[f_*\beta :
+	f_*\mathcal{I}^\bullet
+	\longrightarrow
+	f_*(g')_*\mathcal{J}^\bullet
+	=
+	g_*(f')_*\mathcal{J}^\bullet
+	\]
+	By adjunction we get a map $g^*f_*\sI^\bullet \rightarrow (f')_*\sJ^\bullet$. Since $\sJ^\bullet$ computes the cohomology of $(g')^*\sF$, passing to cohomology gives us the required map.
+\end{proof}
+
+
+\begin{proof}
+	Observe that being an isomorphism of sheaves is a local question, so (2) $\Rightarrow$ (1). Thus, it suffices to prove statement (2).
+	
+	Note that the higher direct images of $\sF$ along $f$ are quasi-coherent $\sO_S$-modules since  \[R^if_*\sF=\tilde{\Gamma (S,R^if_*\sF)}=\tilde{H^i(X,\sF)}.\]
+	Similarly, $R^if'_*\sF'= \tilde{H^i(X',\sF')}$.
+	
+	Moreover, $g^*$ corresponds to $-\otimes_A B$. Let $A\rightarrow B$ be a flat ring homomorphism. Let $X$ be a qcqs scheme over $A$ and $\sF$ be a quasi-coherent $\sO_X$-module. Set $X_B:= X\times_A \Spec B$ and $\sF_B:= g'^*(\sF)$ be the pullback of $\sF$ to $X_B$.
+	
+	\noindent\underline{Case 1:} X is separated.\\
+	Let $\sU:=\{U_i\}_i$ be an affine open cover of $X$. Then, we have
+	\[ \check{H}^p(\sU,\sF)=H^p(X,\sF).\]
+	By base changing the cover $\sU$ to $B$, we get
+	\[\check{H}^p(\sU_B,\sF_B)=H^p(X_B,\sF),\]
+	and that
+	\[\check{C}^{\bullet}(\sU_B,\sF_B)=\check{C}^{\bullet}(\sU,\sF)\otimes_A B.\]
+	As, $A\rightarrow B$ is flat, this is true after passing to cohomology as well.
+	
+	\noindent\underline{Case 2:} X is quasi-separated.\\
+	Once again, take an affine open cover, $\sU:=\{U_i\}_i$. We can approximate this case from the case of $X$ separated using a spectral sequence argument. For this we use the \v{C}ech-to-cohomology spectral sequence. This spectral sequence has $E_2$-page,
+	\[E^{p,q}_2=\check{H}^p(\sU,\underline{H}^q(\sF))\Rightarrow H^{p+q}(X,\sF)\]
+	We have a similar spectral sequence for $X_B$,
+	\[E^{p,q}_2=\check{H}^p(\sU_B,\underline{H}^q(\sF_B))\Rightarrow H^{p+q}(X_B,\sF_B).\]
+	
+	Since $U_{i_0,\ldots,i_p}$ are quasi-compact and separated, from the previous case, we have
+	\[\check{H}^p(\sU_B,\underline{H}^q(\sF_B))=\check{H}^p(\sU,\underline{H}^q(\sF)) \otimes_A B.\]
+	Since, $A\rightarrow B$ is flat, the right hand side is the \v{C}ech-to-cohomology spectral sequence tensored with $B$, and so, converges to $H^{p+q}(X,\sF)\otimes_A B$. Since these two spectral sequences agree on the $E_2$-page, they also agree in the limit. Thus for all $p,q$,
+	\[H^{p+q}(X_B,\sF_B) \simeq H^{p+q}(X,\sF)\otimes_A B,\]
+	as required.
+\end{proof}
+
+\begin{remark}
+	If you wish to avoid using spectral sequences in Case 2, you can alternatively use Mayer-Vietoris sequence and argue as follows:
+	Let $X=U_1\cup U_2 \cup \ldots \cup U_t$ be an affine cover of $X$. Since $X$ is quasi-compact, $t$ is finite. We will use induction minimal $t$ required to cover $X$. If $t=1$, then $X$ is affine, and we have the result by Case 1. \\
+	If $t>1$, we may write $X=U\cup V$, where $U=U_1\cup U_2 \cup \ldots \cup U_{t-1}$, and $V$ is affine. Denote $a = f|_U : U \to S$, $b = f|_V : V \to S$, and $c = f|_{U \cap V} : U \cap V \to S$. Observe that $U$ can be covered by at least $t-1$ affines, and $V$, $U\cup V$ are separated.\\
+	Then, (relative) Mayer-Vietoris \cite[Tag 01EC]{stacks-project} gives us a long exact sequence of cohomology sheaves,
+	\[0 \rightarrow
+	f_*\mathcal{F} \rightarrow
+	a_*(\mathcal{F}|_U) \oplus b_*(\mathcal{F}|_V) \rightarrow
+	c_*(\mathcal{F}|_{U \cap V}) \rightarrow
+	R^1f_*\mathcal{F} \to \ldots
+	\]
+	From the base change map, we have a morphism of long exact sequences,
+	\begin{center}
+		\begin{tikzcd}
+		0 \arrow[r]
+		& g^*f_*\mathcal{F} \arrow[r]\arrow[d]
+		& g^* a_*(\mathcal{F}|_U) \oplus g^*b_*(\mathcal{F}|_V) \arrow[r]\arrow[d, "\simeq"]
+		& g^* c_*(\mathcal{F}|_{U \cap V}) \arrow[r]\arrow[d, "\simeq"]
+		& g^* R^1f_*\mathcal{F} \arrow[r]\arrow[d] &\ldots \\
+		0 \arrow[r]
+		& g'_*f'^*\mathcal{F} \arrow[r]
+		& g'_* a'^*(\mathcal{F}|_U) \oplus g'_*b'^*(\mathcal{F}|_V) \arrow[r]
+		& g'_* c'^*(\mathcal{F}|_{U \cap V}) \arrow[r]
+		& g_* R^1f'^*\mathcal{F} \arrow[r] &\ldots \\
+		\end{tikzcd}
+	\end{center}
+	By induction, the base change map is an isomorphism for $U$, $V$ and $U\cup V$. A diagram chase now tells us that this is also true for $X$\footnote{The isomorphism of the left-most vertical arrow follows easily. You can use five lemma for the higher direct images.}.
+\end{remark}
+
+
+%\subsection{Hilbert polynomial in flat families.}
+
+The following lemma is a special case of Theorem \ref{theorem-hilbert-polynomial-in-flat-family}. In fact, we will prove Theorem \ref{theorem-hilbert-polynomial-in-flat-family} by reducing to Lemma \ref{lemma-local-ring-hilbert-polynomial-in-flat-family}. The argument follows \cite[III, 9.8]{Hart1}.
+
+\begin{frame}
+	
+	\begin{theorem}
+		\label{theorem-hilbert-polynomial-in-flat-family}
+		Let $X\rightarrow Y$ be a projective morphism with $Y$ locally Noetherian. If $\sF$ is a coherent sheaf on $X$ which is flat over $Y$, then the Hilbert polynomial $\chi(\sF_{X_y},d)$ is locally constant for $y\in Y$.
+	\end{theorem}
+	
+\end{frame}
+
+\begin{frame}
+
+\begin{lemma}
+	\label{lemma-local-ring-hilbert-polynomial-in-flat-family}
+	Let $S=\Spec A$ be a Noetherian local ring. Let $\sF$ be a coherent sheaf on $X=\P_S^n$. Consider the following statements:
+	\begin{enumerate}
+		\item $\sF$ is flat over $S$;
+		\item $H^0(X,\sF(m))$ is a free $A$-module of finite rank, for all $m\gg 0$;
+		\item for any $t\in S$, the Hilbert polynomial $\chi(\sF_t,m)$ of $\sF_t$ on $X_t$ is independent of $t$.
+	\end{enumerate}
+	Then we have the implications, (1) $\Leftrightarrow$ (2) $\Rightarrow$ (3). Moreover, if $S$ is a domain then they are all equivalent.
+\end{lemma}
+
+\end{frame}
+
+\begin{proof}
+	(1) $\Rightarrow$ (2). We can use \v{C}ech cohomology to compute the cohomology of $\sF(m)$. For the standard affine open cover $\sU$ of $X$, we have
+	\[H^i(X,\sF(m))=h^i(C^{\bullet}(\sU,\sF(m))).\]
+	Since $\sF$ is flat over $S$, each term $C^{i}(\sU,\sF(m))$ of the \v{C}ech complex is a flat $A$-module. On the other hand, by Theorem \ref{theorem-serre-vanishing}, for $m\gg 0$, $H^i(X,\sF(m))=0$ for all $i>0$. Thus, we have an exact sequence
+	\[0\rightarrow H^0(X,\sF(m))\rightarrow C^{0}(\sU,\sF(m))\rightarrow C^{1}(\sU,\sF(m))\rightarrow \ldots \rightarrow C^{n}(\sU,\sF(m))\rightarrow 0,\]
+	which gives a resolution of the $A$-module $H^0(X,\sF(m))$. We can now split this sequence into short exact sequences. Since, each $C^i$ is a flat $A$-module, we conclude that so is $H^0(X,\sF(m))$. But, since it also finitely generated, we see that it also has finite rank.\\
+	(2) $\Rightarrow$ (1). Let $S=A[x_0,x_1,\ldots,x_n]$. Consider the graded $S$-module
+	\[M=\underset{m\geq m_0}{\bigoplus}H^0(X,\sF(m))\]
+	where $m_0\gg 0$ so that $H^0(X,\sF(m))$ is finite free for all $m\geq m_0$. Then, $\sF=\tilde{M}$. Since, $M$ is a free $A$-module, we see that $\sF$ is flat over $A$.\\
+	(2) $\Rightarrow$ (3). Since $H^0(X,\sF(m))$ is a free module of finite rank for $m\gg 0$, it is enough to show that
+	\[\chi(\sF_t,m)=\text{rank}_A\; H^0(X,\sF(m)),\]
+	for $m\gg 0$.	For this, we will show that for any $t\in S$ and $m\gg 0$,
+	\[H^0(X_t,\sF_t(m))=H^0(X,\sF(m)) \otimes_A k(t)\]
+	Let $\mathfrak{p}$ be the prime ideal in $A$ corresponding to the point $t$, and let $S'=\Spec A_{\mathfrak{p}}$. Base change along the flat morphism $S'\rightarrow S$. Then, by Lemma \ref{lemma-flat-base-change-cohomology}, we can reduce to the situation when $t$ is a closed point of $S$. Denote the fibre over $t$ by $X_0$ and $\sF_0$, and let $k$ the residue field. Take a presentation of $k$ over $A$,
+	\[A^q\rightarrow A\rightarrow k\rightarrow 0.\]
+	Then we get an exact sequence of sheaves on $X$,
+	\[\sF^q\rightarrow \sF \rightarrow \sF_0\rightarrow 0.\]
+	Then for $m\gg 0$ we have an exact sequence,
+	\[H^0(X,\sF(m)^q)\rightarrow H^0(X,\sF(m))\rightarrow H^0(X_0,\sF_0(m)) \rightarrow 0\]
+	On the other hand, we can tensor the first sequence with $H^0(X,\sF(m))$. Comparing the two gives us an isomorphism,
+	\[H^0(X_0,\sF_0(m))=H^0(X,\sF(m)) \otimes_A k(t)\]
+	for all $m\gg 0$.
+\end{proof}
+
+\begin{frame}
+	(1) $\Leftrightarrow$ (2)
+\end{frame}
+
+\begin{frame}
+	(2) $\Rightarrow$ (3)
+\end{frame}
+
+We now finish the proof of Theorem \ref{theorem-hilbert-polynomial-in-flat-family}. In fact, the theorem follows effortlessly since all the heavy-lifting has already  been done.
+
+\begin{proof}[Proof of Theorem \ref{theorem-hilbert-polynomial-in-flat-family}]
+	Since $X\rightarrow Y$ is projective, choose an embedding $i:X\hookrightarrow \P_Y^n$. By taking the pushforward $i_*\sF$, we may assume that $X=\P_Y^n$. To check that Hilbert polynomial is locally constant, we can assume that $Y=\Spec \sO_{y,Y}$. Then we are reduced to the situation of Lemma \ref{lemma-local-ring-hilbert-polynomial-in-flat-family}.
+\end{proof}
+
+\begin{frame}
+	The Hilbert functor
+\end{frame}
+
+
+\begin{frame}
+	The Hilbert admits a stratification by Hilbert polynomials
+\end{frame}
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+

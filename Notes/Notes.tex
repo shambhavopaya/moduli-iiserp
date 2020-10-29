@@ -1546,7 +1546,8 @@ The following lemma is a special case of Theorem \ref{theorem-hilbert-polynomial
 	\[H^0(X,\sF(m)^q)\rightarrow H^0(X,\sF(m))\rightarrow H^0(X_0,\sF_0(m)) \rightarrow 0\]
 	On the other hand, we can tensor the first sequence with $H^0(X,\sF(m))$. Comparing the two gives us an isomorphism,
 	\[H^0(X_0,\sF_0(m))=H^0(X,\sF(m)) \otimes_A k(t)\]
-	for all $m\gg 0$.
+	for all $m\gg 0$.\\
+	(3) $\Rightarrow$ (2). This follows from the following general observation: let $M$ be a module over a local Noetherian domain such that $dim (M\otimes A/\mathfrak{m})=dim (M\otimes K)= r$, here $K$ is the field of fractions. Then, by Nakayama, we have a surjection $A^r\rightarrow M$. Let $R$ be the kernel. Tensoring by $K$, we have that $R\otimes K=0$. But since $R$ is torsion free, $R =0$. Thus, $M$ is free.
 \end{proof}
 
 We now finish the proof of Theorem \ref{theorem-hilbert-polynomial-in-flat-family}. In fact, the theorem follows effortlessly since all the heavy-lifting has already  been done.
