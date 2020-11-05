@@ -54,3 +54,5 @@
 001K,lemma-local-ring-hilbert-polynomial-in-flat-family
 001L,lemma-serre-vanishing
 001M,lemma-relative-serre-vanishing
+001N,remark-hilbert-polynomial-field-extension
+001P,theorem-quot-representable
