@@ -1,0 +1,345 @@
+\documentclass[ignorenonframetext,t]{beamer}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{tikz-cd}
+
+\usetheme{Frankfurt}
+
+\setbeamerfont{block body}{size=\small}
+
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\hfill\insertshorttitle\, - \insertsubtitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshortauthor\hfill%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+			\hfill\insertframenumber\,/\,\inserttotalframenumber
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+
+% Document information
+\title[Moduli@IISERP]{Seminar on Moduli Theory}
+\subtitle{Lecture 12}
+\author{Neeraj Deshmukh}
+\date{November 13, 2020}
+%\address[IISERP]{Indian Institute of Science Education and Research, Pune}
+
+\begin{document}
+	
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Last Week}
+\begin{enumerate}
+	\item Fine and Coarse moduli space
+	\item The Hilbert and Quot functors
+\end{enumerate}
+\end{frame}
+
+In this section, we will discuss terminology and some basic examples of moduli problems. Moduli theory aims to study and parametrise geoemtric objects in families. The ideal situation is when we can make a scheme out of these objects. However, as we have seen before (in Example \ref{example-functor-of-conics}) this is not always true\footnote{When this is not true, you can still study families using deformation techniques.}.
+
+
+%\subsection{Fine and coarse moduli.}
+
+\begin{example}[Moduli of elliptic curves]
+	Consider the functor on $\mathit{Sch}/\C$ defined as,
+	\begin{align*}
+	F: \mathit{Sch/\C} &\rightarrow \mathit{Sets}\\
+	S & \mapsto \left\{
+	\begin{tikzcd}[cramped, column sep=3ex, ampersand replacement=\&]
+	E\arrow[r, "p"'] \& S\arrow[l, bend right, "\sigma"']
+	\end{tikzcd}
+	: p \;\text{has smooth genus 1 fibres, and $\sigma$ is a section}
+	\right\}
+	\end{align*}
+	Observe that $F(\C)$ is precisely elliptic curves over $\C$. Moreover, geometric fibres of such a family over $S$ are just smooth elliptic curves over $\C$. Note that we will consider such families only upto equivalence: $E/S$ and $E'/S$ are equivalent if they are isomorphic over $S$.\\
+	%One can show that $F$ is not representable.
+	Any elliptic curve over $\C$ can be classified by its $j$-invariant. So, the $\C$-points of $F$ are in bijection with the closed points of $\A^1_{\C}$, $F(\C) = \A^1_{\C}(\C)$. If $F$ is representable by $\A^1_\C$, then there is a universal family $\xi$ over the affine line whose pullback  describes every elliptic curve. However, consider the elliptic curve $E:=y^2=x^3+t$ defined over $\Spec \C[t,t^{-1}]$. Every curve in this family has $j$-invariant 0. This family corresponds to the constant map, $\Spec \C[t,t^{-1}]\rightarrow \A^1_\C$ sending $t\mapsto 0$. Then, $E$ is the pullback of the universal family restricted to the point $0\in \A^1_\C$, i.e, $\xi_0\times_{\A^1_\C}{\Spec \C[t,t^{-1}]}\simeq E$. This implies that there exists a $u\in \C$ such that $u^6=t$, which cannot exist.
+\end{example}
+For a fine moduli space to exist, the given functor must at least a sheaf in the fpqc topology, by Theorem \ref{theorem-fpqc-representable}. While the above example does not admit a fine moduli space, its closed points are in bijection with the closed points of $\A^1_\C$. It is often possible to find a scheme which satisfies this property, when a fine moduli space does not exist. This gives us the following weaker notion:
+
+\begin{definition}
+	Let $F: \mathit{Sch}\rightarrow \mathit{Sets}$ be a moduli problem. We say $F$ admits a \textit{coarse moduli space}, if there exists a scheme $M$ and a morphism $\phi: F\rightarrow M$ such that:
+	\begin{enumerate}
+		\item $\phi$ is initial among maps from $F$ to schemes, i.e, any other map $F\rightarrow M'$ factors uniquely as $F\overset{\phi}{\rightarrow} M \rightarrow M'$.
+		\item $\phi(k): F(k)\rightarrow M(k)$ is a bijection for all algebraically closed fields $k$.
+	\end{enumerate}
+\end{definition}
+
+In the above example, $\A^1_\C$ is a coarse moduli space. While a fine moduli space classifies objects uniquely by pulling back the universal family, the coarse moduli space only classifies the closed points. We impose the universality condition (1) to limit the possible choices of the coarse moduli space.
+
+The main obstruction for the existence of fine moduli space for elliptic curves is that the object have non-trivial automorphisms. For the same reason, the moduli of genus $g$ curves is not representable.
+
+%\subsection{Hilbert and Quot functors.}
+
+We will now define the Hilbert and Quot functors for projective schemes.
+
+\begin{definition}[Hilbert functor]
+	Let $X$ be projective over a Noetherian base $S$. The Hilbert functor of $X$ is defined as,
+	\begin{equation*}
+	\mathfrak{Hilb}_{X/S}(T)=\left\{
+	Z \subseteq X\times_S T \,
+	\left|\,\text{$Z$ is a closed subscheme flat over $T$}\right.
+	\right\}
+	\end{equation*}
+\end{definition}
+	
+\begin{definition}[Quot functor]
+	Let $X$ be projective over a Noetherian base $S$. Fix a coherent sheaf $E$ on $X$. The Quot functor of $E$ is defined as follows
+	\begin{equation*}
+	\mathfrak{Quot}_{E/X/S}(T)=\left\{(\sF,q) \left|\,
+	\begin{aligned}
+	1.\, &\sF\, \text{is a coherent sheaf on $X\times_S T$ which is flat over $T$}, \\
+	%2.\, & \text{The support of $\sF$ is proper over $T$},\\
+	2.\, &q: E_T \twoheadrightarrow \sF\, \text{is an $\sO_{X\times_S T}$-linear surjection}
+	\end{aligned}
+	\right.\right\}\Bigg/\!\sim
+	\end{equation*}
+	Here, $E_T$ is the pullback of $E$ to $X\times_S T$ along the projection map. Two objects $(\sF,q)$ and $(\sF',q')$ are equivalent if $ker(q)=ker(q')\subset E_T$.
+\end{definition}
+
+
+Observe that if $E=\sO_X$ then $\mathfrak{Quot}_{\sO_X/X/S}=\mathfrak{Hilb}_{X/S}$. One can define Quot functors (and therefore, the Hilbert functor) more generally, for any finite type scheme over a Noetherian base $S$\footnote{You don't need Noetherian either. But let's not put the cart before the horse.}, with the adding the assumption that $\sF$ has proper support over $T$. Note that this is automatic when $X$ is projective.
+
+Fix a polynomial $\phi(t)\in \Q[t]$, and let $(\sF,q)$ be a $T$-point of $\mathfrak{Quot}_{E/X/S}$ with Hilbert polynomial $\phi(t)$. For any morphism $Z\rightarrow T$, let $\sF_Z$ be the pullback to $X\times_S Z$ of $\sF$. By Theorem \ref{theorem-hilbert-polynomial-in-flat-family}, the Hilbert polynomial of $\sF_Z$ can be determined by checking along the fibres. Let $z\in Z$ be a point with image $t\in T$. This gives an extension of fields $k(t)\subset k(z)$. Remark \ref{remark-hilbert-polynomial-field-extension} tells us that the Hilbert polynomial of $\sF_Z$ is also $\phi(t)$. This gives us a subfunctor $\mathfrak{Quot}^{\phi(t)}_{E/X/S}$ of $\mathfrak{Quot}_{E/X/S}$ parametrising coherent sheaves with Hilbert polynomial $\phi(t)$. Thus, the Quot functor can be stratified into disjoint subfunctor by Hilbert polynomials\footnote{Similarly, for the Hilbert functor when $E=\sO_X$.},
+\[\mathfrak{Quot}_{E/X/S}=\underset{\phi(t)\in \Q[t]}{\coprod} \mathfrak{Quot}^{\phi(t)}_{E/X/S}\]
+Strictly speaking, Hilbert polynomials are integer-valued. So, arbitrary polynomials in $\Q[t]$ just correspond to empty strata.
+
+The aim of this seminar is to prove the following theorem about Quot functors:
+
+\begin{frame}
+\begin{theorem}[Grothendieck]
+	\label{theorem-quot-representable}
+	Let $\pi: X\rightarrow S$ be a projective morphism with $S$ Noetherian. Then for any coherent sheaf $E$ on $X$ and any polynomial $\phi \in \Q[t]$, the functor $\mathfrak{Quot}^{\phi(t)}_{E/X/S}$ is representable by a projective $S$-scheme.
+\end{theorem}
+\end{frame}
+
+In a sense, this is a sharp result. The Quot functor fails to be representable even if $X$ is assumed to be proper over $\C$. We can construct a proper threefold over $\C$ whose Hilbert functor is not representable\footnote{However, it is representable by an algebraic space.}.
+
+%\subsection{Some more moduli functors.}
+We will now describe some more moduli problem. All of these are related to the Hilbert functor in some way or the other.
+
+\begin{frame}
+	$\mathfrak{Quot}^1_{\oplus^{n+1}\sO_\Z/\Z/\Z}$
+\end{frame}
+
+\begin{frame}
+	Moduli of hypersurfaces
+\end{frame}
+
+\begin{example}[Moduli of hypersurfaces]
+	Consider $\P^n_A$ over a Noetherian ring $A$. We will show that the moduli of degree $d$ hypersurfaces in $\P^n_A$ is given by $\P^m_A$, where 
+	$m = \begin{psmallmatrix}
+	n + d\\
+	d
+	\end{psmallmatrix} -1$. As we have seen in Example \ref{example-hilbert-function}(3), the Hilbert polynomial of a degree $d$ hypersurface in $\P^n_A$ has the form $f(t)=\frac{d}{(n-1)!}t^{n-1}+\text{lower degree terms}$. Consider the Hilbert functor with the given Hilbert polynomial $f(t)$, which assigns any $A$-scheme $T$ the set
+	\begin{equation*}
+	F(T)=\{ Z\subset \P^n_T \, | \, \text{$Z$ is flat over $T$ with Hilbert polynomial $f(t)$}\}
+	\end{equation*}
+	This definition makes sense since we only have to check the Hilbert polynomial in fibres for flat families. Note that $F=\mathfrak{Hilb}^{f(t)}_{\P^n_A}$.\\
+	To see that $F\simeq \P^m_A$, given any family $Z\subset \P^n_T$ over $T$. We will construct a morphism $T\rightarrow\P^m_A$. Since morphisms can be glued, we will reduce to case where $T=\Spec B$ is affine.\\
+	Now, any such family over an affine $T$, is defined by an ideal $I_Z\subseteq B[X_0,\ldots,X_n]$. Moreover, this ideal is locally principal. Thus, we can further assume that $I_Z = (f)$ is generated by a single element of degree $d$. Then, $f$ is a sum of the $m+1$ monomials of degree $d$, i.e, $f=a_0 X^d_0+\ldots+a_m X^d_n$. Note that the coefficients $a_0,\ldots,a_m$ generate the unit ideal in $B$. Otherwise, there is an closed set $V(a_0,\ldots,a_m)$ over which $Z$ vanishes. But, by flatness, the projection $Z\rightarrow T$ is surjective. This gives us a morphism $(a_0\ldots,a_m): T\rightarrow \P^m_A$, as required.\\
+	In the general case, given a family $Z$ over a scheme $T$, locally on $T$ it is given by a single equation. This gives us morphisms from an open cover of $T$ to $\P^m_A$ . Gluing these morphisms we get the required map, $T\rightarrow \P^m_A$.\\
+	The identity map $id_{\P^m_A}$ corresponds to the \textit{universal family}. In this case it can be described explicitly as $\sZ:=V_+(A_0 X_0^d+\ldots + A_m X_n^d)\subset \P^n_A\times_A \P^m_A$. Here, $A_i$'s are the variables defining $\P^m_A$ while the $X_i$'s define $\P^n_A$. What we have, in fact, shown is that any family over an $A$-scheme $T$ is the pullback of the universal family $\sZ$\footnote{How will you extend this example to a general base $S$?}. This is the reasoning for the adjective ``universal".
+\end{example}
+
+\begin{frame}
+	Lines in the plane
+\end{frame}
+\begin{example}[Moduli of lines in the plane]
+	Let $k$ be a field. By the above description, lines in $\P_k^2$ are classified by $\P_k^2$. In fact, the universal family is described by the equation $A_0 X+A_1 Y + A_2 Z$. Let $\A_k^2\subset \P_k^2$ be the complement of the line $Z=0$. Any other line lies in $\A_k^2$ and intersects $Z=0$ at a single point. The line $Z=0$ corresponds to the point $z:=[0:0:1]$ in the moduli of lines. Thus, lines in $\A^2_k$ are precisely described by $\P^2_k \setminus \{z\}$\footnote{In topology, $\R\P^2$ with a point removed is a M\"{o}bius strip.}.
+\end{example}
+
+\begin{frame}
+	Moduli of finite locally free covers
+\end{frame}
+
+\begin{example}[Moduli of finite locally free covers] 
+	Let $X/S$ be a finite type scheme. We define the moduli of finite locally free covers $F$ as,
+	\begin{align*}
+	F(T)= \left\{
+	Z \subseteq X\times_S T \,
+	\left|\,\text{$Z$ is a closed subscheme finite and flat over $T$}\right.
+	\right\}
+	\end{align*}
+	Notice the similarity with the definition of the Hilbert functor. In fact, $F$ is a subfunctor of the Hilbert functor parametrised by constant Hilbert polynomials,
+	\[F=\underset{n}{\coprod}\mathfrak{Hilb}^n_{X/S}.\]
+	Hence, it is also called the Hilbert functor of points.
+\end{example}
+
+In the next example, we relate quotients by finite group actions to the Hilbert functor of points.
+
+\begin{frame}
+	Finite group actions and the Hilbert functor of points
+\end{frame}
+
+\begin{example}
+	Let $G$ be a finite group of order $n$ acting freely on a scheme $X$. Consider the functor $X_G:\mathit{Sch} \rightarrow \mathit{Sets}$ as defined in Example \ref{example-G-H-bundles}. The forgetful functor defines a morphism,
+	\[\phi: X_G\rightarrow \mathfrak{Hilb}^n_X\]
+	given by forgetting the $G$-equivariant map to $X$. One can show that $\phi$ is representable by closed immersion. That is, $X_G$ behave likes a ``closed subscheme" of the Hilbert functor of $n$ points.\\
+	To see this, take a finite flat family $Z\subset T\times X \overset{p}{\rightarrow} T$ over $T$. The scheme $T\times X$ has a $G$-action induced from the $G$-action on $X$. Then for every $g\in G$, $g(Z)\subset T\times U\overset{p}{\rightarrow} T$ is also a flat family over $T$. We are looking the condition that $Z=g(Z)$, for all $g\in G$. This is a closed condition on $T$, i.e, there exists a closed subscheme $T'\hookrightarrow T$ on which $Z=\sigma(Z)$ over $T'$.\\	
+	To see this, consider the complement $U:=Z\setminus (\underset{g\in G}{\bigcap} g(Z))$. By flatness, $p(U)$ is open in $T$ and we have $p^{-1}(p(U))=U$. Otherwise, there is a point $t\in p(U)$ for which the fibre contains a point $z\in \underset{g\in G}{\bigcap} g(Z)$. However, the $g(z)$'s also lies in $\underset{g\in G}{\bigcap} g(Z)$ and $p(g(z))=t$ for all $g\in G$. As, $p$ has degree $n$, these are all the points in the fibre, none of which lie in $U$. Hence, the complement $T':=T\setminus p(U)$ is the closed set such that $Z_{T'}=g(Z)_{T'}$, for all $g\in G$.
+	This shows that the following is a cartesian diagram,
+	\begin{center}
+		\begin{tikzcd}[column sep = 3ex]
+		T'\arrow[d]\arrow[r, hook] & T\arrow[d]\\
+		X_G \arrow[r, "\phi"] & \mathfrak{Hilb}^n_X
+		\end{tikzcd}
+	\end{center}
+	Thus, $\phi$ is representable by closed immersions.	
+\end{example}
+
+\begin{remark}
+	We can construct a proper threefold $X$ over $\C$ with a $\Z/2$-action such that $X_{\Z/2}$ is not a scheme. Hence, the Hilbert functor of $X$ is not representable by the above example.
+\end{remark}
+
+\begin{frame}
+	Hironaka's example
+\end{frame}
+
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
