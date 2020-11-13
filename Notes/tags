@@ -56,3 +56,5 @@
 001M,lemma-relative-serre-vanishing
 001N,remark-hilbert-polynomial-field-extension
 001P,theorem-quot-representable
+001Q,example-elliptic-curves-same-hilbert-polynomial
+001R,lemma-immersions-same-hilbert-polynomial
