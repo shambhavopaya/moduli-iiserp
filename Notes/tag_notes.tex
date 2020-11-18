@@ -424,7 +424,7 @@ Here's a classical definition of $\P^n$ in terms of \textit{homogeneous coordina
 
 We denote the equivalence class of the tuple $(x_i)$ by $[x_0:x_1:\ldots:x_n]$. These are called homogeneous coordinates. If we assume one of the coordinates to be non-zero, say $x_i$, then we can divide the entire tuple by it. This gives us a set, $D(x_i):=\lbrace [x_0/x_i:x_1/x_i:\ldots:1:\ldots:x_n/x_i]\rbrace$. It is easy to see that this set in bijection with $k^n$. Set $x_k/x_i:=x_{k/i}$\footnote{This notation is meant to be suggestive.}, then tuples in $D(x_i)$ look like $[x_{0/i}:x_{1/i}:\ldots:1:\ldots:x_{n/i}]$. This $D(x_i)$ should be thought of as the complement of the hyperplane defined by $x_i$ (which is actually a projective space of one dimension less). 
 
-If an $x_j$ is non-zero, for a $j$ distinct from $i$, then we can divide by it. This gives us the relation, $x_{k/i}/x_{j/i}=x_{k/j}$. This is the origin of the morphisms $\phi_{ij}$ above\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}. Homogenisation and de-homogenisation(?).
+If an $x_j$ is non-zero, for a $j$ distinct from $i$, then we can divide by it. This gives us the relation, $x_{k/i}/x_{j/i}=x_{k/j}$. This is the origin of the morphisms $\phi_{ij}$ above\footnote{If you have seen the construction of Grassmannians as smooth manifolds, the same construction also goes through in algebraic geometry.}. %Homogenisation and de-homogenisation(?).
 
 
 \subsection{Proj of a graded ring.}\label{subsection-proj-construction}\marginnote{000C}
@@ -1665,7 +1665,14 @@ The aim of this seminar is to prove the following theorem about Quot functors:
 In a sense, this is a sharp result. The Quot functor fails to be representable even if $X$ is assumed to be proper over $\C$. We can construct a proper threefold over $\C$ whose Hilbert functor is not representable\footnote{However, it is representable by an algebraic space.}.
 
 \subsection{Some more moduli functors.}
-We will now describe some more moduli problem. All of these are related to the Hilbert functor in some way or the other.
+We will now describe some more moduli problems. All of these are related to the Hilbert functor in some way or the other.
+
+\begin{example}
+	\label{example-projective-space-as-quot}\marginnote{001S}
+	Consider the Quot functor $\mathfrak{Quot}^1_{\oplus^{n+1}\sO_\Z/\Z/\Z}$. A $T$-point of this functor is given by a pair $(\sF,q)$, where $\sF$ is a locally free sheaf on $T$ and $q: \oplus^{n+1}\sO_\Z\rightarrow \sF$ is a surjection. Also, the condition that Hilbert polynomial is $1$ enforces that $\sF$ is a line bundle. This implies that $\mathfrak{Quot}^1_{\oplus^{n+1}\sO_\Z/\Z/\Z} \simeq \P^n_\Z$.\\
+	We will see later that the functor $\mathfrak{Quot}^d_{\oplus^{r}\sO_\Z/\Z/\Z}$ is represented by the Grassmanian of $d$ planes in $r$-dimensions.
+\end{example}
+
 \begin{example}[Moduli of hypersurfaces]
 	Consider $\P^n_A$ over a Noetherian ring $A$. We will show that the moduli of degree $d$ hypersurfaces in $\P^n_A$ is given by $\P^m_A$, where 
 	$m = \begin{psmallmatrix}
@@ -1720,6 +1727,100 @@ In the next example, we relate quotients by finite group actions to the Hilbert 
 \begin{remark}
 	We can construct a proper threefold $X$ over $\C$ with a $\Z/2$-action such that $X_{\Z/2}$ is not a scheme. Hence, the Hilbert functor of $X$ is not representable by the above example.
 \end{remark}
+
+
+\begin{example}[Schemes of morphisms]
+	\label{example-parametrising-morphisms}\marginnote{001T}
+	Let $X, Y$ be projective over $S$. Also, assume that $X$ is flat over a Noetherian $S$. We define the functor of morphisms from $X$ to $Y$ by,
+	\begin{align*}
+	Mor_S(X,Y)(T)=\left\{f\;|\;f:X_T\rightarrow Y_T \;\;\text{is a morphism over $T$}\right\}
+	\end{align*}
+	To any morphism $f:X\rightarrow Y$, we can associate its graph $\Gamma_F\subset X\times Y$. Morever, a subset $Z\subset X\times Y$ defines the graph of a function if and only the projection map $Z\rightarrow X$ is an isomorphism. This implies that the graph $\Gamma_f$ is flat over $S$ and we have a morphism
+	\[Mor_S(X,Y) \rightarrow \mathfrak{Hilb}_{X\times Y/S}\]
+	given by sending any morphism to its graph.\\
+	Being an isomorphism is an open condition on the base. That is, given a family $Z\subset X_T\times_T Y_T$ over $T$, there is an open subset $T'\subset T$ such that the projection $Z_{T'}\rightarrow X_{T'}$ is an isomorphism. Further, for any base change $U\rightarrow T$, if the projection $Z_U\rightarrow X_U$ is an isomorphism, then the map $U\rightarrow T$ factors through $T'$. Thus, $Mor_S(X,Y)$ defines an open subfunctor of the Hilbert functor of $X\times_S Y$.\\
+	Theorem \ref{theorem-quot-representable} now implies that $Mor_S(X,Y)$ is representable by a quasi-projective scheme over $S$.
+\end{example}
+The next example is natural continuation of the above example.
+	
+\begin{example}[Schemes of automorphisms]
+	\label{example-parametrising-automorphisms}\marginnote{001U}
+	In a similar vein as above, consider the functor parametrising automorphisms of $X$:
+	\begin{align*}
+	Aut_S(X)(T)=\left\{f\;|\;f:X_T\rightarrow X_T \;\;\text{is an automorphism over $T$}\right\}
+	\end{align*}
+	Clearly, we have an inclusion $Aut_S(X)\hookrightarrow Mor_S(X,X)\subset \mathfrak{Hilb}_{X\times_S X/S}$. Furthermore, a morphism is an isomorphims if and only if both the projections from its the graph $\Gamma_f$ are isomorphisms. Thus, for any family $Z\in\mathfrak{Hilb}_{X\times_S X/S}(T)$, there is an open set $T''\subset T'$ (having a universal property analogous to $T'$) such that both the projections from $Z_{T''}$ to $X_{T''}$ are isomorphisms.\\
+	Hence, $Aut_S(X)$ defines an open subfunctor of $Mor_S(X,X)$ and so is representable by a quasi-projective $S$-scheme in the light of Theorem \ref{theorem-quot-representable}.
+\end{example}
+
+\section{Grassmannians}
+
+In this section, we will describe the construction of Grassmannians. The proof of Theorem \ref{theorem-quot-representable} proceeds by embedding the Quot functors inside appropriate Grassmannians so we will give a detailed description of Grassmannians. We will describe the Grassmannian schemes by gluing together the various affine patches. This should be thought of as a generalisation of Example \ref{example-projective-space}, and is analogous to the construction of the Grassmannian as a smooth manifold\footnote{Really all we are doing is ``jazzing up" the smooth manifold construction to scheme theory language.}.
+
+Let us describe the affine patches for the Grassmannian.
+
+For any matrix $d\times r$ $M$ and any subset $J\subset \{1,2,\ldots,r\}$ of size $d$, we denote by $M_J$ the $d\times d$-minor of $M$ whose columns are indexed by $J$. In what follows we will only deal with size $d$ subsets of $\{1,2,\ldots,r\}$\footnote{Alternatively, we are only interested in the $d\times d$-minors of $d\times r$ matrices.}.
+
+Let $I\subset \{1,2, \ldots,r\}$ be a subset of size $d$. Let $X^I$ denote $d\times r$ matrices such that the $I$-the minor $X^I_I$ is the identity matrix. Let $\Z[X^I]$ denote the polynomial ring whose variable $x^I_{p,q}$ are given by the entries of $X^I$. Let $U^I:=\Spec\Z[X^I]$. Note that since $X^I_I$ is identity, $x^I_{p,q}=0\; \text{or}\; 1$, if $q\in I$. Thus, $\Z[X^I]$ is a polynomial ring over  $d(r-d)$ variables, and $U^I\simeq \A^{d(r-d)}_\Z$.
+
+Let $P^I_J:= det(X^I_J)$ be the determinant of the the $J$-th minor of $X^I$. Let $U^I_J:=\Spec\Z[X^I,1/P^I_J]$ denote the affine open where this determinant is invertible. We will glue the $U^I$'s along these open sets.
+
+For any $I$ and $J$, we have a ring homomorphism, $\theta_{IJ}: \Z[X^J,1/P^J_I] \rightarrow \Z[X^I,1/P^I_J]$ given by $\theta_{IJ}(X^J)=(X^I_J)^{-1}X^I$. In particular, 
+\begin{align*}
+\theta_{IJ}(P^J_I) &= \theta_{IJ}(det(X^J_I))\\
+&= det\, \theta_{IJ}(X^J_I)\\
+&=det\, (((X^I_J)^{-1}X^I)_I)\\
+&=det\, ((X^I_J)^{-1}) = 1/P^I_J.
+\end{align*}
+Note that these define an isomorphism of rings and that $\theta_{II}$ is identity on $U^I$. We can verify that they also satisfy the cocycle condition\footnote{If $d=1$, then the $\theta_{IJ}$'s are precisely the $\phi_{ij}$'s defined in Example \ref{example-projective-space}.}:
+\begin{align*}
+\theta_{IJ}\circ\theta_{JK}(X^K) &=\theta_{IJ}((X^J_K)^{-1}X^J)\\
+&= \left((X^I_J)^{-1}(X^I_K)\right)^{-1} (X^I_J)^{-1}X^K\\
+&= (X^I_K)^{-1}X^K \\
+&= \theta_{IK}(X^K).
+\end{align*}
+
+Gluing these together gives us a scheme $G(r,d)$ over $\Z$. We call this the Grassmannian of $d$-planes in $r$-space.
+
+\textbf{Universal quotient.} We will now construct a rank $d$ locally free sheaf on $G(r,d)$ which is a universal quotient\footnote{This nomenclature is justified by Example \ref{example-grassmannian-as-quot}.} of rank $d$. On each $U^I$, we define surjective homomorphisms $u^I: \oplus^r \sO_{U^I}\rightarrow \oplus^d \sO_{U^I}$ by the matrix $X^I$. On the intersections $U^I_J$, we have
+\begin{center}
+	\begin{tikzcd}[cramped, row sep=0.3em]
+	& \oplus^d \sO_{U^I_J}\\
+	\oplus^r \sO_{U^I_J}\arrow[ur, "u^I"]\arrow[dr, "u^J"'] &\\
+	& \oplus^d \sO_{U^I_J}
+	\end{tikzcd}
+\end{center}
+We will glue the trivial bundle $\oplus^d \sO_{U^I_J}$ on $U^I_J$ such that it is compatible with the projections $u^I$. Let $(g_{IJ})$ be the $d\times d$ invertible matrix,
+\[g_{IJ}= (X^I_J)^{-1}\in GL_d(U^I_J).\]
+Then, it is easy to see that $g_{IJ}\circ u^I=u^J$ giving us a surjection of vector bundles $u: \oplus^r \sO_{G(r,d)}\rightarrow \sU$ on $G(r,d)$.
+
+\textbf{Pl\"{u}cker embedding.} The deteminant line bundle of $\sU$, $det(\sU)$ is given by the transition functions $det(g_{IJ})=1/P^I_J$. Moreover, for each $I$ we have a global section
+\[\sigma_I\in \Gamma(G(r,d),det(\sU)),\]
+defined by $\sigma_I|_{U^J}=P^J_I\in \Gamma(U^J,\sO_{U^J})$. This gives us $\begin{psmallmatrix}
+r \\
+d
+\end{psmallmatrix}$ sections of $det(\sU)$ which are base point free (why?). Thus, we have an embedding $\sigma: G(r,d)\rightarrow \P^M_\Z$, where 
+$m=\begin{psmallmatrix}
+r \\
+d
+\end{psmallmatrix}-1$.
+
+More geometric description for this over a field (?).
+
+
+%\subsection{Stiefel spaces.}
+
+
+%\subsection{Grassmannians as Hilbert and Quot functors.}
+
+\begin{example}[Grassmannian as Quot]
+\label{example-grassmannian-as-quot}\marginnote{001V}
+We will now show that $G(r,d)$ is isomorphic to the Quot functor $\mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$. First observe that the universal quotient $u: \oplus^r \sO_{G(r,d)}\rightarrow \sU$ defines a morphism $G(r,d)\rightarrow \mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$. We will construct a map in the opposite direction.\\
+Any $T$ point of $\mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$ is a pair $(\sF,q)$ where $\sF$ is a locally free sheaf of rank $d$ on $T$ and $q: \oplus^r \sO_T\rightarrow \sF$ is a surjection of vector bundles. Given such a pair $(\sF,q)$, we will construct a map $T\rightarrow G(r,d)$.\\
+First assume that $\sF=\oplus^d \sO_T$ is trivial. Let $e_i=(0,\ldots,0,1,0,\ldots,0)\in \oplus^r \sO_T$ be the element whose $i$-th entry is $1$ and all others are zero. $\{e_i\}$ forms a standard basis for $\oplus^r \sO_T$. The images $q(e_i)$ generate $\oplus^d \sO_T$, so there exist $d$ of them which form a basis of $\oplus^d \sO_T$. In there coordinates $q$ can be written as a $d\times r$ matrix with a $d\times d$-minor given by identity. Let $I\subset \{1,2,\ldots,r\}$ be the subset indexing this minor. Moreover, $q$ gives us $d(r-d)$ sections of $\Gamma(T,\sO_T)$. Thus, we get a map $q: T\rightarrow \A^{d(r-d)}_\Z$. Further, by the choice of coordinates we can also assume that this copy of $\A^{d(r-d)}_\Z$ is actually $U^I$.\\
+Now for any $T$, there is an affine cover $T=\cup_k V_k$ such that $\sF$ is trivial. This gives us maps, $q_{kJ}: V_k\rightarrow U^J$. Gluing these together, we get the required map $q: T\rightarrow G(r,d)$\footnote{With $d=1$ we have just reworked Example \ref{example-projective-space-as-quot}}.
+\end{example}
+
 
 
 \newpage

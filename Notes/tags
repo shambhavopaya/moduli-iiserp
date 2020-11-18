@@ -58,3 +58,7 @@
 001P,theorem-quot-representable
 001Q,example-elliptic-curves-same-hilbert-polynomial
 001R,lemma-immersions-same-hilbert-polynomial
+001S,example-projective-space-as-quot
+001T,example-parametrising-morphisms
+001U,example-parametrising-automorphisms
+001V,example-grassmannian-as-quot
