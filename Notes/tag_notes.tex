@@ -232,6 +232,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{question}[theorem]{Question}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
@@ -248,7 +249,7 @@
 \maketitle
 
 
-These are notes for the first few lectures. The aim is to gather sufficient algebraic geometry background for discussing moduli theory. A lot of the \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}.
+These are notes for the ongoing\footnote{Since August 21, 2020} moduli theory seminar at IISER Pune. The aim is to study the proof of representability of Hilbert and Quot functors. The primary reference we are using is \cite{FGAExplained}. A lot of the \LaTeX\, code in this document has been shamelessly copied from the stacks project repository on GitHub\footnote{Thank you Aise Johan de Jong \textit{et al.} for TeX-ing all that math!}.
 
 \begin{comment}
 \section{Plan}
@@ -1794,12 +1795,12 @@ We will glue the trivial bundle $\oplus^d \sO_{U^I_J}$ on $U^I_J$ such that it i
 \[g_{IJ}= (X^I_J)^{-1}\in GL_d(U^I_J).\]
 Then, it is easy to see that $g_{IJ}\circ u^I=u^J$ giving us a surjection of vector bundles $u: \oplus^r \sO_{G(r,d)}\rightarrow \sU$ on $G(r,d)$.
 
-\textbf{Pl\"{u}cker embedding.} The deteminant line bundle of $\sU$, $det(\sU)$ is given by the transition functions $det(g_{IJ})=1/P^I_J$. Moreover, for each $I$ we have a global section
+\textbf{Pl\"{u}cker embedding.} The deteminantal line bundle of $\sU$, $det(\sU)$ is given by the transition functions $det(g_{IJ})=1/P^I_J$. Moreover, for each $I$ we have a global section
 \[\sigma_I\in \Gamma(G(r,d),det(\sU)),\]
 defined by $\sigma_I|_{U^J}=P^J_I\in \Gamma(U^J,\sO_{U^J})$. This gives us $\begin{psmallmatrix}
 r \\
 d
-\end{psmallmatrix}$ sections of $det(\sU)$ which are base point free (why?). Thus, we have an embedding $\sigma: G(r,d)\rightarrow \P^M_\Z$, where 
+\end{psmallmatrix}$ sections of $det(\sU)$ which are base point free (why?). Thus, we have an embedding $\sigma: G(r,d)\rightarrow \P^m_\Z$, where 
 $m=\begin{psmallmatrix}
 r \\
 d
@@ -1821,21 +1822,57 @@ First assume that $\sF=\oplus^d \sO_T$ is trivial. Let $e_i=(0,\ldots,0,1,0,\ldo
 Now for any $T$, there is an affine cover $T=\cup_k V_k$ such that $\sF$ is trivial. This gives us maps, $q_{kJ}: V_k\rightarrow U^J$. Gluing these together, we get the required map $q: T\rightarrow G(r,d)$\footnote{With $d=1$ we have just reworked Example \ref{example-projective-space-as-quot}}.
 \end{example}
 
+Motivated by this description, one can extend the Grassmannian construction to any coherent sheaf $E$.
+
 \begin{example}[Grassmannian of a coherent sheaf]
-	Let $E$ be a coherent sheaf on $S$. Using the description of the Grassmannian given in Example \ref{example-grassmannian-as-quot} we can define the Grassmannian associated to the coherent sheaf $E$ as
+	\label{example-grassmannian-coherent-sheaf}\marginnote{001W}
+	Let $E$ be a coherent sheaf on a Noetherian scheme $S$. Using the description of the Grassmannian given in Example \ref{example-grassmannian-as-quot} we can define the Grassmannian associated to the coherent sheaf $E$ as
 	\[G(E,d):=\mathfrak{Quot}^d_{E/S/S}.\] 
 	This functor is representable by a proper (actually, projective) scheme over $S$.\\
 	First assume that $E$ is locally free of rank $r$. Since the Quot functor behaves well with respect to base change, it is sufficient to check representability on an affine cover $S=\cup_i U_i$. Thus, assume that $U\subset S$ is an affine open, and there is an identification $E_U\simeq \oplus^r\sO_U$. Then,
 	\[\mathfrak{Quot}^d_{E/S/S}\times_S U = \mathfrak{Quot}^d_{E_U/U/U}=\mathfrak{Quot}^d_{\oplus^r\sO_U/U/U}\]
-	which is representable since it is the base change of $G(r,d)$ to $U$. Proper\\
-	Now, suppose that $E$ is any coherent sheaf. If $r: E'\rightarrow E$ is a surjection of coherent sheaves on $S$, we have a morphism of Quot functors
+	which is representable since it is the base change of $G(r,d)$ to $U$. Since $G(r,d)_U$ is proper for any affine open $U\subset S$, so is $G(E,d)$.\\
+	Now, suppose that $E$ is any coherent sheaf. If $r: E'\rightarrow E$ is a surjection of coherent sheaves on $S$, we have a morphism of Quot functors,
 	\begin{align*}
 	r^*: G(E,d) &\rightarrow G(E',d)\\
-	(\sF,q) &\mapsto (\sF,q\circ r)
+	(\sF,q) &\mapsto (\sF,q\circ r).
 	\end{align*}
-	Further, given a surjection $q':E'\rightarrow\sF$ on $S$ with $\sF$ locally free of rank $d$, the condition that $q'$ factor through $r:E'\rightarrow E$ is given by a closed subscheme $S'\subset S$. Thus, $r^*$ is representable by closed immersions. Now, on any affine open $U\subset S$, we have a sujection $\oplus^n\sO_U\rightarrow E_U$. Hence, $G(E,d)_U$ is representable by a closed subscheme of the Grassmannian $G(n,d)_U$ over $U$. Doing this on an affine cover $S=\cup_i U_i$ tells us that $G(E,d)$ is representable by a proper $S$-scheme.
+	Further, given a surjection $q':E'\rightarrow\sF$ on $S$ with $\sF$ locally free of rank $d$, the condition that $q'$ factor through $r:E'\rightarrow E$ is given by a closed subscheme $S'\subset S$. To prove this, we have to find the condition for the composite $ker(r)\hookrightarrow E'\overset{q'}{\rightarrow}\sF$ to be zero. By Lemma \ref{lemma-vanishing-locus-module-homomorphism}, this defines a closed subscheme $S'\subset S$. Thus, $r^*$ is representable by closed immersions. Now, on any affine open $U\subset S$, we have a surjection $\oplus^n\sO_U\rightarrow E_U$. Hence, $G(E,d)_U$ is representable by a closed subscheme of the Grassmannian $G(n,d)_U$ over $U$. Doing this on an affine cover $S=\cup_i U_i$ tells us that $G(E,d)$ is representable by a proper $S$-scheme.
 \end{example}
 
+The following proposition shows that $G(E,d)$ is projective over $S$.
+
+\begin{proposition}
+	Let $p:G(E,d)\rightarrow S$ be the Grassmannian of a coherent sheaf $E$ on $S$ as defined in Example \ref{example-grassmannian-coherent-sheaf}. Let $p^*E\rightarrow \sF$ be the universal family on $G(E,d)$. Then the determinantal line bundle $\bigwedge^d \sF$ is a line bundle on $G(E,d)$ relatively very ample over $S$. Since $p:G(E,d)\rightarrow S$ is proper, this gives us a closed immersion $G(E,d)\hookrightarrow \P(p_*(\bigwedge^d \sF))$.
+\end{proposition}
+
+\begin{proof}
+	$\bigwedge^d \sF$ is a line bundle since $\sF$ is locally free of rank $d$. By \cite[Tag 01VR]{stacks-project}, it suffices to check relative very ampleness on an affine cover of $S$. Let $U\subset S$ be an affine open. We have a cartesian diagram,
+	\begin{center}
+		\begin{tikzcd}
+		G(E,d)_U\arrow[r]\arrow[d] & G(E,d)\arrow[d]\\
+		U\arrow[r] & S
+		\end{tikzcd}
+	\end{center}
+	which shows that the family $(p^*E)_U\rightarrow \sF_U$ is universal over $U$. That is, for any $U$-scheme $T$, any family $\xi\in G(E,d)_U$ is the pullback of $(p^*E)_U\rightarrow \sF_U$. Moreover, we have a closed immersion $r^*:G(E,d)_U\hookrightarrow G(r,d)_U$. An easy diagram chase shows that $(p^*E)_U\rightarrow \sF_U$ is (isomorphic to) the pullback of the universal family on $G(r,d)_U$. Thus, $\sF_U \simeq r^*\sU_U$ where $\sU_U$ is the universal quotient on $U$. The determinantal line bundle $\bigwedge^d \sU_U$ defines the Pl\"{u}cker embedding $\sigma_U:G(r,d)\hookrightarrow \P(\pi_*(\bigwedge^d \sU_U))$.\\
+	Since taking exterior powers commutes with pullback, we see that $\sF_U$ is relatively very ample over $U$. Thus, $\sF$ is relatively very ample over $S$.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-vanishing-locus-module-homomorphism}\marginnote{001X}
+	Let $A$ be a ring and $\phi: M\rightarrow N$ be a homomorphism of $A$-modules. Assume that $N$ is projective. Then, there is exists an ideal $I\subset A$ such that induced map $\phi:M/IM\rightarrow N/IN$  of $A/I$-modules is zero. Further, if $f:A\rightarrow B$ is any ring map such that $\phi \otimes_A id_B:M\otimes_A B\rightarrow N\otimes_A B$ is zero, then $f:A\rightarrow B$ factors through $A/I$.
+\end{lemma}
+
+\begin{proof}
+	Since $N$ is projective, it is a submodule of a free module $F$. Thus, we may assume that the target of $\phi$ is the free module $F$. Let $\phi(M)\subset F$ be the image. Let $\{e_i\}$ be the standard basis of $F$ and $\{v_k\}$ a set of generators of $\phi(M)$ in $F$. Each $v_k$ can be written as a linear combination of the standard basis with coefficients in $A$, i.e, $v_k=\sum_i a_{ik}e_i$. Take the ideal generated by the coefficients $I=(a_{ik})$. Observe that, by construction, $I(\phi(M))=\phi(M)$. Thus, $\phi$ is zero on $A/I$.
+	
+	Now, take any ring map $f:A\rightarrow B$ such that $\phi(M) \otimes_A B=0$. We need to show that $I\subset ker(f)$. We will show that $f(a_{ik})=0$ for every generator of $I$. For this, note that the module $\phi(M) \otimes_A B$ is generated by the elements $\{v_k\otimes_A 1\}$. Thus,
+	\begin{align*}
+	v_k\otimes_A 1 & = \sum_i a_{ik}e_i \otimes_A 1\\
+	&= \sum_i e_i \otimes_A f(a_{ik})
+	\end{align*}
+	Since $\phi(M) \otimes_A B=0$, we have that $\sum_i e_i \otimes_A f(a_{ik})=0$. But $e_i\otimes_A 1$ is a standard basis of the free module $F\otimes_A B$. This implies that $f(a_{ik})=0$ for all $i,k$.
+\end{proof}
 
 
 \newpage

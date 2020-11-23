@@ -62,3 +62,5 @@
 001T,example-parametrising-morphisms
 001U,example-parametrising-automorphisms
 001V,example-grassmannian-as-quot
+001W,example-grassmannian-coherent-sheaf
+001X,lemma-vanishing-locus-module-homomorphism
