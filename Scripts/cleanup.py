@@ -30,7 +30,7 @@ except FileNotFoundError:
   pass
 
 
-filenames = ["Notes.tex"]
+filenames = ["tag_notes.tex"]
 
 
 for filename in filenames:
@@ -38,7 +38,7 @@ for filename in filenames:
   for key in tags.keys():
       if "\label{"+ tags[key] + "}\marginnote{" + key + "}" in file_data :
           file_data = file_data.replace("\marginnote{" + key + "}", '')
-  #new_filename = filename.replace("notes.tex","cleanup_notes.tex")
+  #new_filename = filename.replace("tag_notes.tex","cleanup_notes.tex")
   file = open(filename,"w")
   file.write(file_data)
   file.close()
