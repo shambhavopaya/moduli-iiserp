@@ -1,0 +1,330 @@
+\documentclass[ignorenonframetext,t]{beamer}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{tikz-cd}
+
+\usetheme{Frankfurt}
+
+\setbeamerfont{block body}{size=\small}
+
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\hfill\insertshorttitle\, - \insertsubtitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshortauthor\hfill%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+			\hfill\insertframenumber\,/\,\inserttotalframenumber
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+
+% Document information
+\title[Moduli@IISERP]{Seminar on Moduli Theory}
+\subtitle{Lecture 13}
+\author{Neeraj Deshmukh}
+\date{November 20, 2020}
+%\address[IISERP]{Indian Institute of Science Education and Research, Pune}
+
+\begin{document}
+	
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Last Week}
+\begin{enumerate}
+	\item Schemes of (auto)morphisms
+	\item Grassmannain scheme
+	\item Pl\"{u}cker embedding
+\end{enumerate}
+\end{frame}
+
+
+
+\begin{example}[Schemes of morphisms]
+	\label{example-parametrising-morphisms}
+	Let $X, Y$ be projective over $S$. Also, assume that $X$ is flat over a Noetherian $S$. We define the functor of morphisms from $X$ to $Y$ by,
+	\begin{align*}
+	Mor_S(X,Y)(T)=\left\{f\;|\;f:X_T\rightarrow Y_T \;\;\text{is a morphism over $T$}\right\}
+	\end{align*}
+	To any morphism $f:X\rightarrow Y$, we can associate its graph $\Gamma_F\subset X\times Y$. Morever, a subset $Z\subset X\times Y$ defines the graph of a function if and only the projection map $Z\rightarrow X$ is an isomorphism. This implies that the graph $\Gamma_f$ is flat over $S$ and we have a morphism
+	\[Mor_S(X,Y) \rightarrow \mathfrak{Hilb}_{X\times Y/S}\]
+	given by sending any morphism to its graph.\\
+	Being an isomorphism is an open condition on the base. That is, given a family $Z\subset X_T\times_T Y_T$ over $T$, there is an open subset $T'\subset T$ such that the projection $Z_{T'}\rightarrow X_{T'}$ is an isomorphism. Further, for any base change $U\rightarrow T$, if the projection $Z_U\rightarrow X_U$ is an isomorphism, then the map $U\rightarrow T$ factors through $T'$. Thus, $Mor_S(X,Y)$ defines an open subfunctor of the Hilbert functor of $X\times_S Y$.\\
+	Theorem \ref{theorem-quot-representable} now implies that $Mor_S(X,Y)$ is representable by a quasi-projective scheme over $S$.
+\end{example}
+The next example is natural continuation of the above example.
+
+
+\begin{example}[Schemes of automorphisms]
+	\label{example-parametrising-automorphisms}
+	In a similar vein as above, consider the functor parametrising automorphisms of $X$:
+	\begin{align*}
+	Aut_S(X)(T)=\left\{f\;|\;f:X_T\rightarrow X_T \;\;\text{is an automorphism over $T$}\right\}
+	\end{align*}
+	Clearly, we have an inclusion $Aut_S(X)\hookrightarrow Mor_S(X,X)\subset \mathfrak{Hilb}_{X\times_S X/S}$. Furthermore, a morphism is an isomorphims if and only if both the projections from its the graph $\Gamma_f$ are isomorphisms. Thus, for any family $Z\in\mathfrak{Hilb}_{X\times_S X/S}(T)$, there is an open set $T''\subset T'$ (having a universal property analogous to $T'$) such that both the projections from $Z_{T''}$ to $X_{T''}$ are isomorphisms.\\
+	Hence, $Aut_S(X)$ defines an open subfunctor of $Mor_S(X,X)$ and so is representable by a quasi-projective $S$-scheme in the light of Theorem \ref{theorem-quot-representable}.
+\end{example}
+
+%\section{Grassmannians}
+
+
+\begin{frame}
+	Grassmannian scheme
+\end{frame}
+
+
+\begin{frame}
+	$\mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$ for $1\leq d\leq r$
+\end{frame}
+
+\begin{frame}
+	Grassmannian of a vector bundle
+\end{frame}
+
+\begin{frame}
+	Grassmannian of a coherent sheaf $G(E,d)$
+\end{frame}
+
+\begin{frame}
+	$G(E,d)$ is projective
+\end{frame}
+
+\begin{frame}
+	\begin{theorem}[Grothendieck]
+		\label{theorem-quot-representable}
+		Let $\pi: X\rightarrow S$ be a projective morphism with $S$ Noetherian. Then for any coherent sheaf $E$ on $X$ and any polynomial $\phi \in \Q[t]$, the functor $\mathfrak{Quot}^{\phi(t)}_{E/X/S}$ is representable by a projective $S$-scheme.
+	\end{theorem}
+	Idea of proof
+\end{frame}
+
+\begin{frame}
+	Idea of proof
+\end{frame}
+
+
+In this section, we will describe the construction of Grassmannians. The proof of Theorem \ref{theorem-quot-representable} proceeds by embedding the Quot functors inside appropriate Grassmannians so we will give a detailed description of Grassmannians. We will describe the Grassmannian schemes by gluing together the various affine patches. This should be thought of as a generalisation of Example \ref{example-projective-space}, and is analogous to the construction of the Grassmannian as a smooth manifold\footnote{Really all we are doing is ``jazzing up" the smooth manifold construction to scheme theory language.}.
+
+Let us describe the affine patches for the Grassmannian.
+
+For any matrix $d\times r$ $M$ and any subset $J\subset \{1,2,\ldots,r\}$ of size $d$, we denote by $M_J$ the $d\times d$-minor of $M$ whose columns are indexed by $J$. In what follows we will only deal with size $d$ subsets of $\{1,2,\ldots,r\}$\footnote{Alternatively, we are only interested in the $d\times d$-minors of $d\times r$ matrices.}.
+
+Let $I\subset \{1,2, \ldots,r\}$ be a subset of size $d$. Let $X^I$ denote $d\times r$ matrices such that the $I$-the minor $X^I_I$ is the identity matrix. Let $\Z[X^I]$ denote the polynomial ring whose variable $x^I_{p,q}$ are given by the entries of $X^I$. Let $U^I:=\Spec\Z[X^I]$. Note that since $X^I_I$ is identity, $x^I_{p,q}=0\; \text{or}\; 1$, if $q\in I$. Thus, $\Z[X^I]$ is a polynomial ring over  $d(r-d)$ variables, and $U^I\simeq \A^{d(r-d)}_\Z$.
+
+Let $P^I_J:= det(X^I_J)$ be the determinant of the the $J$-th minor of $X^I$. Let $U^I_J:=\Spec\Z[X^I,1/P^I_J]$ denote the affine open where this determinant is invertible. We will glue the $U^I$'s along these open sets.
+
+For any $I$ and $J$, we have a ring homomorphism, $\theta_{IJ}: \Z[X^J,1/P^J_I] \rightarrow \Z[X^I,1/P^I_J]$ given by $\theta_{IJ}(X^J)=(X^I_J)^{-1}X^I$. In particular, 
+\begin{align*}
+\theta_{IJ}(P^J_I) &= \theta_{IJ}(det(X^J_I))\\
+&= det\, \theta_{IJ}(X^J_I)\\
+&=det\, (((X^I_J)^{-1}X^I)_I)\\
+&=det\, ((X^I_J)^{-1}) = 1/P^I_J.
+\end{align*}
+Note that these define an isomorphism of rings and that $\theta_{II}$ is identity on $U^I$. We can verify that they also satisfy the cocycle condition\footnote{If $d=1$, then the $\theta_{IJ}$'s are precisely the $\phi_{ij}$'s defined in Example \ref{example-projective-space}.}:
+\begin{align*}
+\theta_{IJ}\circ\theta_{JK}(X^K) &=\theta_{IJ}((X^J_K)^{-1}X^J)\\
+&= \left((X^I_J)^{-1}(X^I_K)\right)^{-1} (X^I_J)^{-1}X^K\\
+&= (X^I_K)^{-1}X^K \\
+&= \theta_{IK}(X^K).
+\end{align*}
+
+Gluing these together gives us a scheme $G(r,d)$ over $\Z$. We call this the Grassmannian of $d$-planes in $r$-space.
+
+\textbf{Universal quotient.} We will now construct a rank $d$ locally free sheaf on $G(r,d)$ which is a universal quotient\footnote{This nomenclature is justified by Example \ref{example-grassmannian-as-quot}.} of rank $d$. On each $U^I$, we define surjective homomorphisms $u^I: \oplus^r \sO_{U^I}\rightarrow \oplus^d \sO_{U^I}$ by the matrix $X^I$. On the intersections $U^I_J$, we have
+\begin{center}
+	\begin{tikzcd}[cramped, row sep=0.3em]
+	& \oplus^d \sO_{U^I_J}\\
+	\oplus^r \sO_{U^I_J}\arrow[ur, "u^I"]\arrow[dr, "u^J"'] &\\
+	& \oplus^d \sO_{U^I_J}
+	\end{tikzcd}
+\end{center}
+We will glue the trivial bundle $\oplus^d \sO_{U^I_J}$ on $U^I_J$ such that it is compatible with the projections $u^I$. Let $(g_{IJ})$ be the $d\times d$ invertible matrix,
+\[g_{IJ}= (X^I_J)^{-1}\in GL_d(U^I_J).\]
+Then, it is easy to see that $g_{IJ}\circ u^I=u^J$ giving us a surjection of vector bundles $u: \oplus^r \sO_{G(r,d)}\rightarrow \sU$ on $G(r,d)$.
+
+\textbf{Pl\"{u}cker embedding.} The deteminant line bundle of $\sU$, $det(\sU)$ is given by the transition functions $det(g_{IJ})=1/P^I_J$. Moreover, for each $I$ we have a global section
+\[\sigma_I\in \Gamma(G(r,d),det(\sU)),\]
+defined by $\sigma_I|_{U^J}=P^J_I\in \Gamma(U^J,\sO_{U^J})$. This gives us $\begin{psmallmatrix}
+r \\
+d
+\end{psmallmatrix}$ sections of $det(\sU)$ which are base point free (why?). Thus, we have an embedding $\sigma: G(r,d)\rightarrow \P^M_\Z$, where 
+$m=\begin{psmallmatrix}
+r \\
+d
+\end{psmallmatrix}-1$.
+
+More geometric description for this over a field (?).
+
+
+%\subsection{Stiefel spaces.}
+
+
+%\subsection{Grassmannians as Hilbert and Quot functors.}
+
+\begin{example}[Grassmannian as Quot]
+	\label{example-grassmannian-as-quot}
+	We will now show that $G(r,d)$ is isomorphic to the Quot functor $\mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$. First observe that the universal quotient $u: \oplus^r \sO_{G(r,d)}\rightarrow \sU$ defines a morphism $G(r,d)\rightarrow \mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$. We will construct a map in the opposite direction.\\
+	Any $T$ point of $\mathfrak{Quot}^d_{\oplus^r\sO_\Z/\Z/\Z}$ is a pair $(\sF,q)$ where $\sF$ is a locally free sheaf of rank $d$ on $T$ and $q: \oplus^r \sO_T\rightarrow \sF$ is a surjection of vector bundles. Given such a pair $(\sF,q)$, we will construct a map $T\rightarrow G(r,d)$.\\
+	First assume that $\sF=\oplus^d \sO_T$ is trivial. Let $e_i=(0,\ldots,0,1,0,\ldots,0)\in \oplus^r \sO_T$ be the element whose $i$-th entry is $1$ and all others are zero. $\{e_i\}$ forms a standard basis for $\oplus^r \sO_T$. The images $q(e_i)$ generate $\oplus^d \sO_T$, so there exist $d$ of them which form a basis of $\oplus^d \sO_T$. In there coordinates $q$ can be written as a $d\times r$ matrix with a $d\times d$-minor given by identity. Let $I\subset \{1,2,\ldots,r\}$ be the subset indexing this minor. Moreover, $q$ gives us $d(r-d)$ sections of $\Gamma(T,\sO_T)$. Thus, we get a map $q: T\rightarrow \A^{d(r-d)}_\Z$. Further, by the choice of coordinates we can also assume that this copy of $\A^{d(r-d)}_\Z$ is actually $U^I$.\\
+	Now for any $T$, there is an affine cover $T=\cup_k V_k$ such that $\sF$ is trivial. This gives us maps, $q_{kJ}: V_k\rightarrow U^J$. Gluing these together, we get the required map $q: T\rightarrow G(r,d)$\footnote{With $d=1$ we have just reworked Example \ref{example-projective-space-as-quot}}.
+\end{example}
+
+\begin{example}[Grassmannian of a coherent sheaf]
+	Let $E$ be a coherent sheaf on $S$. Using the description of the Grassmannian given in Example \ref{example-grassmannian-as-quot} we can define the Grassmannian associated to the coherent sheaf $E$ as
+	\[G(E,d):=\mathfrak{Quot}^d_{E/S/S}.\] 
+	This functor is representable by a proper (actually, projective) scheme over $S$.\\
+	First assume that $E$ is locally free of rank $r$. Since the Quot functor behaves well with respect to base change, it is sufficient to check representability on an affine cover $S=\cup_i U_i$. Thus, assume that $U\subset S$ is an affine open, and there is an identification $E_U\simeq \oplus^r\sO_U$. Then,
+	\[\mathfrak{Quot}^d_{E/S/S}\times_S U = \mathfrak{Quot}^d_{E_U/U/U}=\mathfrak{Quot}^d_{\oplus^r\sO_U/U/U}\]
+	which is representable since it is the base change of $G(r,d)$ to $U$. Proper\\
+	Now, suppose that $E$ is any coherent sheaf. If $r: E'\rightarrow E$ is a surjection of coherent sheaves on $S$, we have a morphism of Quot functors
+	\begin{align*}
+	r^*: G(E,d) &\rightarrow G(E',d)\\
+	(\sF,q) &\mapsto (\sF,q\circ r)
+	\end{align*}
+	Further, given a surjection $q':E'\rightarrow\sF$ on $S$ with $\sF$ locally free of rank $d$, the condition that $q'$ factor through $r:E'\rightarrow E$ is given by a closed subscheme $S'\subset S$. Thus, $r^*$ is representable by closed immersions. Now, on any affine open $U\subset S$, we have a sujection $\oplus^n\sO_U\rightarrow E_U$. Hence, $G(E,d)_U$ is representable by a closed subscheme of the Grassmannian $G(n,d)_U$ over $U$. Doing this on an affine cover $S=\cup_i U_i$ tells us that $G(E,d)$ is representable by a proper $S$-scheme.
+\end{example}
+
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
