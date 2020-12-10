@@ -1,0 +1,297 @@
+\documentclass[ignorenonframetext,t]{beamer}
+\usepackage{amscd}
+\usepackage{verbatim}
+\usepackage{tikz-cd}
+
+\usetheme{Frankfurt}
+
+\setbeamerfont{block body}{size=\small}
+
+\setbeamercolor{mycolor}{fg=white,bg=black}
+\defbeamertemplate*{footline}{shadow theme}{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\hfill\insertshorttitle\, - \insertsubtitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshortauthor\hfill%
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{mycolor}%
+			\hfill\insertframenumber\,/\,\inserttotalframenumber
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+
+%% LaTeX Definitions
+%\newcounter{countup}
+
+\newcommand{\rup}[1]{\lceil{#1}\rceil}
+\newcommand{\rdown}[1]{\lfloor{#1}\rfloor}
+\newcommand{\ilim}{\mathop{\varprojlim}\limits} % inverse limit
+\newcommand{\dlim}{\mathop{\varinjlim}\limits}  % direct limit
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\tensor}{\otimes}
+\newcommand{\ext}{\bigwedge}
+\newcommand{\Intersection}{\bigcap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\intersection}{\cap}
+\newcommand{\union}{\cup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% new new commands :) %%%%%%%%%%%%%%%%
+\newcommand{\supp}{{\rm Supp}}
+\newcommand{\Exceptional}{{\rm Ex}}
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\boldphi}{\mbox{\boldmath $\phi$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\udiv}{\underline{\Div}}
+
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\Proj}{{\P roj}}
+\newcommand{\sEnd}{{\sE nd}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+\newcommand{\an}{{\rm an}} 
+\newcommand{\red}{{\rm red}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Dim}{{\rm dim}}
+\newcommand{\rank}{{\rm rank}}
+\newcommand{\Ker}{{\rm Ker  }}
+\newcommand{\Pic}{{\rm Pic}}
+\newcommand{\per}{{\rm per}}
+\newcommand{\ind}{{\rm ind}}
+\newcommand{\Div}{{\rm Div}}
+\newcommand{\Hom}{{\rm Hom}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\im}{{\rm im}}
+\newcommand{\Spec}{{\rm Spec \,}}
+\newcommand{\Sing}{{\rm Sing}}
+\newcommand{\sing}{{\rm sing}}
+\newcommand{\reg}{{\rm reg}}
+\newcommand{\Char}{{\rm char}}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\Gal}{{\rm Gal}}
+\newcommand{\Min}{{\rm Min \ }}
+\newcommand{\Max}{{\rm Max \ }}
+\newcommand{\Alb}{{\rm Alb}\,}
+\newcommand{\Mat}{{\rm Mat}}
+%\newcommand{\GL}{{\rm GL}\,}        % For the general linear group
+\newcommand{\GL}{{\G\L}}
+\newcommand{\Ho}{{\rm Ho}}
+\newcommand{\ie}{{\it i.e.\/},\ }
+\renewcommand{\iff}{\mbox{ $\Longleftrightarrow$ }}
+\renewcommand{\tilde}{\widetilde}
+% Skriptbuchstaben
+\newcommand{\sA}{{\mathcal A}}
+\newcommand{\sB}{{\mathcal B}}
+\newcommand{\sC}{{\mathcal C}}
+\newcommand{\sD}{{\mathcal D}}
+\newcommand{\sE}{{\mathcal E}}
+\newcommand{\sF}{{\mathcal F}}
+\newcommand{\sG}{{\mathcal G}}
+\newcommand{\sH}{{\mathcal H}}
+\newcommand{\sI}{{\mathcal I}}
+\newcommand{\sJ}{{\mathcal J}}
+\newcommand{\sK}{{\mathcal K}}
+\newcommand{\sL}{{\mathcal L}}
+\newcommand{\sM}{{\mathcal M}}
+\newcommand{\sN}{{\mathcal N}}
+\newcommand{\sO}{{\mathcal O}}
+\newcommand{\sP}{{\mathcal P}}
+\newcommand{\sQ}{{\mathcal Q}}
+\newcommand{\sR}{{\mathcal R}}
+\newcommand{\sS}{{\mathcal S}}
+\newcommand{\sT}{{\mathcal T}}
+\newcommand{\sU}{{\mathcal U}}
+\newcommand{\sV}{{\mathcal V}}
+\newcommand{\sW}{{\mathcal W}}
+\newcommand{\sX}{{\mathcal X}}
+\newcommand{\sY}{{\mathcal Y}}
+\newcommand{\sZ}{{\mathcal Z}}
+% Sonderbuchstaben mit Doppellinie
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\B}{{\mathbb B}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\G}{{\mathbb G}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\J}{{\mathbb J}}
+\newcommand{\M}{{\mathbb M}}
+\newcommand{\N}{{\mathbb N}}
+\renewcommand{\O}{{\mathbb O}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\U}{{\mathbb U}}
+\newcommand{\V}{{\mathbb V}}
+\newcommand{\W}{{\mathbb W}}
+\newcommand{\X}{{\mathbb X}}
+\newcommand{\Y}{{\mathbb Y}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Sh}{\sS h}
+\newcommand{\deltaop}{\Delta^{op}(\sS h(Sm/\mathbf{k}))}
+\newcommand{\pdeltaop}{\Delta^{op}(P\sS h(Sm/\mathbf{k}))}
+%\newcommand{\psh}{\pi_0^{\text{\tiny pre}}}
+\newcommand{\psh}{\pi_0}
+\renewcommand{\k}{\mathbf{k}}
+
+\newcommand{\colim}{{\rm colim \,}}
+\newcommand{\DM}[2]{\mathbf{DM}_{#2}^{\mathit{eff}}(#1)}
+
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+
+
+
+
+% Document information
+\title[Moduli@IISERP]{Seminar on Moduli Theory}
+\subtitle{Lecture 15}
+\author{Neeraj Deshmukh}
+\date{December 11, 2020}
+%\address[IISERP]{Indian Institute of Science Education and Research, Pune}
+
+\begin{document}
+	
+	
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Last Week}
+\begin{enumerate}
+	\item Grassmannian of a coherent sheaf
+	\item Outline of proof of representability
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+
+\begin{frame}
+	\begin{theorem}[Grothendieck]
+		\label{theorem-quot-representable}
+		Let $\pi: X\rightarrow S$ be a projective morphism with $S$ Noetherian. Then for any coherent sheaf $E$ on $X$ and any polynomial $\phi \in \Q[t]$, the functor $\mathfrak{Quot}^{\phi(t)}_{E/X/S}$ is representable by a projective $S$-scheme.
+	\end{theorem}
+	What if $X$ is proper?
+	
+\end{frame}
+
+\begin{frame}
+	Hironaka's example:	A proper threefold over $\C$ which is not projective
+\end{frame}
+
+\begin{frame}
+	Hironaka's example
+\end{frame}
+
+\begin{frame}
+	Hironaka's Example with a $\Z/2$-action
+\end{frame}
+
+\begin{frame}
+	$X_G$ parametrises a closed subgroup of $\mathfrak{Hilb}^n_X$
+\end{frame}
+
+
+\begin{frame}
+	Castelnuovo-Mumford Regularity
+\begin{definition}
+	Let $\sF$ be a coherent sheaf on $\P_k^n$ . Let $m$ be an integer. $\sF$ is said to be \textit{$m$-regular} if we have
+	\[H^i(\P^n_k,\sF(m-i))=0 \;\;\text{for each}\;\; i\geq 1.\]
+\end{definition}
+\end{frame}
+
+
+As Nitsure points out in \cite{FGAExplained}, this definition is very strange-looking. However, it is quite useful for making inductive arguments with respect to suitable hyperplanes.
+
+
+\begin{lemma}[Castelnuovo]
+	Let $\sF$ be a $m$-regular on $\P^n_k$. Then the following statements hold:
+	\begin{enumerate}
+		\item The canonical map $H^0(\P^n_k,\sO(1)) \otimes H^0(\P^n_k,\sF(r)) \rightarrow H^0(\P^n_k,\sF(r+1))$ is surjective whenever $r\geq m$.
+		\item $H^i(\P^n_k,\sF(r))=0$ whenever $i\geq 1$ and $r\geq m-i$. That is, if $\sF$ is $m$-regular then it also $m'$-regular for all $m'\geq m$.
+		\item The sheaf $\sF(r)$ is generated by global sections, and all its higher cohomologies vanish, whenever $r\geq m$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{frame}
+\begin{theorem}[Mumford]
+	Given any non-negative integers $p$ and $n$, there exists a polynomial $F_{p,n}$ in $n+1$-variables with the following property:\\
+	If $\sF\subset \oplus^p\, \sO_{\P^n_k}$ is any coherent subsheaf  with Hilbert polynomial 
+	\[\chi(\sF,r)=\overset{n}{\underset{i=0}{\sum}} a_i 
+	\begin{pmatrix}
+	r\\
+	i	
+	\end{pmatrix},\]
+	then $\sF$ is $F_{p,n}(a_0,\ldots,a_n)$-regular.
+\end{theorem}
+\end{frame}
+
+
+\begin{proof}
+	Since cohomology behaves well with respect to extension of fields, we can assume that $k$ is infinite.
+	
+	The proof is by induction on $n$. When $n=0$, we can take $F_{p,0}$ to be any polynomial (what are coherent sheaves on $\P^0$?).
+	
+	Let $n\geq 1$. Since $k$ is infinite, we can find a hyperplane $H\subset \P^n_k$ which does not contain any of the finitely many associated points of $\oplus^p\,\sO_{\P^n_k}/\sF$. Thus, tensoring with $\sO_H$ gives us an exact sequence,
+	\[0\rightarrow \sF_H \rightarrow \oplus^p\,\sO_H \rightarrow \oplus^p\,\sO_H/\sF \rightarrow 0.\]
+	This shows that $\sF_H$ is isomorphic to a subsheaf of $\oplus^p\,\sO_{\P^{n-1}_k}/\sF$.
+	
+	Further, we have an exact sequence,
+	\[0 \rightarrow \sF(-1)\rightarrow \sF \rightarrow \sF_H \rightarrow 0,\]
+	which implies that $\chi(\sF_H,r)=\chi(\sF,r)-\chi(\sF,r-1)$. Expanding this out we see that
+	\begin{align*}
+	\chi(\sF_H,r)
+	&=\overset{n}{\underset{i=0}{\sum}} a_i 
+	\begin{psmallmatrix}
+	r\\
+	i	
+	\end{psmallmatrix} -
+	\overset{n}{\underset{i=0}{\sum}} a_i 
+	\begin{psmallmatrix}
+	r-1\\
+	i	
+	\end{psmallmatrix}\\
+	&=\overset{n}{\underset{i=0}{\sum}} a_i 
+	\begin{psmallmatrix}
+	r-1\\
+	i-1	
+	\end{psmallmatrix}\\
+	&=\overset{n-1}{\underset{j=0}{\sum}} b_j 
+	\begin{psmallmatrix}
+	r\\
+	j	
+	\end{psmallmatrix}
+	\end{align*}
+	where the coefficients $b_j$'s have the expressions $b_j=g_j(a_0,\ldots,a_n)$ where each $g_j$ is polynomial with integer coefficients (independent of $k$ and $\sF$).
+	
+	By induction hypothesis, there exists a polynomial $F_{p,n-1}$ such that $\sF$ is $m_0$-regular for $m_0=F_{p,n-1}(b_0,\ldots,b_{n-1})$. Substituting the expression of $b_j$'s in terms of the $a_i$'s, we get that $m_0=G(a_0,\ldots,a_n)$, where $G$ is a polynomial with integer coefficients inndependent of $k$ and $\sF$. Now, for any $m\geq m_0-1$, we have long exact sequence,
+	\[0\rightarrow H^0(\sF(m-1))\rightarrow H^0(\sF(m))\rightarrow H^0(\sF_H(m))\rightarrow H^1(\sF(m-1))\rightarrow H^1(\sF(m)) \rightarrow 0 \ldots\]
+	For $i\geq 2$, $m_0$-regularity of $\sF_H$, gives us isomorphisms $H^i(\sF(m-1))\simeq H^i(\sF(m))$. Morover, we have surjections $H^1(\sF(m-1))\rightarrow H^1(\sF(m))$ showing that $h^1(\sF(m))$ is a monotonically decreasing function in $m$ for $m\geq m_0 -2$.
+	
+	We will show that for $m\geq m_0$, the function $h^1(\sF(m))$ is strictly decreasing meaning that 
+	\[H^1(\sF(m))=0 \;\;\text{for}\;\; m\geq m_0+h^1(\sF(m)).\]
+	
+	
+\end{proof}
+
+
+\bibliography{Mybib.bib}
+\bibliographystyle{alpha}
+
+\end{document}
+
+
+
